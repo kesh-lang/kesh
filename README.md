@@ -6,6 +6,20 @@
 
 > A long, long time from now, in the wake of what will no longer be called JavaScript, might be going to have existed a programming language called _kesh_.
 
+
+```js
+joe:
+    name: "Joe"
+    age: 27
+
+greet(person):
+    greeting: "Hey, {person.name}!"
+    return greeting
+
+greet(joe) // "Hey, Joe!"
+
+```
+
 ---
 
 by [joakim](https://github.com/joakim/) ([heyiya-if symbol](https://commons.wikimedia.org/wiki/File:Double_spirale.svg) is `CC0`)
