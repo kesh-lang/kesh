@@ -8,9 +8,10 @@
 
 
 ```js
-joe:
+joe: {
     name: "Joe"
     age: 27
+}
 
 greet(person):
     greeting: "Hey, {person.name}!"
