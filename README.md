@@ -8,8 +8,13 @@
 
 
 ```lua
-greet(person):
-    greeting: "Hey, {person.name}!"
+type Person: {
+    name: string
+    age: number
+}
+
+greet(someone Person):
+    greeting: "Hey, {someone.name}!"
     return greeting
 
 joe: {
