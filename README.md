@@ -7,7 +7,7 @@
 > A long, long time from now, in the wake of what will no longer be called JavaScript, might be going to have existed a programming language called _kesh_.
 
 
-```js
+```lua
 greet(person):
     greeting: "Hey, {person.name}!"
     return greeting
@@ -17,8 +17,7 @@ joe: {
     age: 27
 }
 
-greet(person: joe) // "Hey, Joe!"
-
+greet(person: joe) -- "Hey, Joe!"
 ```
 
 ---
