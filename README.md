@@ -13,8 +13,8 @@ type Person: {
     age: number
 }
 
-greet(someone Person):
-    greeting: "Hey, {someone.name}!"
+greet(person Person):
+    greeting: "Hey, {person.name}!"
     return greeting
 
 joe: {
