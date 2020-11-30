@@ -8,14 +8,14 @@
 
 
 ```js
+greet(person):
+    greeting: "Hey, {person.name}!"
+    return greeting
+
 joe: {
     name: "Joe"
     age: 27
 }
-
-greet(person):
-    greeting: "Hey, {person.name}!"
-    return greeting
 
 greet(person: joe) // "Hey, Joe!"
 
