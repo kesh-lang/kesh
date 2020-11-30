@@ -13,11 +13,11 @@ joe: {
     age: 27
 }
 
-greet(person):
+def greet(person):
     greeting: "Hey, {person.name}!"
     return greeting
 
-greet(joe) // "Hey, Joe!"
+greet(person: joe) // "Hey, Joe!"
 
 ```
 
