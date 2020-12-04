@@ -9,8 +9,8 @@
 
 ```lua
 type Person: {
-    name string
-    age number
+    name: string
+    age: number
 }
 
 greet(person Person) string:
