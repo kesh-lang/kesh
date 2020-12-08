@@ -18,11 +18,11 @@ greet(person Person) string:
     return greeting
 
 joe: {
-    name: "Joe"
+    name: 'Joe'
     age: 27
 }
 
-joe || greet >> print  -- "Hey, Joe!"
+joe || greet >> print  -- 'Hey, Joe!'
 ```
 
 ---
