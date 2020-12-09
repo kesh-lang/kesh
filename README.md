@@ -22,7 +22,7 @@ joe: {
     age: 27
 }
 
-joe || greet >> print  -- 'Hey, Joe!'
+joe || greet >> print  -- "Hey, Joe!"
 ```
 
 ---
