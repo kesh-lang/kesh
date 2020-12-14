@@ -13,7 +13,7 @@ type Person: {
     age: number
 }
 
-greet(person: Person) -> string:
+greet(person: Person) => string:
     greeting: "Hey, {person.name}!"
     return greeting
 
