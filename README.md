@@ -9,11 +9,11 @@
 
 ```lua
 type Person: {
-    name string
-    age number
+    name: string
+    age: number
 }
 
-greet(person Person) string:
+greet(person: Person) string:
     greeting: "Hey, {person.name}!"
     return greeting
 
@@ -22,7 +22,7 @@ joe: {
     age: 27
 }
 
-joe |> greet >> print  -- "Hey, Joe!"
+joe |> greet >> log  -- "Hey, Joe!"
 ```
 
 ---
