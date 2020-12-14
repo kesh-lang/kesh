@@ -22,7 +22,7 @@ joe: {
     age: 27
 }
 
-joe |> greet >> log  -- "Hey, Joe!"
+greet(joe)  --> "Hey, Joe!"
 ```
 
 ---
