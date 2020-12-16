@@ -8,12 +8,7 @@
 
 
 ```lua
-type Person: {
-    name: string
-    age: number
-}
-
-greet(person: Person) => string:
+greet(person):
     greeting: "Hey, {person.name}!"
     return greeting
 
@@ -22,7 +17,7 @@ joe: {
     age: 27
 }
 
-greet(joe)  --> "Hey, Joe!"
+greet(person: joe)  --> "Hey, Joe!"
 ```
 
 ---
