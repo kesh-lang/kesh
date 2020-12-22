@@ -22,6 +22,4 @@ greet(person: joe)  --> "Hey, Joe!"
 
 ---
 
-<sub>by [joakim](https://github.com/joakim/)</sub>
-
 <sup>[heyiya-if symbol](https://commons.wikimedia.org/wiki/File:Double_spirale.svg) is [CC0](https://creativecommons.org/publicdomain/zero/1.0/)</sup>
