@@ -8,9 +8,7 @@
 
 
 ```lua
-greet(person):
-    greeting: "Hey, {person.name}!"
-    return greeting
+greet(person): "Hey, {person.name}!"
 
 joe: {
     name: 'Joe'
