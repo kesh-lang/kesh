@@ -19,6 +19,8 @@ joe:
 greet(person: joe)  --> 'Hey, Joe!'
 ```
 
+The syntax is based on [na](https://github.com/kesh-lang/na).
+
 ---
 
 <sup>[heyiya-if symbol](https://commons.wikimedia.org/wiki/File:Double_spirale.svg) is [CC0](https://creativecommons.org/publicdomain/zero/1.0/)</sup>
