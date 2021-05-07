@@ -19,7 +19,7 @@ joe:
 greet(person: joe)  --> 'Hey, Joe!'
 ```
 
-The syntax is based on [na](https://github.com/kesh-lang/na).
+The syntax is a superset of [na](https://github.com/kesh-lang/na).
 
 ---
 
