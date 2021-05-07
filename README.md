@@ -12,12 +12,11 @@ greet(person):
     greeting: "Hey, {person.name}!"
     return greeting
 
-joe: {
+joe:
     name: 'Joe'
     age: 27
-}
 
-greet(person: joe)  --> "Hey, Joe!"
+greet(person: joe)  --> 'Hey, Joe!'
 ```
 
 ---
