@@ -8,7 +8,7 @@
 
 
 ```lua
-greet(person):
+greet: (person) =>
     greeting: "Hey, {person.name}!"
     return greeting
 
