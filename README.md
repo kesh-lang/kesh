@@ -10,8 +10,13 @@
 ```lua
 kesh 2021
 
-greet: (person) -> {
-    greeting: "Hey, {person.name}!"
+#person: [
+    name: #string
+    age: #number
+]
+
+greet(person: #person) -> #string: {
+    greeting: "Hey, { person.name }!"
     return greeting
 }
 
@@ -20,7 +25,7 @@ joe: [
     age: 27
 ]
 
-greet(person: joe)  --> 'Hey, Joe!'
+print greet(person: joe)  --> 'Hey, Joe!'
 ```
 
 The syntax is a strict superset of [na](https://github.com/kesh-lang/na).
