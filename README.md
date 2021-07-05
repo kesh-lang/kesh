@@ -15,7 +15,7 @@ kesh 2021
     age: #number
 ]
 
-greet(person: #person) #string: {
+greet: (person: #person) #string -> {
     name: person.name
     "Hey, { name }!"
 }
