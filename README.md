@@ -16,8 +16,8 @@ kesh 2021
 ]
 
 greet(person: #person) #string: {
-    greeting: "Hey, { person.name }!"
-    return greeting
+    name: person.name
+    "Hey, { name }!"
 }
 
 joe: [
