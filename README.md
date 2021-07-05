@@ -8,7 +8,7 @@
 
 
 ```lua
-#kesh 2021
+kesh 2021
 
 #person: [
     name: #string
