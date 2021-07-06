@@ -8,22 +8,22 @@
 
 
 ```lua
-#person: [                         -- type definition
-    name: #string                  -- type annotation
+#person: [                                    -- type definition
+    name: #string                             -- type annotation
     age: #number
 ]
 
-greet(person: #person) #string: {  -- typed function declaration assigned a block of code
+greet(person: #person) #string: {             -- typed function declaration assigned a block of code
     name: person.name if age > 12 else 'kid'  -- variable declaration using an if-else expression
-    "Hey, { name }!"               -- implicit return of the block's last expression
+    "Hey, { name }!"                          -- implicit return of the block's last expression
 }
 
-joe: [                             -- variable declaration assigned a record
+joe: [                                        -- variable declaration assigned a record
     name: 'Joe'
     age: 27
 ]
 
-print greet(person: joe)           --> 'Hey, Joe!'
+print greet(person: joe)                      --> 'Hey, Joe!'
 ```
 
 The syntax is a strict superset of [na](https://github.com/kesh-lang/na).
