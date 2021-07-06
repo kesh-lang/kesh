@@ -13,7 +13,7 @@
     age: #number
 ]
 
-greet(person: #person) #string: {             -- typed function declaration assigned a block of code
+greet(person: #person) #string: {             -- typed function declaration assigned a code block
     name: person.name if age > 12 else 'kid'  -- variable declaration using an if-else expression
     "Hey, { name }!"                          -- implicit return of the block's last expression
 }
