@@ -14,7 +14,7 @@
 ]
 
 greet(person: #person) #string: {  -- typed function declaration assigned a block of code
-    name: person.name              -- variable declaration
+    name: person.name              -- variable declaration (immutable)
     "Hey, { name }!"               -- implicit return of the block's last expression
 }
 
