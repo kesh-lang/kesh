@@ -5,11 +5,11 @@ By omitting brackets, indentation becomes significant (the [offside rule](https:
 Indented lines assigned to a variable are parsed as a collection by default.
 
 ```lua
-#person:                                        -- type definition
-    name: #string                               -- type annotation
+#person:
+    name: #string
     age: #number
 
-joe:                                            -- variable declaration assigned a record
+joe:
     name: 'Joe'
     age: 27
 ```
@@ -17,13 +17,13 @@ joe:                                            -- variable declaration assigned
 A leading arrow assigns a function body.
 
 ```lua
-greet([name, age]: #person) #string: ->         -- typed function declaration assigned a code block
-    name: name if age > 12 else 'kid'           -- variable declaration using an if-else expression
-    "Hey, { name }!"                            -- implicit return of the block's last expression
+greet([name, age]: #person) #string: ->
+    name: name if age > 12 else 'kid'
+    "Hey, { name }!"
 ```
 
 Functions called with only one argument don't require parens.
 
 ```lua
-print greet joe                                 --> 'Hey, Joe!'
+print greet joe  --> 'Hey, Joe!'
 ```
