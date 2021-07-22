@@ -14,7 +14,8 @@
 ]
 
 greet(person: #person) #string: {               -- typed function declaration assigned a code block
-    name: person.name if person.age > 12 else 'kid'  -- variable declaration using an if-else
+    name: person.name if person.age > 12        -- variable declaration using an if-else expression
+          else 'kid'
     "Hey, { name }!"                            -- implicit return of the block's last expression
 }
 
