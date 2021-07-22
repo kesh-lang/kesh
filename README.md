@@ -13,9 +13,8 @@
     age: #number
 ]
 
-greet(person: #person) #string: {               -- typed function declaration assigned a code block
-    name: person.name if person.age > 12        -- variable declaration using an if-else expression
-          else 'kid'
+greet([name, age]: #person) #string: {          -- typed function declaration assigned a code block
+    name: name if age > 12 else 'kid'           -- variable declaration using an if-else expression
     "Hey, { name }!"                            -- implicit return of the block's last expression
 }
 
@@ -24,7 +23,7 @@ joe: [                                          -- variable declaration assigned
     age: 27
 ]
 
-print greet(person: joe)                        --> 'Hey, Joe!'
+print greet(joe)                                --> 'Hey, Joe!'
 ```
 
 The syntax is a strict superset of [na](https://github.com/kesh-lang/na).
