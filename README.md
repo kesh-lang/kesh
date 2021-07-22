@@ -13,15 +13,15 @@
     age: #number
 ]
 
-greet([name, age]: #person) #string: {          -- typed function declaration assigned a code block
-    name: name if age > 12 else 'kid'           -- variable declaration using an if-else expression
-    "Hey, { name }!"                            -- implicit return of the block's last expression
-}
-
 joe: [                                          -- variable declaration assigned a record
     name: 'Joe'
     age: 27
 ]
+
+greet([name, age]: #person) #string: {          -- typed function declaration assigned a code block
+    name: name if age > 12 else 'kid'           -- variable declaration using an if-else expression
+    "Hey, { name }!"                            -- implicit return of the block's last expression
+}
 
 print greet(joe)                                --> 'Hey, Joe!'
 ```
