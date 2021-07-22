@@ -26,4 +26,6 @@ Functions called with only one argument don't require parens.
 
 ```lua
 print greet joe  --> 'Hey, Joe!'
+
+print greet [name: 'Johnny', age: 10]  --> 'Hey, kid!'
 ```
