@@ -26,7 +26,7 @@ greet([name, age]: #person) #string: {          -- typed function declaration as
 print greet(joe)                                --> 'Hey, Joe!'
 ```
 
-The syntax is a strict superset of [na](https://github.com/kesh-lang/na).
+The syntax is a strict superset of [na](https://github.com/kesh-lang/na). A [minimal syntax](./minimal-syntax.md) is also supported.
 
 ---
 
