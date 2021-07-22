@@ -23,8 +23,7 @@ joe: [                                          -- variable declaration assigned
     age: 27
 ]
 
-print(greet(joe))                               --> 'Hey, Joe!'
-print greet joe                                 --> 'Hey, Joe!'
+print greet(joe)                                --> 'Hey, Joe!'
 ```
 
 The syntax is a strict superset of [na](https://github.com/kesh-lang/na).
