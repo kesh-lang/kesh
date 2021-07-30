@@ -13,7 +13,7 @@ joe:
     age: 27
 
 -- an arrow before indented lines opens a code block
-greet: ([name, age]: #person) #string ->
+greet: ([name, age]: #person) ->
     name: name if age > 12 else 'kid'
     "Hey, { name }!"
 
