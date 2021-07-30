@@ -3,7 +3,7 @@
 By omitting brackets, indentation becomes significant (the [offside rule](https://en.m.wikipedia.org/wiki/Off-side_rule)).
 
 ```lua
--- indented lines assigned to a variable or type are parsed as a collection
+-- indented lines assigned to a variable or type gets parsed as a collection
 #person:
     name: #string
     age: #number
