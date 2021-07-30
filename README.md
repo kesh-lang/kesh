@@ -18,7 +18,7 @@ joe: [                                          -- variable declaration assigned
     age: 27
 ]
 
-greet: ([name, age]: #person) #string -> {      -- typed function declaration assigned a code block
+greet: ([name, age]: #person) #string -> {      -- typed function expression with a code block
     name: name if age > 12 else 'kid'           -- variable shadowing using an if-else expression
     "Hey, { name }!"                            -- implicit return of the block's last expression
 }
