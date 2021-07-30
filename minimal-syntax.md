@@ -2,9 +2,8 @@
 
 By omitting brackets, indentation becomes significant (the [offside rule](https://en.m.wikipedia.org/wiki/Off-side_rule)).
 
-Indented lines assigned to a variable are parsed as a collection by default.
-
 ```lua
+-- indented lines assigned to a variable or type are parsed as a collection
 #person:
     name: #string
     age: #number
@@ -12,20 +11,13 @@ Indented lines assigned to a variable are parsed as a collection by default.
 joe:
     name: 'Joe'
     age: 27
-```
 
-A leading arrow assigns a function body.
-
-```lua
+-- an arrow before indented lines opens a code block
 greet([name, age]: #person) #string: ->
     name: name if age > 12 else 'kid'
     "Hey, { name }!"
-```
 
-Functions called with only one argument don't require parens.
-
-```lua
+-- functions called with only one argument don't require parens
 print greet joe  --> 'Hey, Joe!'
-
 print greet [name: 'Johnny', age: 10]  --> 'Hey, kid!'
 ```
