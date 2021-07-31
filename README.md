@@ -8,7 +8,6 @@
 
 
 ```lua
--- type
 #person: [                                      -- type definition
     name: #string                               -- type annotation
     age: #number
@@ -20,18 +19,16 @@ person: [                                       -- variable assigned a collectio
 ]
 
 -- instance
-joe: person[                                    -- new collection created from prototype
+joe: person [                                    -- new collection created from prototype
     name: 'Joe'
     age: 27
 ]
 
--- function
 greet: ([name, age]: #person) -> {              -- typed function with a code block
     name: name if age > 12 else 'kid'           -- variable shadowing using an if-else expression
     "Hey, { name }!"                            -- the block's last expression is returned
 }
 
--- function call
 joe.speak()                                     --> 'Hi, my name is Joe.'
 greet joe                                       --> 'Hey, Joe!'
 ```
