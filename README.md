@@ -8,6 +8,7 @@
 
 
 ```lua
+-- type
 #person: [                                      -- type definition
     name: #string                               -- type annotation
     age: #number
