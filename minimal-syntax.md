@@ -3,7 +3,7 @@
 By omitting brackets, indentation becomes significant (the [offside rule](https://en.m.wikipedia.org/wiki/Off-side_rule)).
 
 ```lua
--- indented lines assigned to a variable or type gets parsed as a collection
+-- indented lines assigned to a variable/type gets parsed as a collection
 #person:
     name: #string
     age: #number
@@ -18,6 +18,6 @@ greet: ([name, age]: #person) ->
     "Hey, { name }!"
 
 -- functions called with only one argument don't require parens
-print greet joe  --> 'Hey, Joe!'
-print greet [name: 'Johnny', age: 10]  --> 'Hey, kid!'
+greet joe  --> 'Hey, Joe!'
+greet [name: 'Johnny', age: 10]  --> 'Hey, kid!'
 ```
