@@ -25,7 +25,7 @@ joe: person [                                    -- new collection created from 
     age: 27
 ]
 
-greet: ([name, age]: #person) -> {              -- typed function with a code block
+greet: ([name, age]: #person) -> {              -- typed function with argument unpacking
     name: name if age > 12 else 'kid'           -- variable shadowing using an if-else expression
     "Hey, { name }!"                            -- the block's last expression is returned
 }
