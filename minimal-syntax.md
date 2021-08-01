@@ -1,6 +1,6 @@
 # Minimal syntax
 
-By omitting brackets, indentation becomes significant (the [offside rule](https://en.m.wikipedia.org/wiki/Off-side_rule)).
+Where brackets are omitted, indentation becomes significant (the [offside rule](https://en.m.wikipedia.org/wiki/Off-side_rule)).
 
 ```lua
 -- indented lines assigned to a type/variable gets parsed as a collection
