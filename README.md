@@ -17,12 +17,12 @@ A simple little language on top of TypeScript
 ]
 
 -- prototype
-person: [                                       -- variable assigned a collection
+person: [                                       -- variable assigned an object
     speak: -> "Hi, my name is { this.name }."   -- field assigned a simple inline function
 ]
 
 -- instance
-joe: person [                                    -- new collection created from prototype
+joe: person [                                    -- new object created from prototype
     name: 'Joe'
     age: 27
 ]
