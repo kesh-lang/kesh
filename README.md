@@ -17,7 +17,7 @@ A simple little language on top of TypeScript
 ]
 
 -- prototype
-person: [                                   -- variable assigned an object
+person: [                                   -- variable initialized with an object
     speak: () -> "Hi, I'm { this.name }."   -- field assigned a simple inline function
 ]
 
