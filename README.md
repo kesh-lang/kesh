@@ -1,6 +1,6 @@
 # kesh { }
 
-A simple little language on top of TypeScript
+A simple little programming language on top of TypeScript
 
 <p>&nbsp;</p>
 <p align="center" width="100%"><img width="33%" alt="heyiya-if symbol" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Double_spirale.svg"></p>
