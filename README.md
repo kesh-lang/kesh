@@ -28,7 +28,7 @@ joe: person [                               -- new object created from prototype
 ]
 
 greet: ([name, age]: #person) -> {          -- typed function with argument unpacking
-    someone: name if age > 12 else 'kid'    -- variable initialized with an if-else expression
+    someone: name if age > 12 else 'kid'
     "Hey, { someone }!"                     -- the block's last expression is returned
 }
 
