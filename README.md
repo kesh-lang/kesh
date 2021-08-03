@@ -30,7 +30,7 @@ joe: person [                               -- new object created from prototype
     age: 27
 ]
 
-greet: ([name, age]: #person) -> {  -- typed function with argument unpacking
+greet: ([name, age]: #person) -> {          -- typed function with argument unpacking
     someone: name if age > 12 else 'kid'
     "Hey, { someone }!"                     -- the block's last expression is returned
 }
