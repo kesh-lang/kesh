@@ -11,29 +11,29 @@ A simple little language on top of TypeScript
 
 ```lua
 -- type
-#person: [                                      -- type definition
-    name: #string                               -- type annotation
+#person: [                                  -- type definition
+    name: #string                           -- type annotation
     age: #number
 ]
 
 -- prototype
-person: [                                       -- variable assigned an object
-    speak: -> "Hi, my name is { this.name }."   -- field assigned a simple inline function
+person: [                                   -- variable assigned an object
+    speak: () -> "Hi, I'm { this.name }."   -- field assigned a simple inline function
 ]
 
 -- instance
-joe: person [                                    -- new object created from prototype
+joe: person [                               -- new object created from prototype
     name: 'Joe'
     age: 27
 ]
 
-greet: ([name, age]: #person) -> {              -- typed function with argument unpacking
-    name: name if age > 12 else 'kid'           -- variable shadowing using an if-else expression
-    "Hey, { name }!"                            -- the block's last expression is returned
+greet: ([name, age]: #person) -> {          -- typed function with argument unpacking
+    name: name if age > 12 else 'kid'       -- variable shadowing using an if-else expression
+    "Hey, { name }!"                        -- the block's last expression is returned
 }
 
-joe.speak()                                     --> 'Hi, my name is Joe.'
-greet joe                                       --> 'Hey, Joe!'
+joe.speak()                                 --> 'Hi, I'm Joe.'
+greet joe                                   --> 'Hey, Joe!'
 ```
 
 The syntax is a strict superset of [na](https://github.com/kesh-lang/na). A [minimal syntax](./minimal-syntax.md) is also supported.
