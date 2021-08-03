@@ -39,4 +39,4 @@ greet joe                                   --> 'Hey, Joe!'
 The syntax is a strict superset of [na](https://github.com/kesh-lang/na). A [minimal syntax](./minimal-syntax.md) is also supported.
 
 
-<sub>[heyiya-if symbol](https://commons.wikimedia.org/wiki/File:Double_spirale.svg) is [CC0](https://creativecommons.org/publicdomain/zero/1.0/)</sub>
+<sub>[heyiya-if symbol](https://commons.wikimedia.org/wiki/File:Double_spirale.svg) is [CC0](https://creativecommons.org/publicdomain/zero/1.0/). Original by Margaret Chodos-Irvine for Ursula Le Guin's novel about [the Kesh](https://en.m.wikipedia.org/wiki/Always_Coming_Home), [Always Coming Home](https://www.ursulakleguin.com/always-coming-home-book).</sub>
