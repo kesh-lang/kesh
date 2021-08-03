@@ -14,8 +14,8 @@ joe:
 
 -- an arrow before indented lines opens a function's code block
 greet: ([name, age]: #person) ->
-    name: name if age > 12 else 'kid'
-    "Hey, { name }!"
+    someone: name if age > 12 else 'kid'
+    "Hey, { someone }!"
 
 -- a function's argument does not have to be a tuple
 greet joe  --> 'Hey, Joe!'
