@@ -16,7 +16,7 @@ A simple little programming language on top of TypeScript
 #person: [                                  -- type definition
     name: #string                           -- type annotation
     age: #number
-    speak: () -> #string                    -- function signature
+    speak: () -> #string                    -- type signature
 ]
 
 -- prototype
