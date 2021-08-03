@@ -10,6 +10,8 @@ A simple little programming language on top of TypeScript
 
 
 ```lua
+#!kesh 2021 (strict)
+
 -- type
 #person: [                                  -- type definition
     name: #string                           -- type annotation
