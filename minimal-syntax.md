@@ -13,7 +13,7 @@ joe:
     age: 27
 
 -- an arrow before indented lines opens a function's code block
-greet: ([name, age]: #person) ->
+greet: ([name, age]: #person) -> #string  -- return type may still be specified
     someone: name if age > 12 else 'kid'
     "Hey, { someone }!"
 
