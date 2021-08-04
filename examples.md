@@ -18,7 +18,7 @@ joe: *[name: 'Joe']  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
-Using `:` as the assignment operator means `=` is free to be used as the strict equality operator, as it should be. `/=` or `≠` represents strict inequality, where both operands must be of the same type.
+Using `:` as the assignment operator means `=` is free to be used as the equality operator, as it should be. `=` represents strict equality, where both operands must be of the same type. `/=` or `≠` represents strict inequality.
 
 ```lua
 answer = 42    --> true (strict equality)
