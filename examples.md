@@ -43,8 +43,9 @@ true or false   --> true
 Conditionals are either traditional `if…else…` expressions or ternary `…if…else…` expressions.
 
 ```lua
-foo: if age < 13 { 'kid' } else if age < 18 { 'teenager' } else { 'adult' }
-bar: 'kid' if age < 13 else 'teenager' if age < 18 else 'adult'
+traditional: if age < 13 { 'kid' } else if age < 18 { 'teenager' } else { 'adult' }
+
+ternary: 'kid' if age < 13 else 'teenager' if age < 18 else 'adult'
 ```
 
 Tuples and array items may be accessed by index using dot notation.
