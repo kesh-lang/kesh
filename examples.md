@@ -61,7 +61,7 @@ pattern: match age {
 }
 ```
 
-Blocks return the value of the last line, so can be used to produce a value within a local scope.
+Blocks return the value of the last line, and can be used to produce a value within a local scope.
 
 ```lua
 answer: {
