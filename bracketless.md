@@ -28,7 +28,7 @@ greet: ([name, age]: #person) -> #string
 greet joe
 --> 'Hey, Joe!'
 
--- a function applied to an object literal linked to a prototype object would look like this
+-- a function applied to an object literal linked to a prototype would look like this
 greet #person
     name: 'Johnny'
     age: 10
