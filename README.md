@@ -23,7 +23,7 @@ The language is a work in process. Contributions are always welcome!
 ]
 
 -- instance
-joe: #person ^ [                             -- new object created from prototype
+joe: #person [                              -- new object created from prototype
     name: 'Joe'
     age: 27
 ]
