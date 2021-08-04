@@ -19,7 +19,8 @@ joe: person
     name: 'Joe'
     age: 27
 
-joe.speak()  --> 'Hi, I'm Joe.'
+joe.speak()
+--> 'Hi, I'm Joe.'
 
 -- an arrow before indented lines opens a function's code block (return type may also be specified)
 greet: ([name, age]: #person) -> #string
@@ -27,7 +28,8 @@ greet: ([name, age]: #person) -> #string
     "Hey, { someone }!"
 
 -- a function's argument does not have to be a tuple
-greet joe  --> 'Hey, Joe!'
+greet joe
+--> 'Hey, Joe!'
 
 -- a function applied to an object literal will look like this
 greet
