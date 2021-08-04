@@ -1,13 +1,16 @@
 # kesh { }
 
-A simple little programming language on top of TypeScript
-
 <p>&nbsp;</p>
 <p align="center" width="100%"><img width="33%" alt="heyiya-if symbol" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Double_spirale.svg"></p>
 <p>&nbsp;</p>
 
 > A long, long time from now, in the wake of what will no longer be called JavaScript, might be going to have existed a programming language called _kesh_.
 
+**kesh** is a simple little programming language on top of TypeScript.
+
+Its syntax is a strict superset of [na](https://github.com/kesh-lang/na), including a [bracketless](./bracketless.md) version.
+
+The language is a work in process. Contributions are always welcome!
 
 ```lua
 #!kesh 2021 (strict)
@@ -38,10 +41,5 @@ greet: ([name, age]: #person) -> {          -- typed function with argument unpa
 joe.speak()                                 --> 'Hi, I'm Joe.'
 greet joe                                   --> 'Hey, Joe!'
 ```
-
-The syntax is a strict superset of [na](https://github.com/kesh-lang/na). A [minimal syntax](./minimal-syntax.md) is also supported.
-
-Contributions are always welcome.
-
 
 <sub>[heyiya-if symbol](https://commons.wikimedia.org/wiki/File:Double_spirale.svg) is [CC0](https://creativecommons.org/publicdomain/zero/1.0/). Original by [Margaret Chodos-Irvine](https://chodos-irvine.com/) for [Ursula Le Guin](https://www.ursulakleguin.com/)'s novel about the Kesh, [Always Coming Home](https://www.ursulakleguin.com/always-coming-home-book).</sub>
