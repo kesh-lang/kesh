@@ -9,6 +9,7 @@ Where brackets are omitted, indentation becomes significant (the [offside rule](
 #person:
     name: #string
     age: #number
+    speak: () -> #string
 
 person:
     speak: () -> "Hi, I'm { this.name }."
