@@ -27,7 +27,7 @@ greet: ([name, age]: #person) -> #string
     someone: name if age > 12 else 'kid'
     "Hey, { someone }!"
 
--- a function's argument does not have to be a tuple
+-- if a function's argument is not a tuple of values, it may be passed directly
 greet joe
 --> 'Hey, Joe!'
 
