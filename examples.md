@@ -40,8 +40,17 @@ true and false  --> false
 true or false   --> true
 ```
 
-Conditional expressions may be nested.
+Conditionals are either `if…else…` expressions or ternary `…if…else…` expressions.
 
 ```lua
-'kid' if age < 13 else 'teenager' if age < 18 else 'adult'
+foo: if age < 13 { 'kid' } else if age < 18 { 'teenager' } else { 'adult' }
+bar: 'kid' if age < 13 else 'teenager' if age < 18 else 'adult'
+```
+
+Tuples and array items may be accessed by index using dot notation.
+
+```lua
+(1, 2, 3).0         --> 1
+(foo: 1, bar: 2).1  --> 2
+[3, 14, 42].2       --> 42
 ```
