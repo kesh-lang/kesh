@@ -30,7 +30,8 @@ greet: ([name, age]: #person) -> #string
 greet joe  --> 'Hey, Joe!'
 
 -- a function applied to an object literal will look like this
-greet      --> 'Hey, kid!'
+greet
     name: 'Johnny'
     age: 10
+--> 'Hey, kid!'
 ```
