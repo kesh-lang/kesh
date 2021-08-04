@@ -1,6 +1,6 @@
 # Examples
 
-Variables and values are immutable by default (single assign, value semantics).
+Variables and values are immutable by default (single assignment, value semantics).
 
 ```lua
 answer: 42
