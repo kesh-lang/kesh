@@ -28,6 +28,8 @@ greet: ([name, age]: #person) -> #string
 
 -- a function's argument does not have to be a tuple
 greet joe  --> 'Hey, Joe!'
+
+-- a function applied to an object literal will look like this
 greet      --> 'Hey, kid!'
     name: 'Johnny'
     age: 10
