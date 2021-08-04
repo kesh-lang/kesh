@@ -22,7 +22,7 @@ joe: person
 joe.speak()
 --> 'Hi, I'm Joe.'
 
--- an arrow before indented lines opens a function's code block (return type may also be specified)
+-- an arrow before indented lines opens a function's code block (its return type may also be specified)
 greet: ([name, age]: #person) -> #string
     someone: name if age > 12 else 'kid'
     "Hey, { someone }!"
