@@ -40,7 +40,7 @@ true and false  --> false
 true or false   --> true
 ```
 
-Conditionals are either `if…else…` expressions or ternary `…if…else…` expressions.
+Conditionals are either traditional `if…else…` expressions or ternary `…if…else…` expressions.
 
 ```lua
 foo: if age < 13 { 'kid' } else if age < 18 { 'teenager' } else { 'adult' }
