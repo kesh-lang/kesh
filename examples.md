@@ -6,7 +6,7 @@ Variables and values are immutable by default (single assignment, value semantic
 answer: 42
 ```
 
-The `mutation` pragma enables the `let` and `set` keywords to mutate variables and fields, and the `*` operator to mark collections as mutable.
+The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` operator to mark collections as mutable.
 
 ```lua
 #!kesh 2021 (mutation)
