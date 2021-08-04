@@ -15,20 +15,15 @@ The language is a work in process. Contributions are always welcome!
 ```lua
 #!kesh 2021 (strict)
 
--- type
+-- type/prototype
 #person: [                                  -- type definition
     name: #string                           -- type annotation
     age: #number
-    speak: () -> #string                    -- type signature
-]
-
--- prototype
-person: [                                   -- variable initialized with an object
-    speak: () -> "Hi, I'm { this.name }."   -- field assigned a simple inline function
+    speak: () -> "Hi, I'm { this.name }."   -- simple inline function (type inference)
 ]
 
 -- instance
-joe: person ^ [                             -- new object created from prototype
+joe: #person ^ [                             -- new object created from prototype
     name: 'Joe'
     age: 27
 ]
