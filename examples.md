@@ -40,7 +40,7 @@ true and false  --> false
 true or false   --> true
 ```
 
-Everything is an expression. Conditionals are either the old `if…else…`, the ternary `…if…else…` or pattern-matching `match`.
+Everything is an expression. Conditionals are either the old `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
 
 ```lua
 old: if age < 13 {
