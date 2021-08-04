@@ -18,14 +18,14 @@ joe: *[name: 'Joe']  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
-Using `:` as the assignment operator means `=` is free to be used as the strict equality operator, as it should be. `/=` (or `≠`) represents strict inequality.
+Using `:` as the assignment operator means `=` is free to be used as the strict equality operator, as it should be. `/=` or `≠` represents strict inequality.
 
 ```lua
 answer = 42    --> true (strict equality)
 answer ≠ '42'  --> true (strict inequality, not the same type)
 ```
 
-Similarly, `~=` (or `≈`) represents loose equality and `~/=` (or `≉`) loose inequality.
+Similarly, `~=` or `≈` represents loose equality and `~/=` or `≉` loose inequality.
 
 ```lua
 answer ≈ '42'  --> true (loose equality with type coercion)
