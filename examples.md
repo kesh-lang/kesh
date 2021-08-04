@@ -25,11 +25,11 @@ answer = 42    --> true (strict equality)
 answer ≠ '42'  --> true (strict inequality)
 ```
 
-Similarly, `~=` (`≈`) represents loose equality and `~/=` (`≉`) loose inequality, with type coercion of operands.
+Similarly, `~=` represents loose equality and `~/=` (`~≠`) loose inequality, with type coercion of operands.
 
 ```lua
-answer ≈ '42'  --> true (loose equality)
-answer ≉ '42'  --> false (loose inequality)
+answer ~= '42'  --> true (loose equality)
+answer ~≠ '42'  --> false (loose inequality)
 ```
 
 Logical operators use words instead of signs.
