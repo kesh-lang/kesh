@@ -32,7 +32,7 @@ greet joe
 --> 'Hey, Joe!'
 
 -- a function applied to an object literal will look like this
-greet
+greet person
     name: 'Johnny'
     age: 10
 --> 'Hey, kid!'
