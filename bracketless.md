@@ -14,6 +14,7 @@ Where brackets are omitted, indentation becomes significant (the [offside rule](
 person:
     speak: () -> "Hi, I'm { this.name }."
 
+-- the following can be read as "joe is a person object with name 'Joe' and age 27"
 joe: person
     name: 'Joe'
     age: 27
