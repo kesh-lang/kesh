@@ -28,7 +28,7 @@ person: [                                   -- variable initialized with an obje
 ]
 
 -- instance
-joe: person << [                            -- new object created from prototype
+joe: person ^ [                             -- new object created from prototype
     name: 'Joe'
     age: 27
 ]
