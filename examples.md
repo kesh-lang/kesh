@@ -40,7 +40,7 @@ true and false  --> false
 true or false   --> true
 ```
 
-Conditionals are always expressions. Either traditional `if…else…`, ternary `…if…else…` or pattern-matching `match`.
+Everything is an expression. Conditionals are either the traditional `if…else…`, ternary `…if…else…` or pattern-matching `match`.
 
 ```lua
 traditional: if age < 13 {
@@ -52,19 +52,21 @@ traditional: if age < 13 {
 }
 
 ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
-default: 'kid' if age < 13  -- () if false
+default: 'kid' if age < 13  --> () if false
 
 pattern: match age {
-    0..12 -> 'kid'
+    0..12  -> 'kid'       -- range is inclusive
     13..19 -> 'teenager'
-    20.. -> 'adult'
+    20..   -> 'adult'     -- to infinity (and beyond)
 }
 ```
 
-Tuples and array items may be accessed by index using dot notation.
+Blocks return the value of the last line, so can be used to produce a value within a local scope.
 
 ```lua
-(1, 2, 3).0         --> 1
-(foo: 1, bar: 2).1  --> 2
-[3, 14, 42].2       --> 42
+answer: {
+    a: 3
+    b: 14
+    a * b
+}  --> 42
 ```
