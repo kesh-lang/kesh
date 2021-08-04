@@ -55,9 +55,9 @@ ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
 default: 'kid' if age < 13  --> () if false
 
 pattern: match age {
-    0..12  -> 'kid'       -- range is inclusive
-    13..19 -> 'teenager'
-    20..   -> 'adult'     -- to infinity (and beyond)
+    0..12   -> 'kid'       -- range is inclusive
+    13..<20 -> 'teenager'  -- range is exclusive
+    20..    -> 'adult'     -- to infinity (and beyond!)
 }
 ```
 
