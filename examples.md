@@ -40,12 +40,25 @@ true and false  --> false
 true or false   --> true
 ```
 
-Conditionals are either traditional `if…else…` expressions or ternary `…if…else…` expressions.
+Conditionals are always expressions. Either traditional `if…else…`, ternary `…if…else…` or pattern-matching `match`.
 
 ```lua
-traditional: if age < 13 { 'kid' } else if age < 18 { 'teenager' } else { 'adult' }
+traditional: if age < 13 {
+    'kid'
+} else if age < 20 {
+    'teenager'
+} else {
+    'adult'
+}
 
-ternary: 'kid' if age < 13 else 'teenager' if age < 18 else 'adult'
+ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
+default: 'kid' if age < 13  -- () if false
+
+pattern: match age {
+    0..12 -> 'kid'
+    13..19 -> 'teenager'
+    20.. -> 'adult'
+}
 ```
 
 Tuples and array items may be accessed by index using dot notation.
