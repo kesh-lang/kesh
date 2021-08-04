@@ -5,7 +5,7 @@ Where brackets are omitted, indentation becomes significant (the [offside rule](
 ```lua
 #!kesh 2021
 
--- indented lines gets parsed as a collection by default
+-- indented lines get parsed as a collection by default
 #person:
     name: #string
     age: #number
