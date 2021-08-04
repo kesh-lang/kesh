@@ -1,4 +1,4 @@
-# Minimal syntax
+# Bracketless
 
 Where brackets are omitted, indentation becomes significant (the [offside rule](https://en.m.wikipedia.org/wiki/Off-side_rule)).
 
