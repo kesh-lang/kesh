@@ -19,7 +19,7 @@ The language is a work in process. Contributions are always welcome!
 #person: [                                  -- type definition
     name: #string                           -- type annotation
     age: #number
-    speak: () -> "Hi, I'm { this.name }."   -- simple inline function (type inference)
+    speak: () -> "Hi, I'm { this.name }."   -- default function with type inference
 ]
 
 -- instance
