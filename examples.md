@@ -71,3 +71,5 @@ answer: {
     a * b
 }  --> 42
 ```
+
+The unit type is [`nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68).
