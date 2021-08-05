@@ -54,11 +54,10 @@ old: if age < 13 {
 ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
 default: 'kid' if age < 13  --> () if the condition is false
 
-pattern: match age {
-    0..12   -> 'kid'       -- range is inclusive
-    13..<20 -> 'teenager'  -- range is exclusive
-    20..    -> 'adult'     -- to infinity (and beyond!)
-}
+pattern: match age
+    | 0..12   -> 'kid'       -- range is inclusive
+    | 13..<20 -> 'teenager'  -- range is exclusive
+    | 20..    -> 'adult'     -- to infinity (and beyond!)
 ```
 
 Since blocks return the value of the last line, they can be used to produce a value within a local scope.
