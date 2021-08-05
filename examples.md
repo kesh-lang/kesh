@@ -45,9 +45,11 @@ Everything is an expression. Conditionals are either the old `if…else…` cons
 ```lua
 old: if age < 13 {
     'kid'
-} else if age < 20 {
+}
+else if age < 20 {
     'teenager'
-} else {
+}
+else {
     'adult'
 }
 
