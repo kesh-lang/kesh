@@ -6,18 +6,6 @@ Variables and values are immutable by default (single assignment, value semantic
 answer: 42
 ```
 
-The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` operator to mark collections as mutable.
-
-```lua
-#!kesh 2021 (mutation)
-
-let mutable: false  -- mutable variable
-set mutable: true
-
-joe: *[name: 'Joe']  -- mutable collection
-set joe.name: 'Joseph'
-```
-
 Using `:` as the assignment operator means `=` is free to be used as the equality operator, as it should be. `=` represents strict equality, where both operands must be of the same type. `/=` (`≠`) represents strict inequality.
 
 ```lua
@@ -32,18 +20,42 @@ answer ~= '42'  --> true (loose equality)
 answer ~≠ '42'  --> false (loose inequality)
 ```
 
-Logical operators use words instead of signs.
+The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` operator to mark collections as mutable.
 
 ```lua
-not true        --> false
-true and false  --> false
-true or false   --> true
+#!kesh 2021 (mutation)
+
+let mutable: false  -- mutable variable
+set mutable: true
+
+joe: *[name: 'Joe']  -- mutable collection
+set joe.name: 'Joseph'
 ```
 
-Everything is an expression. Conditionals are either the old `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
+Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value. The prototype may be an object type (as below) or a plain object.
 
 ```lua
-old: if age < 13 {
+#person: [
+    name: #string
+    age: #number
+]
+
+joe: #person [name: 'Joe', age: 27]
+```
+
+Collections are similar to Lua's tables, and may be used as both linear arrays and associative objects.
+
+```lua
+people: [  -- an array of objects
+    #person [name: 'Joe', age: 27]
+    #person [name: 'Jane', age: 30]
+]
+```
+
+Everything is an expression. Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
+
+```lua
+old-school: if age < 13 {
     'kid'
 }
 else if age < 20 {
@@ -54,7 +66,7 @@ else {
 }
 
 ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
-default: 'kid' if age < 13  --> () if the condition is false
+default: 'kid' if age < 13  --> results in () if the condition is false
 
 pattern: match age
     | 0..12   -> 'kid'       -- range is inclusive
@@ -62,7 +74,7 @@ pattern: match age
     | 20..    -> 'adult'     -- to infinity (and beyond!)
 ```
 
-Since blocks return the value of the last line, they can be used to produce a value within a local scope.
+Blocks return the value of the last line. This can be used to produce a value within a local scope.
 
 ```lua
 answer: {
@@ -72,4 +84,25 @@ answer: {
 }  --> 42
 ```
 
-The unit type is [`nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68).
+Logical operators use words.
+
+```lua
+not true        --> false
+true and false  --> false
+true or false   --> true
+```
+
+**na** inherits TypeScript's gradual type system, with some differences. For example, **na** uses zero-types.
+
+```lua
+boolean: #boolean  --> false
+number:  #number   --> 0
+string:  #string   --> ''
+```
+
+The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
+
+- `#anything`
+- `(something)`
+- `#nothing`
+- `#never`
