@@ -92,7 +92,7 @@ true and false  --> false
 true or false   --> true
 ```
 
-**kesh** inherits TypeScript's gradual type system, with some differences. For example, **kesh** uses zero-values for its primitive types by default, unless `?` is appended to the type annotation.
+**kesh** inherits TypeScript's gradual type system, with some differences. By default, **kesh** uses zero-values for its primitive types, unless `?` is appended to the type annotation.
 
 ```lua
 boolean:  #boolean  --> false
