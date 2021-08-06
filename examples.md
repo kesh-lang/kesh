@@ -32,6 +32,15 @@ joe: *[name: 'Joe']  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
+Collections are similar to Lua's tables, and may be used as both linear arrays and associative objects.
+
+```lua
+people: [  -- an array of objects
+    [name: 'Joe', age: 27]
+    [name: 'Jane', age: 30]
+]
+```
+
 Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value. The prototype can be either a plain object or an object type (as in the example below). An object type is in fact a plain object that also has a type definition (or [protocol](https://en.m.wikipedia.org/wiki/Protocol_(object-oriented_programming))).
 
 ```lua
@@ -43,14 +52,22 @@ Prototypal "inheritance" is achieved by applying an object (the prototype) to an
 joe: #person [name: 'Joe', age: 27]
 ```
 
-Collections are similar to Lua's tables, and may be used as both linear arrays and associative objects.
+**kesh** inherits TypeScript's gradual and structural type system, with some differences. By default, **kesh** uses zero-values for its primitive types, unless `?` is appended to the type annotation.
 
 ```lua
-people: [  -- an array of objects
-    #person [name: 'Joe', age: 27]
-    #person [name: 'Jane', age: 30]
-]
+boolean:  #boolean  --> false
+number:   #number   --> 0
+string:   #string   --> ''
+
+optional: #string?  --> ()
 ```
+
+The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
+
+- `#anything`
+- `(something)`
+- `#nothing`
+- `#never`
 
 Everything is an expression. Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
 
@@ -92,20 +109,3 @@ not true        --> false
 true and false  --> false
 true or false   --> true
 ```
-
-**kesh** inherits TypeScript's gradual and structural type system, with some differences. By default, **kesh** uses zero-values for its primitive types, unless `?` is appended to the type annotation.
-
-```lua
-boolean:  #boolean  --> false
-number:   #number   --> 0
-string:   #string   --> ''
-
-optional: #string?  --> ()
-```
-
-The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
-
-- `#anything`
-- `(something)`
-- `#nothing`
-- `#never`
