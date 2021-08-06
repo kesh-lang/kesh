@@ -30,7 +30,7 @@ joe: #person [                              -- new object created from prototype
 
 greet: ([name, age]: #person) -> {          -- typed function with argument unpacking
     someone: name if age > 12 else 'kid'    -- code block with a local variable
-    "Hey, { someone }!"                     -- the last line's value is returned
+    "Hey, { someone }!"                     -- the last expression's value is returned
 }                                           -- and its return type inferred
 
 joe.speak()                                 --> 'Hi, I'm Joe.'
