@@ -71,7 +71,7 @@ answer: {
 answer  --> 42
 ```
 
-Functions are of course first class. All functions take only 1 argument, which may be a tuple of values. Therefore, a function may be applied to a single value without wrapping it in parens.
+Functions are of course first-class citizens. All functions take only 1 argument, which may be a tuple of values. Therefore, a function may be applied to a single value without wrapping it in parens.
 
 ```lua
 times: (a: #number, b: #number) -> #number { a * b }
