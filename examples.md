@@ -92,7 +92,7 @@ true and false  --> false
 true or false   --> true
 ```
 
-**na** inherits TypeScript's gradual type system, with some differences. For example, **na** uses zero-types.
+**na** inherits TypeScript's gradual type system, with some differences. For example, **na** uses zero-values for its primitive types.
 
 ```lua
 boolean: #boolean  --> false
