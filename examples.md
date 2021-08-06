@@ -62,7 +62,7 @@ number:   #number   --> 0
 string:   #string   --> ''
 ```
 
-Blocks return the value of the last line. This can be used to produce a value within a local scope.
+Blocks return the value of the last evaluated expression. This can be used to produce a value within a local scope.
 
 ```lua
 answer: {
