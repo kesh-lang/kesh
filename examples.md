@@ -52,7 +52,7 @@ Prototypal "inheritance" is achieved by applying an object (the prototype) to an
 joe: #person [name: 'Joe', age: 27]
 ```
 
-**kesh** inherits TypeScript's gradual and structural type system, with some differences. By default, **kesh** uses zero-values for its primitive types, unless `?` is appended to the type annotation.
+**kesh** inherits TypeScript's gradual and structural type system, with some differences. By default, **kesh** uses zero-values for its primitive types, unless the type is marked as optional (`?`).
 
 ```lua
 boolean:  #boolean  --> false
