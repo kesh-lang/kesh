@@ -43,7 +43,7 @@ people: [  -- an array of objects
 ]
 ```
 
-Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value. The prototype can be either a plain object or an object type (as in the example below). An object type is in fact a plain object that also has a type definition (or [protocol](https://en.m.wikipedia.org/wiki/Protocol_(object-oriented_programming))).
+Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value. The prototype can be either a plain object or an object type (as in the example below). An object type may in fact be a plain object in addition to a type definition (or [protocol](https://en.m.wikipedia.org/wiki/Protocol_(object-oriented_programming))).
 
 ```lua
 #person: [
