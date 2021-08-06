@@ -32,7 +32,7 @@ joe: *[name: 'Joe']  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
-Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value. The prototype may be an object type (as below) or a plain object.
+Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value. The prototype can be a plain old object or an object type, as in the example below. An object type is still a plain object, and also a type definition (or [protocol](https://en.m.wikipedia.org/wiki/Protocol_(object-oriented_programming))).
 
 ```lua
 #person: [
