@@ -15,7 +15,7 @@ The language is a work in process. Contributions are always welcome!
 ```lua
 #!kesh 2021 (strict)
 
--- type/prototype
+-- prototype
 #person: [                                  -- type definition
     name: #string                           -- type annotation
     age: #number
