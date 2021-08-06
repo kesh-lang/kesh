@@ -92,12 +92,14 @@ true and false  --> false
 true or false   --> true
 ```
 
-**na** inherits TypeScript's gradual type system, with some differences. For example, **na** uses zero-values for its primitive types.
+**kesh** inherits TypeScript's gradual type system, with some differences. For example, **kesh** uses zero-values for its primitive types by default, unless `?` is appended to the type annotation.
 
 ```lua
-boolean: #boolean  --> false
-number:  #number   --> 0
-string:  #string   --> ''
+boolean:  #boolean  --> false
+number:   #number   --> 0
+string:   #string   --> ''
+
+optional: #string?  --> ()
 ```
 
 The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
