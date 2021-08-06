@@ -60,13 +60,6 @@ number:   #number   --> 0
 string:   #string   --> ''
 ```
 
-The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
-
-- `#anything`
-- `(something)`
-- `#nothing`
-- `#never`
-
 Everything is an expression. Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
 
 ```lua
@@ -107,3 +100,10 @@ not true        --> false
 true and false  --> false
 true or false   --> true
 ```
+
+The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
+
+- `#anything`
+- `(something)`
+- `#nothing`
+- `#never`
