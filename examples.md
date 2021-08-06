@@ -6,7 +6,9 @@ Variables and values are immutable by default (single assignment, value semantic
 answer: 42
 ```
 
-Using `:` as the assignment operator means `=` is free to be used as the equality operator, as it should be. `=` represents strict equality, where both operands must be of the same type. `/=` (`≠`) represents strict inequality.
+Using `:` as the assignment operator means `=` is free to be used as the equality operator, as it should be.
+
+`=` represents strict equality, where both operands must be of the same type. `/=` (`≠`) represents strict inequality.
 
 ```lua
 answer = 42    --> true (strict equality)
