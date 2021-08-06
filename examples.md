@@ -52,14 +52,12 @@ Prototypal "inheritance" is achieved by applying an object (the prototype) to an
 joe: #person [name: 'Joe', age: 27]
 ```
 
-**kesh** inherits TypeScript's gradual and structural type system, with some differences. By default, **kesh** uses zero-values for its primitive types, unless the type is marked as optional (`?`).
+**kesh** inherits TypeScript's gradual and structural type system, with some differences. By default, **kesh** uses zero-values for its primitive types.
 
 ```lua
 boolean:  #boolean  --> false
 number:   #number   --> 0
 string:   #string   --> ''
-
-optional: #string?  --> ()
 ```
 
 The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
