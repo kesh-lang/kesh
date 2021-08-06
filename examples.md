@@ -80,8 +80,9 @@ Blocks return the value of the last line. This can be used to produce a value wi
 answer: {
     a: 3
     b: 14
-    a * b
-}  --> 42
+    a * b  --> 42
+}
+answer  --> 42
 ```
 
 Logical operators use words.
