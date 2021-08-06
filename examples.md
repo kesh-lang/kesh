@@ -60,6 +60,34 @@ number:   #number   --> 0
 string:   #string   --> ''
 ```
 
+Blocks return the value of the last line. This can be used to produce a value within a local scope.
+
+```lua
+answer: {
+    a: 3
+    b: 14
+    a * b  --> 42
+}
+answer  --> 42
+```
+
+Functions are of course first class. All functions take only 1 argument, which may be a tuple of values. Therefore, a function may be applied to a single value without wrapping it in parens.
+
+```lua
+times: (a: #number, b: #number) -> #number { a * b }
+
+greet: (person: #person) -> {
+    greeting: 'Hey' if person.friend else 'Hello'
+    "{ greeting }, { person.name }!"
+}
+
+times(3, 14)
+--> 42
+
+greet #person [name: 'Joe', friend: true]
+--> 'Hey, Joe!'
+```
+
 Everything is an expression. Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
 
 ```lua
@@ -80,17 +108,6 @@ pattern: match age
     | 0..12   -> 'kid'       -- range is inclusive
     | 13..<20 -> 'teenager'  -- range is exclusive
     | 20..    -> 'adult'     -- to infinity (and beyond!)
-```
-
-Blocks return the value of the last line. This can be used to produce a value within a local scope.
-
-```lua
-answer: {
-    a: 3
-    b: 14
-    a * b  --> 42
-}
-answer  --> 42
 ```
 
 Logical operators use words.
