@@ -73,7 +73,7 @@ answer: {
 answer  --> 42
 ```
 
-Functions are of course first-class citizens. All functions take only 1 argument, which may be a tuple of values. Therefore, a function may be applied to a single value without wrapping it in parens. Typing is gradual and inferred.
+Functions are first-class citizens. All functions take only 1 argument, which may be a tuple. Therefore, a function may be applied to a single value without wrapping the value in parens. Typing is gradual and inferred.
 
 ```lua
 times: (a: #number, b: #number) -> { a * b }
