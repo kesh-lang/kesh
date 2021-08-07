@@ -41,7 +41,7 @@ people: [  -- an array of objects
 
 Tuples are a much simpler but very useful data structure for grouping related values.
 
-A tuple of only 1 value is equivalent to that value. An empty tuple is equivalent to the unit type (`#nothing`).
+A tuple of only 1 value is equivalent to that value. An empty tuple is equivalent to `#nothing`, the unit type.
 
 They are also used to represent function parameters and arguments.
 
