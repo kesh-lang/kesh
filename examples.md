@@ -31,7 +31,9 @@ people: [  -- an array of objects
 ]
 ```
 
-**kesh** inherits TypeScript's gradual and structural type system, with some differences. For example, **kesh** uses zero-values for its primitive types (all "falsy" values).
+**kesh** inherits TypeScript's gradual and structural type system, with some differences.
+
+For example, **kesh** uses zero-values for its primitive types (all "falsy" values).
 
 ```lua
 boolean:  #boolean  --> false
