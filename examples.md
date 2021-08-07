@@ -121,7 +121,7 @@ greet #person [name: 'Joe', friend: true]
 
 ### Unpacking
 
-Collections and tuples may be unpacked on assignment, including when used as a function argument.
+Collections and tuples may be unpacked on assignment.
 
 ```lua
 [first, ...rest]: [1, 2, 3]  -- rest is an array
@@ -130,7 +130,7 @@ Collections and tuples may be unpacked on assignment, including when used as a f
 (a, b): (b, a)  -- value swapping with tuples
 ```
 
-Unpacking may be used as part of a function signature.
+Including when used as part of a function signature.
 
 ```lua
 open: (
