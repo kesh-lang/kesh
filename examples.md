@@ -49,7 +49,7 @@ open: (
             .width: w ? 100         -- aliasing and default value
             .height: h ? 200
         ]
-        items: [intro, ...fields]  -- unpacking of array with rest values
+        items: [intro, ...fields]   -- unpacking of array with rest values
     ]: #options                     -- type annotation of the options parameter
 ) -> { … }
 
