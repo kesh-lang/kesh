@@ -31,7 +31,7 @@ people: [  -- an array of objects
 ]
 ```
 
-Composite values can be unpacked on assignment. If a collection contains _both_ ordered values and key-value pairs, it is considered an array.
+Composite values can be unpacked on assignment. If a collection contains _both_ ordered values and key-value pairs, it's considered an array.
 
 ```lua
 [first, ...rest]: [1, 2, 3]  -- rest is an array
