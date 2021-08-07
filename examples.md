@@ -22,7 +22,7 @@ answer ~= '42'  --> true (loose equality)
 answer ~≠ '42'  --> false (loose inequality)
 ```
 
-Collections are similar to Lua's tables, and may be used as both linear arrays and associative objects. Arrays are 0-indexed by default.
+Collections are similar to Lua's tables, able to represent both linear values (arrays) and key-value pairs (objects). Arrays are 0-indexed by default.
 
 ```lua
 people: [  -- an array of objects
@@ -31,13 +31,28 @@ people: [  -- an array of objects
 ]
 ```
 
-Composite values can be unpacked on assignment. A collection with _both_ ordered values and key-value pairs is considered an array.
+Collections and tuples may be unpacked on assignment, including as a function argument. A collection with _both_ ordered values and key-value pairs is considered an array.
 
 ```lua
 [first, ...rest]: [1, 2, 3]  -- rest is an array
 [.name, ...rest]: joe  -- rest is an object
 [.dharma, ...rest]: [4, 8, 15, 16, 23, 42, dharma: true]  -- rest is an array of the ordered values
-(b, a): (a, b)  -- tuples swapping values
+
+(one: a, two: b): (one: b, two: a)  -- value swapping with tuples
+
+-- advanced function signature
+open: (
+    window: #window                 -- typed parameter
+    options as [                    -- unpacking of parameter (options is the external name only)
+        .title ? 'Untitled'         -- default value
+        .size: [
+            .width: w ? 100         -- aliasing and default value
+            .height: h ? 200
+        .items: [intro, ...fields]  -- unpacking of array with rest values
+    ]: #options                     -- type annotation of the options parameter
+) -> { … }
+
+open(window: main, options: [items: [intro, field1, field2]])
 ```
 
 Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
