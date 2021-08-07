@@ -130,6 +130,32 @@ greet #person [ name: 'Joe', friend: true ]  -- right associativity, equivalent 
 --> 'Hey, Joe!'
 ```
 
+### Conditionals
+
+Everything is an expression.
+
+Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
+
+```lua
+old-school: if age < 13 {
+    'kid'
+}
+else if age < 20 {
+    'teenager'
+}
+else {
+    'adult'
+}
+
+ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
+default: 'kid' if age < 13  --> results in () if the condition is false
+
+pattern: match age
+    | 0..12   -> 'kid'       -- range is inclusive
+    | 13..<20 -> 'teenager'  -- range is exclusive
+    | 20..    -> 'adult'     -- to infinity (and beyond!)
+```
+
 ### Unpacking
 
 Collection and tuple values may be unpacked on assignment. Objects keys must be referenced using dot notation.
@@ -165,32 +191,6 @@ open: (
 }
 
 open(window: main, options: [ items: [intro, field1, field2] ])
-```
-
-### Conditionals
-
-Everything is an expression.
-
-Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
-
-```lua
-old-school: if age < 13 {
-    'kid'
-}
-else if age < 20 {
-    'teenager'
-}
-else {
-    'adult'
-}
-
-ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
-default: 'kid' if age < 13  --> results in () if the condition is false
-
-pattern: match age
-    | 0..12   -> 'kid'       -- range is inclusive
-    | 13..<20 -> 'teenager'  -- range is exclusive
-    | 20..    -> 'adult'     -- to infinity (and beyond!)
 ```
 
 ### Mutation
