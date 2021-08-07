@@ -136,7 +136,7 @@ Collection and tuple values may be unpacked on assignment. Objects keys must be 
 
 ```lua
 [first, ...rest]: [1, 2, 3]  -- rest is an array
-[.name, ...rest]: joe  -- rest is an object
+[.name, ...rest]: joe        -- rest is an object
 
 (b2, a2): (a1, b1)  -- value swapping with tuples
 ```
