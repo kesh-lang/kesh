@@ -31,6 +31,14 @@ people: [  -- an array of objects
 ]
 ```
 
+**kesh** inherits TypeScript's gradual and structural type system, with some differences. For example, **kesh** uses zero-values for its primitive types (all "falsy" values).
+
+```lua
+boolean:  #boolean  --> false
+number:   #number   --> 0
+string:   #string   --> ''
+```
+
 Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
 
 The prototype can either be a plain object or an object type (as in the example below). An object type may still be used as a plain object in addition to a type, or it may be used solely as a [data type](https://en.wikipedia.org/wiki/Data_type#Composite_types) or [protocol/interface](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
@@ -42,14 +50,6 @@ The prototype can either be a plain object or an object type (as in the example 
 ]
 
 joe: #person [name: 'Joe', age: 27]
-```
-
-**kesh** inherits TypeScript's gradual and structural type system, with some differences. For example, **kesh** uses zero-values for its primitive types (all "falsy" values).
-
-```lua
-boolean:  #boolean  --> false
-number:   #number   --> 0
-string:   #string   --> ''
 ```
 
 Blocks return the value of the last evaluated expression. This can be used to produce a value within a local scope.
