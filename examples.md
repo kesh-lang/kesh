@@ -111,9 +111,9 @@ answer  --> 42
 
 ### Functions
 
-Functions are first-class citizens with closure. They have exactly one parameter, expressed as a tuple.
+Functions are first-class citizens with closure. They have exactly one parameter, which may be a tuple.
 
-A function may therefore be applied to a single value without using parens (see the last line of the example).
+Because a 1-tuple is equivalent to its value, a function may be applied to a single value without the use of parens.
 
 ```lua
 times: (a: #number, b: #number) -> { a * b }
@@ -123,7 +123,7 @@ greet: (person: #person) -> {
     "{ greeting }, { person.name }!"
 }
 
-times(3, 14)
+times(3, 14)  -- conceptually: times (3, 14)
 --> 42
 
 greet #person [name: 'Joe', friend: true]  -- equivalent to greet(#person([ … ]))
