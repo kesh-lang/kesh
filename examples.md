@@ -52,7 +52,7 @@ position.lat  --> 40
 position.0    --> 40
 ```
 
-Tuples are also used to represent [function](#functions) parameters and arguments.
+A common use of tuples is to group multiple values in a [function](#functions)'s parameter/argument.
 
 ### Type system
 
