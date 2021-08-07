@@ -94,15 +94,15 @@ Unpacking may be used as part of a function signature.
 
 ```lua
 open: (
-    window: #window                 -- typed parameter
-    options as [                    -- unpacking of parameter (options is the external name only)
-        .title ? 'Untitled'         -- default value
+    window: #window                -- typed parameter
+    options as [                   -- unpacking of parameter (options is the external name only)
+        .title ? 'Untitled'        -- default value
         size: [
-            .width as w ? 100         -- aliasing and default value
+            .width as w ? 100      -- aliasing and default value
             .height as h ? 200
         ]
-        items: [intro, ...fields]   -- unpacking of array with rest values
-    ]: #options                     -- type annotation of the options parameter
+        items: [intro, ...fields]  -- unpacking of array with rest values
+    ]: #options                    -- type annotation of the options parameter
 ) -> {
     -- available identifiers:
     (window, title, w, h, intro, fields)
