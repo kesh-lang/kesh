@@ -198,3 +198,5 @@ not true        --> false
 true and false  --> false
 true or false   --> true
 ```
+
+Arithmetic operators coerce its operands to `#number`.
