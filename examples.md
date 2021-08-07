@@ -164,7 +164,7 @@ open: (
     )
 }
 
-open(window: main, options: [items: [intro, field1, field2]])
+open(window: main, options: [ items: [intro, field1, field2] ])
 ```
 
 ### Conditionals
