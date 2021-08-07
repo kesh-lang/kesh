@@ -199,4 +199,4 @@ true and false  --> false
 true or false   --> true
 ```
 
-Arithmetic operators coerce its operands to `#number`.
+Arithmetic operators coerce their operands to `#number`.
