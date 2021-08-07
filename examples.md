@@ -52,7 +52,7 @@ position.lat  --> 40
 position.0    --> 40
 ```
 
-Tuples are also used to represent [#blocks-and-functions](function) parameters and arguments.
+Tuples are also used to represent [function](#blocks-and-functions) parameters and arguments.
 
 ### Type system
 
