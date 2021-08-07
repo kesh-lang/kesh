@@ -31,7 +31,7 @@ people: [  -- an array of objects
 ]
 ```
 
-**kesh** inherits TypeScript's gradual and structural type system, with some differences.
+**kesh** inherits TypeScript's gradual and structural type system, with certain differences.
 
 For example, **kesh** uses zero-values for its primitive types (all "falsy" values).
 
