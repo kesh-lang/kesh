@@ -97,11 +97,14 @@ Blocks return the value of the last evaluated expression. This can be used to pr
 All blocks have lexical scope and allow variable shadowing.
 
 ```lua
+a: 1
 answer: {
     a: 3
     b: 14
     a * b  --> 42
 }
+
+a       --> 1
 answer  --> 42
 ```
 
