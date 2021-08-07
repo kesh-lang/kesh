@@ -41,11 +41,11 @@ people: [  -- an array of objects
 
 Tuples are a much simpler but very useful data structure for grouping related values.
 
-Their main use is to represent arguments passed to functions.
+A tuple of only 1 value is equivalent to that value. An empty tuple is equivalent to the unit type (`#nothing`).
+
+They are also used to represent function parameters and arguments.
 
 ```lua
-hypotenuse(3, 4)  -- function applied to a tuple of values
-
 position: (lat: 40, lon: -77)  -- a tuple of keyed values
 position.lat  --> 40
 position.0    --> 40
