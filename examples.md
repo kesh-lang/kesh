@@ -94,6 +94,8 @@ The top type is `#anything` and the bottom type is `#never`.
 
 Blocks return the value of the last evaluated expression. This can be used to produce a value within a local scope.
 
+All blocks have lexical scope and allow variable shadowing.
+
 ```lua
 answer: {
     a: 3
@@ -105,7 +107,7 @@ answer  --> 42
 
 ### Functions
 
-Functions are first-class citizens. They take only 1 argument, which may be a tuple (0-tuple or n-tuple).
+Functions are first-class citizens with closure. They take 1 argument only, which may be a tuple (0-tuple or n-tuple).
 
 A function may therefore be applied to a single value without using parens (last line of the example).
 
@@ -132,7 +134,7 @@ Collections and tuples may be unpacked on assignment.
 [first, ...rest]: [1, 2, 3]  -- rest is an array
 [.name, ...rest]: joe  -- rest is an object
 
-(a, b): (b, a)  -- value swapping with tuples
+(b2, a2): (a1, b1)  -- value swapping with tuples
 ```
 
 Including when used as part of a function signature.
