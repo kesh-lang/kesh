@@ -22,18 +22,6 @@ answer ~= '42'  --> true (loose equality)
 answer ~≠ '42'  --> false (loose inequality)
 ```
 
-The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` operator to mark collections as mutable.
-
-```lua
-#!kesh 2021 (mutation)
-
-let mutable: false  -- mutable variable
-set mutable: true
-
-joe: *[name: 'Joe']  -- mutable collection
-set joe.name: 'Joseph'
-```
-
 Collections are similar to Lua's tables, and may be used as both linear arrays and associative objects. Arrays are 0-indexed by default.
 
 ```lua
@@ -120,6 +108,18 @@ pattern: match age
     | 0..12   -> 'kid'       -- range is inclusive
     | 13..<20 -> 'teenager'  -- range is exclusive
     | 20..    -> 'adult'     -- to infinity (and beyond!)
+```
+
+The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` operator to mark collections as mutable.
+
+```lua
+#!kesh 2021 (mutation)
+
+let mutable: false  -- mutable variable
+set mutable: true
+
+joe: *[name: 'Joe']  -- mutable collection
+set joe.name: 'Joseph'
 ```
 
 Logical operators use words.
