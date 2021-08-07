@@ -105,7 +105,7 @@ answer: {
 }
 
 a       --> 1
-b       --> ()
+b       --> b is not defined
 answer  --> 42
 ```
 
