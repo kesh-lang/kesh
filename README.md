@@ -28,7 +28,7 @@ joe: #person [                              -- new object linked to prototype
     age: 27
 ]
 
-greet: ([.name, .age]: #person) -> {        -- typed function with unpacking of argument
+greet: ([.name, .age]: #person) -> {        -- typed function with unpacking of object
     someone: name if age > 12 else 'kid'    -- code block with a local variable
     "Hey, { someone }!"                     -- the last expression's value is returned
 }                                           -- and the return type inferred
