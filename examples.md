@@ -153,7 +153,7 @@ open(window: main, options: [items: [intro, field1, field2, …]])
 
 Everything is an expression.
 
-Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
+Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
 
 ```lua
 old-school: if age < 13 {
