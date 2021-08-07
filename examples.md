@@ -1,10 +1,14 @@
 # Examples
 
+### Assignment and values
+
 Variables and values are immutable by default (single assignment, value semantics).
 
 ```lua
 answer: 42
 ```
+
+### Equality
 
 Using `:` as the assignment operator means `=` is free to be used as the equality operator, as it should be.
 
@@ -22,6 +26,8 @@ answer ~= '42'  --> true (loose equality)
 answer ~≠ '42'  --> false (loose inequality)
 ```
 
+### Composite types
+
 Collections are similar to Lua's tables, able to represent both linear values (arrays) and key-value pairs (objects). Arrays are 0-indexed by default.
 
 ```lua
@@ -30,6 +36,18 @@ people: [  -- an array of objects
     [name: 'Jane', age: 30]
 ]
 ```
+
+Tuples are a much simpler but very useful data structure for grouping related values. Its main use is to pass a set of arguments to functions.
+
+```lua
+hypotenuse(3, 4)  -- function applied to a tuple of values
+
+position: (lat: 40, lon: -77)  -- a tuple of keyed values
+position.lat  --> 40
+position.0    --> 40
+```
+
+### Type system
 
 **kesh** inherits TypeScript's gradual and structural type system, with certain differences.
 
@@ -54,6 +72,15 @@ The prototype can either be a plain object or an object type (as in the example 
 joe: #person [name: 'Joe', age: 27]
 ```
 
+The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
+
+- `#anything`
+- `(something)`
+- `#nothing`
+- `#never`
+
+### Blocks and functions
+
 Blocks return the value of the last evaluated expression. This can be used to produce a value within a local scope.
 
 ```lua
@@ -65,7 +92,7 @@ answer: {
 answer  --> 42
 ```
 
-Functions are first-class citizens. All functions take only 1 argument, which may be a tuple. Therefore, a function may be applied to a single value without parens. Typing is gradual and inferred.
+Functions are first-class citizens. They take only 1 argument, which may be a tuple. Therefore, a function may be applied to a single value without using parens. Typing is gradual and inferred.
 
 ```lua
 times: (a: #number, b: #number) -> { a * b }
@@ -82,7 +109,11 @@ greet #person [name: 'Joe', friend: true]
 --> 'Hey, Joe!'
 ```
 
-Collections and tuples may be unpacked on assignment, including as a function argument. A collection with _both_ ordered values and key-value pairs is considered an array.
+### Unpacking
+
+Collections and tuples may be unpacked on assignment, including when used as a function argument.
+
+A collection with _both_ ordered values and key-value pairs is considered an array.
 
 ```lua
 [first, ...rest]: [1, 2, 3]  -- rest is an array
@@ -113,6 +144,8 @@ open: (
 open(window: main, options: [items: [intro, field1, field2, …]])
 ```
 
+### Conditionals
+
 Everything is an expression. Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
 
 ```lua
@@ -135,6 +168,8 @@ pattern: match age
     | 20..    -> 'adult'     -- to infinity (and beyond!)
 ```
 
+### Mutation
+
 The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` operator to mark collections as mutable.
 
 ```lua
@@ -147,6 +182,8 @@ joe: *[name: 'Joe']  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
+### Operators
+
 Logical operators use words.
 
 ```lua
@@ -154,10 +191,3 @@ not true        --> false
 true and false  --> false
 true or false   --> true
 ```
-
-The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
-
-- `#anything`
-- `(something)`
-- `#nothing`
-- `#never`
