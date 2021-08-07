@@ -31,31 +31,6 @@ people: [  -- an array of objects
 ]
 ```
 
-Collections and tuples may be unpacked on assignment, including as a function argument. A collection with _both_ ordered values and key-value pairs is considered an array.
-
-```lua
-[first, ...rest]: [1, 2, 3]  -- rest is an array
-[.name, ...rest]: joe  -- rest is an object
-[.dharma, ...rest]: [4, 8, 15, 16, 23, 42, dharma: true]  -- rest is an array of the ordered values
-
-(one: a, two: b): (one: b, two: a)  -- value swapping with tuples
-
--- advanced function signature
-open: (
-    window: #window                 -- typed parameter
-    options as [                    -- unpacking of parameter (options is the external name only)
-        .title ? 'Untitled'         -- default value
-        size: [
-            .width: w ? 100         -- aliasing and default value
-            .height: h ? 200
-        ]
-        items: [intro, ...fields]   -- unpacking of array with rest values
-    ]: #options                     -- type annotation of the options parameter
-) -> { … }
-
-open(window: main, options: [items: [intro, field1, field2]])
-```
-
 Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
 
 The prototype can either be a plain object or an object type (as in the example below). An object type may still be used as a plain object in addition to a type, or it may be used solely as a [data type](https://en.wikipedia.org/wiki/Data_type#Composite_types) or [protocol/interface](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
@@ -103,6 +78,37 @@ times(3, 14)
 
 greet #person [name: 'Joe', friend: true]
 --> 'Hey, Joe!'
+```
+
+Collections and tuples may be unpacked on assignment, including as a function argument. A collection with _both_ ordered values and key-value pairs is considered an array.
+
+```lua
+[first, ...rest]: [1, 2, 3]  -- rest is an array
+[.name, ...rest]: joe  -- rest is an object
+[.dharma, ...rest]: [4, 8, 15, 16, 23, 42, dharma: true]  -- rest is an array of the ordered values
+
+(a, b): (b, a)  -- value swapping with tuples
+```
+
+Unpacking may be used as part of a function signature.
+
+```lua
+open: (
+    window: #window                 -- typed parameter
+    options as [                    -- unpacking of parameter (options is the external name only)
+        .title ? 'Untitled'         -- default value
+        size: [
+            .width as w ? 100         -- aliasing and default value
+            .height as h ? 200
+        ]
+        items: [intro, ...fields]   -- unpacking of array with rest values
+    ]: #options                     -- type annotation of the options parameter
+) -> {
+    -- available identifiers:
+    (window, title, w, h, intro, fields)
+}
+
+open(window: main, options: [items: [intro, field1, field2, …]])
 ```
 
 Everything is an expression. Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
