@@ -141,7 +141,7 @@ Collections and tuples may be unpacked on assignment.
 (b2, a2): (a1, b1)  -- value swapping with tuples
 ```
 
-Including when used as part of a function signature.
+Including when used as part of a function signature (complex example).
 
 ```lua
 open: (
@@ -154,7 +154,14 @@ open: (
     ]: #options                    -- type annotation of the options parameter
 ) -> {
     -- available identifiers:
-    (window: main, title: 'Untitled', w: 100, h: 200, intro: intro, fields: [field1, field2])
+    (
+        window: main
+        title: 'Untitled'
+        w: 100
+        h: 200
+        intro: intro
+        fields: [field1, field2]
+    )
 }
 
 open(window: main, options: [items: [intro, field1, field2]])
@@ -193,7 +200,7 @@ The `mutation` directive enables the `let` and `set` keywords to mutate variable
 ```lua
 #!kesh 2021 (mutation)
 
-let mutable: false  -- mutable variable
+let mutable
 set mutable: true
 
 joe: *[name: 'Joe']  -- mutable collection
