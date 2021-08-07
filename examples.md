@@ -137,7 +137,7 @@ open: (
     window: #window                -- typed parameter
     options as [                   -- unpacking of parameter (options is the external name only)
         .title ? 'Untitled'        -- picked field with a default value if missing
-        size.width as w ? 100      -- aliasing and default value
+        size.width as w ? 100      -- aliasing from path shortcut with a default value
         size.height as h ? 200
         items: [intro, ...fields]  -- unpacking of array with rest values
     ]: #options                    -- type annotation of the options parameter
