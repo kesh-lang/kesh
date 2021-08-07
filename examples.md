@@ -41,7 +41,7 @@ people: [  -- an array of objects
 
 Tuples are a much simpler but very useful data structure for grouping related values.
 
-Its main use is to represent arguments passed to functions.
+Their main use is to represent arguments passed to functions.
 
 ```lua
 hypotenuse(3, 4)  -- function applied to a tuple of values
