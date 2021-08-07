@@ -96,7 +96,7 @@ Unpacking may be used as part of a function signature.
 open: (
     window: #window                -- typed parameter
     options as [                   -- unpacking of parameter (options is the external name only)
-        .title ? 'Untitled'        -- default value
+        .title ? 'Untitled'        -- picked field with a default value if missing
         size: [
             .width as w ? 100      -- aliasing and default value
             .height as h ? 200
