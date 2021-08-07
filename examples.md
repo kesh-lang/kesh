@@ -31,12 +31,13 @@ people: [  -- an array of objects
 ]
 ```
 
-Collections can be unpacked on assignment. If a collection contains _both_ ordered values and key-value pairs, it is considered an array.
+Composite values can be unpacked on assignment. If a collection contains _both_ ordered values and key-value pairs, it is considered an array.
 
 ```lua
 [.name, ...rest]: joe  -- rest is an object
 [first, ...rest]: [1, 2, 3]  -- rest is an array
 [.dharma, ...rest]: [4, 8, 15, 16, 23, 42, dharma: true]  -- rest is an array of ordered values
+(b, a): (a, b)  -- tuples swapping values
 ```
 
 Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
