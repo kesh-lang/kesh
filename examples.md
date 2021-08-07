@@ -45,10 +45,11 @@ open: (
     window: #window                 -- typed parameter
     options as [                    -- unpacking of parameter (options is the external name only)
         .title ? 'Untitled'         -- default value
-        .size: [
+        size: [
             .width: w ? 100         -- aliasing and default value
             .height: h ? 200
-        .items: [intro, ...fields]  -- unpacking of array with rest values
+        ]
+        items: [intro, ...fields]  -- unpacking of array with rest values
     ]: #options                     -- type annotation of the options parameter
 ) -> { … }
 
