@@ -34,13 +34,21 @@ joe: *[name: 'Joe']  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
-Collections are similar to Lua's tables, and may be used as both linear arrays and associative objects.
+Collections are similar to Lua's tables, and may be used as both linear arrays and associative objects. Arrays are 0-indexed by default.
 
 ```lua
 people: [  -- an array of objects
     [name: 'Joe', age: 27]
     [name: 'Jane', age: 30]
 ]
+```
+
+Collections can be unpacked on assignment. If a collection contains _both_ ordered values and key-value pairs, it is considered an array.
+
+```lua
+[.name, ...rest]: joe  -- if collection is an object (key-value pairs), rest is an object
+[first, ...rest]: [1, 2, 3]  -- if collection is an array (ordered values), rest is an array
+[.dharma, ...rest]: [4, 8, 15, 16, 23, 42, dharma: true]  -- if collection is mixed, rest is an array of ordered values
 ```
 
 Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
