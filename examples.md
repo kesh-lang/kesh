@@ -121,12 +121,9 @@ greet #person [name: 'Joe', friend: true]
 
 Collections and tuples may be unpacked on assignment, including when used as a function argument.
 
-A collection with _both_ ordered values and key-value pairs is considered an array.
-
 ```lua
 [first, ...rest]: [1, 2, 3]  -- rest is an array
 [.name, ...rest]: joe  -- rest is an object
-[.dharma, ...rest]: [4, 8, 15, 16, 23, 42, dharma: true]  -- rest is an array of the ordered values
 
 (a, b): (b, a)  -- value swapping with tuples
 ```
