@@ -126,7 +126,7 @@ greet: (person: #person) -> {
 times(3, 14)  -- conceptually: times (3, 14)
 --> 42
 
-greet #person [name: 'Joe', friend: true]  -- equivalent to greet(#person([ … ]))
+greet #person [name: 'Joe', friend: true]  -- right associativity, equivalent to: greet(#person([ … ]))
 --> 'Hey, Joe!'
 ```
 
