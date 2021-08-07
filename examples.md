@@ -36,7 +36,7 @@ Composite values can be unpacked on assignment. If a collection contains _both_ 
 ```lua
 [first, ...rest]: [1, 2, 3]  -- rest is an array
 [.name, ...rest]: joe  -- rest is an object
-[.dharma, ...rest]: [4, 8, 15, 16, 23, 42, dharma: true]  -- rest is an array of ordered values
+[.dharma, ...rest]: [4, 8, 15, 16, 23, 42, dharma: true]  -- rest is an array of the ordered values
 (b, a): (a, b)  -- tuples swapping values
 ```
 
