@@ -34,8 +34,8 @@ Arrays are 0-indexed by default.
 
 ```lua
 people: [  -- an array of objects
-    [name: 'Joe', age: 27]
-    [name: 'Jane', age: 30]
+    [ name: 'Joe', age: 27 ]
+    [ name: 'Jane', age: 30 ]
 ]
 ```
 
@@ -78,7 +78,7 @@ An object type may still be used as a plain object in addition to a type, or it 
     age: #number
 ]
 
-joe: #person [name: 'Joe', age: 27]
+joe: #person [ name: 'Joe', age: 27 ]
 ```
 
 The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68).
@@ -126,7 +126,7 @@ greet: (person: #person) -> {
 times(3, 14)  -- conceptually: times (3, 14)
 --> 42
 
-greet #person [name: 'Joe', friend: true]  -- right associativity, equivalent to: greet(#person([ … ]))
+greet #person [ name: 'Joe', friend: true ]  -- right associativity, equivalent to: greet(#person([ … ]))
 --> 'Hey, Joe!'
 ```
 
@@ -203,7 +203,7 @@ The `mutation` directive enables the `let` and `set` keywords to mutate variable
 let mutable  -- mutable variable
 set mutable: true
 
-joe: *[name: 'Joe']  -- mutable collection
+joe: *[ name: 'Joe' ]  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
