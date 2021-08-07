@@ -41,15 +41,18 @@ people: [  -- an array of objects
 
 Tuples are a much simpler but very useful data structure for grouping related values.
 
-A tuple of only 1 value is equivalent to that value. An empty tuple is equivalent to `#nothing`, the unit type.
-
-They are also used to represent function parameters and arguments.
+A tuple of only one value is equivalent to that value. An empty tuple is equivalent to `#nothing`, the unit type.
 
 ```lua
-position: (lat: 40, lon: -77)  -- a tuple of keyed values
+nothing: ()      --> #nothing
+something: (42)  --> 42
+
+position: (lat: 40, lon: -77)
 position.lat  --> 40
 position.0    --> 40
 ```
+
+Tuples are also used to represent [#blocks-and-functions](function) parameters and arguments.
 
 ### Type system
 
