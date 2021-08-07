@@ -28,7 +28,9 @@ answer ~≠ '42'  --> false (loose inequality)
 
 ### Composite types
 
-Collections are similar to Lua's tables, able to represent both linear values (arrays) and key-value pairs (objects). Arrays are 0-indexed by default.
+Collections are similar to Lua's tables, able to represent both linear values (arrays) and key-value pairs (objects).
+
+Arrays are 0-indexed by default.
 
 ```lua
 people: [  -- an array of objects
@@ -37,7 +39,9 @@ people: [  -- an array of objects
 ]
 ```
 
-Tuples are a much simpler but very useful data structure for grouping related values. Its main use is to pass a set of arguments to functions.
+Tuples are a much simpler but very useful data structure for grouping related values.
+
+Its main use is to pass a set of arguments to functions.
 
 ```lua
 hypotenuse(3, 4)  -- function applied to a tuple of values
@@ -72,7 +76,9 @@ The prototype can either be a plain object or an object type (as in the example 
 joe: #person [name: 'Joe', age: 27]
 ```
 
-The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
+The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68).
+
+The top type is `#anything` and the bottom type is `#never`.
 
 - `#anything`
 - `(something)`
@@ -146,7 +152,9 @@ open(window: main, options: [items: [intro, field1, field2, …]])
 
 ### Conditionals
 
-Everything is an expression. Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
+Everything is an expression.
+
+Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or pattern-matching `match`.
 
 ```lua
 old-school: if age < 13 {
