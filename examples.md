@@ -200,7 +200,7 @@ The `mutation` directive enables the `let` and `set` keywords to mutate variable
 ```lua
 #!kesh 2021 (mutation)
 
-let mutable
+let mutable  -- mutable variable
 set mutable: true
 
 joe: *[name: 'Joe']  -- mutable collection
