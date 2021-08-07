@@ -132,7 +132,7 @@ greet #person [name: 'Joe', friend: true]
 
 ### Unpacking
 
-Collections and tuples may be unpacked on assignment.
+Collection and tuple values may be unpacked on assignment. Objects keys must be referenced using dot notation.
 
 ```lua
 [first, ...rest]: [1, 2, 3]  -- rest is an array
@@ -141,19 +141,19 @@ Collections and tuples may be unpacked on assignment.
 (b2, a2): (a1, b1)  -- value swapping with tuples
 ```
 
-Including when used as part of a function signature (complex example).
+This can also be done within the function's parameter as part of its definition.
 
 ```lua
 open: (
-    window: #window                -- typed parameter
-    options as [                   -- unpacking of parameter (options is the external name only)
-        .title ? 'Untitled'        -- picked field with a default value if missing
-        size.width as w ? 100      -- aliasing from path shortcut with a default value
+    window: #window                -- type annotation of value
+    options as [                   -- unpacking of collection (options is the external name)
+        .title ? 'Untitled'        -- picked field, with a default value if missing
+        size.width as w ? 100      -- aliasing from a path shortcut, with a default value
         size.height as h ? 200
-        items: [intro, ...fields]  -- unpacking of array with rest values
-    ]: #options                    -- type annotation of the options parameter
+        items: [intro, ...fields]  -- unpacking of array, with rest values
+    ]: #options                    -- type annotation of the options value
 ) -> {
-    -- available identifiers:
+    -- values available within the block:
     (
         window: main
         title: 'Untitled'
