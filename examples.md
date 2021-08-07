@@ -42,7 +42,7 @@ Composite values can be unpacked on assignment. A collection with _both_ ordered
 
 Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
 
-The prototype can either be a plain object or an object type (as in the example below). An object type may still be used as a plain object in addition to a type, or it may simply be used as a [protocol/interface](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+The prototype can either be a plain object or an object type (as in the example below). An object type may still be used as a plain object in addition to a type, or it may simply be used as a [data type](https://en.wikipedia.org/wiki/Data_type#Composite_types) or [protocol/interface](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
 
 ```lua
 #person: [
