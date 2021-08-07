@@ -1,7 +1,7 @@
 # kesh { }
 
 <p>&nbsp;</p>
-<p align="center" width="100%"><img width="33%" alt="heyiya-if symbol" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Double_spirale.svg"></p>
+<p align="center" width="100%"><img height="381px" alt="heyiya-if symbol" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Double_spirale.svg"></p>
 <p>&nbsp;</p>
 
 > A long, long time from now, in the wake of what will no longer be called JavaScript, might be going to have existed a programming language called _kesh_.
