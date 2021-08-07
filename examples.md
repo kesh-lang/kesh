@@ -107,7 +107,7 @@ answer  --> 42
 
 Functions are first-class citizens. They take only 1 argument, which may be a tuple (0-tuple or n-tuple).
 
-A function may therefore be applied to a single value without using parens (line of the example).
+A function may therefore be applied to a single value without using parens (last line of the example).
 
 ```lua
 times: (a: #number, b: #number) -> { a * b }
