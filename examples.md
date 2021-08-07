@@ -52,7 +52,7 @@ position.lat  --> 40
 position.0    --> 40
 ```
 
-Tuples are also used to represent [function](#blocks-and-functions) parameters and arguments.
+Tuples are also used to represent [function](#functions) parameters and arguments.
 
 ### Type system
 
@@ -90,7 +90,7 @@ The top type is `#anything` and the bottom type is `#never`.
 - `#nothing`
 - `#never`
 
-### Blocks and functions
+### Blocks
 
 Blocks return the value of the last evaluated expression. This can be used to produce a value within a local scope.
 
@@ -103,9 +103,11 @@ answer: {
 answer  --> 42
 ```
 
-Functions are first-class citizens. They take only 1 argument, which may be a tuple.
+### Functions
 
-Therefore, a function may be applied to a single value without using parens.
+Functions are first-class citizens. They take only 1 argument, which may be a tuple (0-tuple or n-tuple).
+
+A function may therefore be applied to a single value without using parens (line of the example).
 
 ```lua
 times: (a: #number, b: #number) -> { a * b }
