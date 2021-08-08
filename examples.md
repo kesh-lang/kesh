@@ -209,7 +209,9 @@ set joe.name: 'Joseph'
 
 ### Operators
 
-Arithmetic operators coerce their operands to `#number`. Logical operators use words.
+Arithmetic operators coerce their operands to `#number`.
+
+Logical operators use words.
 
 ```lua
 not true        --> false
