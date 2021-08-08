@@ -195,7 +195,7 @@ open(window: main, options: [ items: [intro, field1, field2] ])
 
 ### Mutation
 
-The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` operator to mark collections as mutable.
+The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` unary operator to mark collections as mutable.
 
 ```lua
 #!kesh 2021 (mutation)
@@ -209,12 +209,10 @@ set joe.name: 'Joseph'
 
 ### Operators
 
-Logical operators use words.
+Arithmetic operators coerce their operands to `#number`. Logical operators use words.
 
 ```lua
 not true        --> false
 true and false  --> false
 true or false   --> true
 ```
-
-Arithmetic operators coerce their operands to `#number`.
