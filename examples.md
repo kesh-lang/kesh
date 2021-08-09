@@ -68,9 +68,9 @@ string:   #string   --> ''
 
 Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
 
-The prototype can either be a plain object or an object type (as in the example below).
+The prototype can either be a plain object or an _object type_ (as in the example below).
 
-An object type may still be used as a plain object in addition to a type, or it may be used solely as a [data type](https://en.wikipedia.org/wiki/Data_type#Composite_types) or [protocol/interface](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+An _object type_ may still be used as a plain object in addition to a type, or it may be used solely as a [data type](https://en.wikipedia.org/wiki/Data_type#Composite_types) or [protocol/interface](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
 
 ```lua
 #person: [
@@ -81,9 +81,7 @@ An object type may still be used as a plain object in addition to a type, or it 
 joe: #person [ name: 'Joe', age: 27 ]
 ```
 
-The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68).
-
-The top type is `#anything` and the bottom type is `#never`.
+The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
 
 - `#anything`
 - `(something)`
