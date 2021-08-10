@@ -134,9 +134,9 @@ Because a 1-tuple is equivalent to its value, a function may be applied to a sin
 ```lua
 times: (a, b) -> { a * b }
 
-greet: (person) -> {
-    greeting: 'Hey' if person.friend else 'Hello'
-    "{ greeting }, { person.name }!"
+greet: (someone) -> {
+    greeting: 'Hey' if someone.friend else 'Hello'
+    "{ greeting }, { someone.name }!"
 }
 
 times(3, 14)  -- conceptually: times (3, 14)
