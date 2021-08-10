@@ -62,7 +62,7 @@ In **kesh**, even the unit type is an object.
 
 #### Prototype delegation
 
-As a prototype-based language, there are no classes and inheritance, only objects and [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)).
+As a prototype-based language, there are no classes or inheritance, only objects and [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)).
 
 Delegation is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
 
