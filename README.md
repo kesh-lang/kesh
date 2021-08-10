@@ -8,9 +8,9 @@
 
 **kesh** is a simple little programming language on top of TypeScript.
 
-Its syntax is a strict superset of [na](https://github.com/kesh-lang/na), including a [bracketless](./bracketless.md) version.
+Its syntax is a proper superset of [na](https://github.com/kesh-lang/na), including a [bracketless](./bracketless.md) version.
 
-The language is a work in process. Contributions are always welcome!
+This language is a work in process. Contributions are always welcome!
 
 ```lua
 #!kesh 2021 (strict)
