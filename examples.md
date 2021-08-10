@@ -200,7 +200,7 @@ truth: #boolean 1     --> true
 
 #### Object types
 
-An object type may likewise be used as a prototype, being both a type definition and a plain object.
+An object type may also be used as a prototype, being both a type definition and a plain object.
 
 ```lua
 #primate: [
