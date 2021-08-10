@@ -121,9 +121,9 @@ answer: {
     a * b  --> 42
 }
 
+answer  --> 42
 a       --> 1
 b       --> b is not defined
-answer  --> 42
 ```
 
 ### String interpolation
