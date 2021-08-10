@@ -114,6 +114,7 @@ This can be used to produce a value within a local scope.
 
 ```lua
 a: 1
+
 answer: {
     a: 3
     b: 14
@@ -156,32 +157,6 @@ greet person [ name: 'Joe', friend: true ]  -- right associativity, equivalent t
 ```
 
 In **kesh**, a function is an object and an object is a function (producing a new object with itself applied as prototype to the provided object).
-
-### Conditionals
-
-Everything is an expression.
-
-Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
-
-```lua
-old-school: if age < 13 {
-    'kid'
-}
-else if age < 20 {
-    'teenager'
-}
-else {
-    'adult'
-}
-
-ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
-default: 'kid' if age < 13  --> results in #nothing if the condition is false
-
-pattern: match age
-    | 0..12   -> 'kid'       -- range is inclusive
-    | 13..<20 -> 'teenager'  -- range is exclusive
-    | 20..    -> 'adult'     -- to infinity (and beyond!)
-```
 
 ### Type system
 
@@ -255,6 +230,32 @@ The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641
 - `#nothing`
 - `#never`
 
+### Conditionals
+
+Everything is an expression.
+
+Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
+
+```lua
+old-school: if age < 13 {
+    'kid'
+}
+else if age < 20 {
+    'teenager'
+}
+else {
+    'adult'
+}
+
+ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
+default: 'kid' if age < 13  --> results in #nothing if the condition is false
+
+pattern: match age
+    | 0..12   -> 'kid'       -- range is inclusive
+    | 13..<20 -> 'teenager'  -- range is exclusive
+    | 20..    -> 'adult'     -- to infinity (and beyond!)
+```
+
 ### Operators
 
 Arithmetic operators coerce their operands to `#number`.
@@ -289,7 +290,7 @@ open: (
         size.height as h ? 200
         items: [intro, ...fields]  -- unpacking of array, with rest values
     ]: #options                    -- type annotation of the options value
-) -> {
+) -> #nothing {
     -- values available within the block:
     (
         window: main
