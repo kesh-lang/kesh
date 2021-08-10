@@ -48,8 +48,8 @@ nothing: ()      --> #nothing
 something: (42)  --> 42
 
 position: (lat: 40, lon: -77)
-position.lat  --> 40
 position.0    --> 40
+position.lon  --> -77
 ```
 
 A common use of tuples is to group multiple values as a [function](#functions)'s parameter/argument.
