@@ -56,7 +56,7 @@ A common use of tuples is to group multiple values as a [function](#functions)'s
 
 ### Objects
 
-Objects (collections of key-value fields) are an essential part of the language. As in JavaScript and TypeScript, all functions are objects, arrays are in fact objects with auto-indexed numeric keys, and primitive values are automatically upgraded to objects as needed.
+Objects (collections of key-value fields) are an essential part of the language. As in JavaScript and TypeScript, functions are objects, arrays are in fact objects with auto-indexed numeric keys, and primitive values are automatically upgraded to objects as needed.
 
 In **kesh**, even the unit type is an object.
 
