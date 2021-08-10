@@ -175,7 +175,7 @@ else {
 }
 
 ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
-default: 'kid' if age < 13  --> results in () if the condition is false
+default: 'kid' if age < 13  --> results in #nothing if the condition is false
 
 pattern: match age
     | 0..12   -> 'kid'       -- range is inclusive
