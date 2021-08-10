@@ -137,7 +137,7 @@ greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
 
 ### Functions
 
-Functions are first-class citizens with closure. The arity is always 1, but the argument can of course be a tuple.
+Functions are first-class citizens with closure. The arity is always 1, the argument can of course be a tuple.
 
 Because a 1-tuple is equivalent to its value, a function may be applied to a single value without the use of parens.
 
