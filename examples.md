@@ -60,7 +60,7 @@ Objects (collections of key-value fields) are an essential part of the language.
 
 In **kesh**, even the unit type is an object.
 
-#### Prototype delegation
+#### Delegation
 
 As a prototype-based language, there are no classes or inheritance, only objects and [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)).
 
