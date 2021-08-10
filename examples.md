@@ -131,7 +131,7 @@ Double-quoted strings support interpolation, which is simply inline blocks evalu
 
 ```lua
 answer: "The answer is { 3 * 14 }"  --> 'The answer is 42'
-hello: "Hey, { joe.name }!"         --> 'Hey, Joe!'
+greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
 ```
 
 ### Functions
