@@ -23,7 +23,7 @@ This language is a work in process. Contributions are always welcome!
 ]
 
 -- instance
-joe: #person [                              -- new object linked to prototype
+joe: #person [                              -- new object that delegates to prototype
     name: 'Joe'
     age: 27
 ]
