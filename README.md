@@ -15,7 +15,7 @@ This language is a work in process. Contributions are always welcome!
 ```lua
 #!kesh 2021 (strict)
 
--- prototype (an object that is also a type)
+-- prototype (an object that also defines a type)
 #person: [                                  -- type definition
     name: #string                           -- type annotation
     age: #number
