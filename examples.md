@@ -28,18 +28,18 @@ answer ~≠ '42'  --> false (loose inequality)
 
 ### Composite types
 
-Collections are similar to Lua's tables, able to represent both linear values (arrays) and key-value pairs (objects).
+Collections are similar to Lua's tables, able to represent both linear values (an array) and key-value fields (an object).
 
 Arrays are 0-indexed by default.
 
 ```lua
 people: [  -- an array of objects
-    [ name: 'Joe', age: 27 ]
-    [ name: 'Jane', age: 30 ]
+    [ name: 'Joe', age: 27 ]   -- index 0
+    [ name: 'Jane', age: 30 ]  -- index 1
 ]
 ```
 
-Tuples are a much simpler but very useful data structure for grouping related values.
+Tuples are a much simpler, but very useful, data structure for grouping related values.
 
 A tuple of only one value is equivalent to that value. An empty tuple is equivalent to `#nothing`, the unit type.
 
@@ -54,45 +54,63 @@ position.0    --> 40
 
 A common use of tuples is to group multiple values as a [function](#functions)'s parameter/argument.
 
-### Type system
+### Objects
 
-**kesh** inherits TypeScript's gradual and structural type system, with certain differences.
+Objects (collections of key-value fields) are an essential part of the language. As in JavaScript and TypeScript, all functions are objects, arrays are in fact objects with auto-indexed numeric keys, and primitives are automatically upgraded to objects as needed.
 
-For example, **kesh** uses zero-values for its primitive types (all "falsy" values).
+In **kesh**, even the unit type is an object.
 
-```lua
-boolean:  #boolean  --> false
-number:   #number   --> 0
-string:   #string   --> ''
-```
+#### Prototype delegation
 
-Prototypal "inheritance" is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
+As a prototype-based language, there are no classes and inheritance, only objects and [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)).
 
-The prototype can either be a plain object or an _object type_ (as in the example below).
-
-An _object type_ may still be used as a plain object in addition to a type, or it may be used solely as a [data type](https://en.wikipedia.org/wiki/Data_type#Composite_types) or [protocol/interface](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+Delegation is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
 
 ```lua
-#person: [
-    name: #string
-    age: #number
+primate: [
+    hairy: true
 ]
 
-joe: #person [ name: 'Joe', age: 27 ]
+human: primate [
+    hairy: false  -- shadow field
+    walks: true
+    talks: true
+]
+
+joe: human [
+    name: 'Joe'
+]
+--> [ name: 'Joe', hairy: false, walks: true, talks: true ]
 ```
 
-The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
+The bottom prototype is the unit type `#nothing` that only ever returns itself.
 
-- `#anything`
-- `(something)`
-- `#nothing`
-- `#never`
+Accessing a missing field will therefore not produce an error, but always return `#nothing`.
+
+```lua
+joe.foo.bar.baz
+--> #nothing
+```
+
+#### Concatenation
+
+An alternative to delegation is [concatenation](https://en.wikipedia.org/wiki/Prototype-based_programming#Concatenation) of objects.
+
+This is achieved by using the spread operator `...` to copy the fields of an existing object.
+
+```lua
+joe: [
+    ...primate
+    ...human
+    name: 'Joe'
+]
+```
 
 ### Blocks
 
-Blocks return the value of the last evaluated expression. This can be used to produce a value within a local scope.
+Blocks have lexical scope, allow variable shadowing and return the value of the last evaluated expression.
 
-All blocks have lexical scope and allow variable shadowing.
+This can be used to produce a value within a local scope.
 
 ```lua
 a: 1
@@ -109,14 +127,14 @@ answer  --> 42
 
 ### Functions
 
-Functions are first-class citizens with closure. They have exactly one parameter, which may be a tuple.
+Functions are first-class citizens with closure. They have exactly one parameter, which may of course be a tuple.
 
 Because a 1-tuple is equivalent to its value, a function may be applied to a single value without the use of parens.
 
 ```lua
-times: (a: #number, b: #number) -> { a * b }
+times: (a, b) -> { a * b }
 
-greet: (person: #person) -> {
+greet: (person) -> {
     greeting: 'Hey' if person.friend else 'Hello'
     "{ greeting }, { person.name }!"
 }
@@ -124,7 +142,7 @@ greet: (person: #person) -> {
 times(3, 14)  -- conceptually: times (3, 14)
 --> 42
 
-greet #person [ name: 'Joe', friend: true ]  -- right associativity, equivalent to: greet(#person([ … ]))
+greet person [ name: 'Joe', friend: true ]  -- right associativity, equivalent to: greet(person([ … ]))
 --> 'Hey, Joe!'
 ```
 
@@ -154,7 +172,70 @@ pattern: match age
     | 20..    -> 'adult'     -- to infinity (and beyond!)
 ```
 
-### Unpacking
+### Type system
+
+**kesh** inherits TypeScript's gradual and structural type system, with certain differences.
+
+#### Zero-values
+
+For example, **kesh** uses zero-values for its primitive types (all "falsy" values).
+
+```lua
+boolean:  #boolean  --> false
+number:   #number   --> 0
+string:   #string   --> ''
+```
+
+#### Type definitions
+
+There are no interfaces in **kesh**, only type definitions.
+
+```lua
+#point: (x: #number, y: #number)
+
+#result: #number | #string | [#string]
+
+#colorful: [ color: #string ]
+#circle: [ radius: #number ]
+
+#colorful-circle: #colorful & #circle
+```
+
+#### Object types
+
+An object type can be used to define a prototype, being both a plain object and a type definition.
+
+```lua
+#human: #primate & [
+    hairy: false  -- default value, inferred as #boolean
+    name: #string
+]
+
+joe: #person [ name: 'Joe' ]
+--> [ name: 'Joe', hairy: false, … ]
+```
+
+#### Protocols
+
+An object type can also be a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+
+```lua
+#person: [
+    walk: (meter: #number) -> #string
+    talk: (sentence: #string) -> #string
+]
+```
+
+#### Special types
+
+The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
+
+- `#anything`
+- `(something)`
+- `#nothing`
+- `#never`
+
+### Unpacking collections
 
 Collection and tuple values may be unpacked on assignment. Objects keys must be referenced using dot notation.
 
