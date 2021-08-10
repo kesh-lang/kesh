@@ -72,7 +72,7 @@ primate: [
 ]
 
 human: primate [
-    hairy: false  -- shadow field
+    hairy: false  -- shadowed field
     walks: true
     talks: true
 ]
