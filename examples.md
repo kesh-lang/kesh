@@ -146,6 +146,8 @@ greet person [ name: 'Joe', friend: true ]  -- right associativity, equivalent t
 --> 'Hey, Joe!'
 ```
 
+In **kesh**, a function is an object and an object is a function (producing an object of itself applied as a prototype to the provided object).
+
 ### Conditionals
 
 Everything is an expression.
