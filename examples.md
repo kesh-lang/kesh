@@ -206,23 +206,27 @@ There are no interfaces, only types.
 An object type may be used as a prototype, as it's both a type definition and a plain object.
 
 ```lua
-#human: #primate & [
-    hairy: false  -- default value, inferred as #boolean
+#primate: [
+    hairy: #boolean
+]
+
+#human: #primate [
+    hairy: false  -- literal type
     name: #string
 ]
 
-greet: (person: #human) -> { "Hey, { person.name }!" }
-
 joe: #human [ name: 'Joe' ]
---> [ name: 'Joe', hairy: false, … ]
 
-greet joe
---> 'Hey, Joe!'
+joe of #human
+--> true
+
+joe of #primate
+--> true
 ```
 
 #### Protocols
 
-An object type may also simply be a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+An object type can also simply be a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
 
 ```lua
 #walker-talker: [
