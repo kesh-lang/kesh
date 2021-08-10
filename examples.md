@@ -244,6 +244,18 @@ The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641
 - `#nothing`
 - `#never`
 
+### Operators
+
+Arithmetic operators coerce their operands to `#number`.
+
+Logical operators use words.
+
+```lua
+not true        --> false
+true and false  --> false
+true or false   --> true
+```
+
 ### Unpacking collections
 
 Collection and tuple values may be unpacked on assignment. Objects keys must be referenced using dot notation.
@@ -293,16 +305,4 @@ set mutable: true
 
 joe: *[ name: 'Joe' ]  -- mutable collection
 set joe.name: 'Joseph'
-```
-
-### Operators
-
-Arithmetic operators coerce their operands to `#number`.
-
-Logical operators use words.
-
-```lua
-not true        --> false
-true and false  --> false
-true or false   --> true
 ```
