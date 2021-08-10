@@ -83,7 +83,7 @@ joe: human [
 --> [ name: 'Joe', hairy: false, walks: true, talks: true ]
 ```
 
-The bottom prototype is the unit type `#nothing` that only ever returns itself.
+The bottom prototype is the unit type `#nothing`, an object that only ever returns itself.
 
 Accessing a missing field will therefore not produce an error, but always return `#nothing`.
 
@@ -223,7 +223,7 @@ An object type can also simply be a [protocol](https://en.wikipedia.org/wiki/Pro
 
 #### Special types
 
-The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68). The top type is `#anything` and the bottom type is `#never`.
+The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68), an object that only ever returns itself. The top type is `#anything` and the bottom type is `#never`.
 
 - `#anything`
 - `(something)`
