@@ -194,8 +194,9 @@ There are no interfaces, only types.
 To cast to a type, simply apply the type to the value as if it was a function.
 
 ```lua
-answer: #number '42'  --> 42
-truth: #boolean 1     --> true
+string: #string 42    --> '42'
+number: #number '42'  --> 42
+boolean: #boolean 42  --> true
 ```
 
 #### Object types
