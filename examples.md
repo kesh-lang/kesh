@@ -34,8 +34,8 @@ Arrays are 0-indexed by default.
 
 ```lua
 people: [  -- an array of objects
-    [ name: 'Joe', age: 27 ]   -- index 0
-    [ name: 'Jane', age: 30 ]  -- index 1
+    [ name: 'Joe', age: 27 ]
+    [ name: 'Jane', age: 30 ]
 ]
 ```
 
