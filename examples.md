@@ -189,12 +189,12 @@ pattern: match age
 
 #### Zero-values
 
-For example, **kesh** uses zero-values for its primitive types (all "falsy" values).
+Similar to Go, **kesh** uses zero-values for its primitive types.
 
 ```lua
-boolean:  #boolean  --> false
-number:   #number   --> 0
-string:   #string   --> ''
+boolean: #boolean  --> false
+number:  #number   --> 0
+string:  #string   --> ''
 ```
 
 #### Type definitions
@@ -278,7 +278,7 @@ Collection and tuple values may be unpacked on assignment. Objects keys must be 
 (b2, a2): (a1, b1)  -- value swapping with tuples
 ```
 
-This can also be done within the function's parameter as part of its definition.
+This can also be done within the function's parameter as part of its definition (complex example).
 
 ```lua
 open: (
