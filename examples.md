@@ -292,14 +292,12 @@ open: (
     ]: #options                    -- type annotation of the options value
 ) -> #nothing {
     -- values available within the block:
-    (
-        window: main
-        title: 'Untitled'
-        w: 100
-        h: 200
-        intro: intro
-        fields: [field1, field2]
-    )
+    -- window: main
+    -- title: 'Untitled'
+    -- w: 100
+    -- h: 200
+    -- intro: intro
+    -- fields: [field1, field2]
 }
 
 open(window: main, options: [ items: [intro, field1, field2] ])
