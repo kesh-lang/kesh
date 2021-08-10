@@ -172,6 +172,17 @@ number:  #number   --> 0
 string:  #string   --> ''
 ```
 
+#### Type conversion
+
+To cast to a type, simply apply the type to the value as if it was a function.
+
+```lua
+boolean: #boolean 42  --> true
+number: #number '42'  --> 42
+string: #string 42    --> '42'
+nothing: #nothing 42  --> #nothing
+```
+
 #### Type definitions
 
 There are no interfaces, only types.
@@ -185,19 +196,7 @@ There are no interfaces, only types.
 
 #colorful: [ color: #string ]           -- object
 #circle: [ radius: #number ]
-
 #colorful-circle: #colorful & #circle   -- intersection
-```
-
-#### Type conversion
-
-To cast to a type, simply apply the type to the value as if it was a function.
-
-```lua
-boolean: #boolean 42  --> true
-number: #number '42'  --> 42
-string: #string 42    --> '42'
-nothing: #nothing 42  --> #nothing
 ```
 
 #### Object types
