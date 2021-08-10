@@ -174,13 +174,12 @@ string:  #string   --> ''
 
 #### Type conversion
 
-To cast to a type, simply apply the type to the value as if it was a function.
+To cast to a primitive type, simply apply the type to the value as if it was a function.
 
 ```lua
-boolean: #boolean 42  --> true
-number: #number '42'  --> 42
-string: #string 42    --> '42'
-nothing: #nothing 42  --> #nothing
+boolean: #boolean 42   --> true
+number:  #number '42'  --> 42
+string:  #string 42    --> '42'
 ```
 
 #### Type definitions
