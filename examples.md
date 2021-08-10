@@ -125,6 +125,15 @@ b       --> b is not defined
 answer  --> 42
 ```
 
+### String interpolation
+
+Double-quoted strings support interpolation, which is simply inline blocks evaluated within the string.
+
+```lua
+answer: "The answer is { 3 * 14 }"  --> 'The answer is 42'
+hello: "Hey, { joe.name }!"         --> 'Hey, Joe!'
+```
+
 ### Functions
 
 Functions are first-class citizens with closure. They have exactly one parameter, which may of course be a tuple.
@@ -146,7 +155,7 @@ greet person [ name: 'Joe', friend: true ]  -- right associativity, equivalent t
 --> 'Hey, Joe!'
 ```
 
-In **kesh**, a function is an object and an object is a function (producing an object of itself applied as a prototype to the provided object).
+In **kesh**, a function is an object and an object is a function (producing a new object with itself applied as prototype to the provided object).
 
 ### Conditionals
 
