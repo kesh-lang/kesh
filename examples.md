@@ -177,19 +177,30 @@ string:  #string   --> ''
 There are no interfaces, only types.
 
 ```lua
-#point: (x: #number, y: #number)
+#point: (x: #number, y: #number)        -- tuple
 
-#result: #number | #string | [#string]
+#strings: [#string]                     -- array
 
-#colorful: [ color: #string ]
+#result: #string | #strings             -- union
+
+#colorful: [ color: #string ]           -- object
 #circle: [ radius: #number ]
 
-#colorful-circle: #colorful & #circle
+#colorful-circle: #colorful & #circle   -- intersection
+```
+
+#### Type conversion
+
+To perform a cast, simply apply it to the value as if it was a function.
+
+```lua
+answer: #number '42'  --> 42
+truth: #boolean 1     --> true
 ```
 
 #### Object types
 
-An object type may be used as a prototype, as it's both a type definition and a plain object.
+An object type may likewise be used as a prototype, being both a type definition and a plain object.
 
 ```lua
 #primate: [
@@ -212,7 +223,7 @@ joe of #primate
 
 #### Protocols
 
-An object type can also simply be a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+On the other hand, an object type can also simply be a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
 
 ```lua
 #walker-talker: [
