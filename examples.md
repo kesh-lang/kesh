@@ -188,7 +188,7 @@ string:   #string   --> ''
 
 #### Type definitions
 
-There are no interfaces in **kesh**, only type definitions.
+There are no interfaces, only types.
 
 ```lua
 #point: (x: #number, y: #number)
@@ -203,7 +203,7 @@ There are no interfaces in **kesh**, only type definitions.
 
 #### Object types
 
-An object type can be used to define a prototype, being both a plain object and a type definition.
+An object type may be used as a prototype, as it's both a type definition and a plain object.
 
 ```lua
 #human: #primate & [
@@ -211,18 +211,23 @@ An object type can be used to define a prototype, being both a plain object and 
     name: #string
 ]
 
-joe: #person [ name: 'Joe' ]
+greet: (person: #human) -> { "Hey, { person.name }!" }
+
+joe: #human [ name: 'Joe' ]
 --> [ name: 'Joe', hairy: false, … ]
+
+greet joe
+--> 'Hey, Joe!'
 ```
 
 #### Protocols
 
-An object type can also be a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+An object type may also simply be a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
 
 ```lua
-#person: [
+#walker-talker: [
     walk: (meter: #number) -> #string
-    talk: (sentence: #string) -> #string
+    talk: (words: #string) -> #string
 ]
 ```
 
