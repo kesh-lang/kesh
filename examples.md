@@ -245,10 +245,10 @@ The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641
 
 Everything is an expression.
 
-Conditionals are either the usual `if…elseif…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
+Conditionals are either the traditional `if…elseif…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
 
 ```lua
-old-school: if age < 13 then 'kid' else if age < 20 then 'teenager' else 'adult'
+traditional: if age < 13 then 'kid' else if age < 20 then 'teenager' else 'adult'
 
 ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
 
