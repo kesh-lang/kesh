@@ -248,23 +248,16 @@ Everything is an expression.
 Conditionals are either the usual `if…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
 
 ```lua
-old-school: if age < 13 {
-    'kid'
-}
-else if age < 20 {
-    'teenager'
-}
-else {
-    'adult'
-}
+old-school: if age < 13 then 'kid' else if age < 20 then 'teenager' else 'adult'
 
 ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
-default: 'kid' if age < 13  --> results in #nothing if the condition is false
+
+default: 'kid' if age < 13   -- results in #nothing if the condition is false
 
 pattern: match age
     | 0..12   -> 'kid'       -- range is inclusive
     | 13..<20 -> 'teenager'  -- range is exclusive
-    | 20..    -> 'adult'     -- to infinity (and beyond!)
+    | 20..    -> 'adult'     -- to infinity (and beyond)
 ```
 
 ### Operators
