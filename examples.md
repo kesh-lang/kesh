@@ -296,9 +296,9 @@ Arithmetic operators coerce their operands to `#number`.
 Logical operators use words.
 
 ```lua
-not true        --> false
-true and false  --> false
-true or false   --> true
+not true
+true and false
+true or false
 ```
 
 ### Unpacking collections
