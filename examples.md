@@ -28,6 +28,8 @@ answer ~≠ '42'  --> false (loose inequality)
 
 ### Composite types
 
+#### Collections
+
 Collections are similar to Lua's tables, able to represent both linear values (an array) and key-value fields (an object).
 
 Arrays are 0-indexed by default.
@@ -38,6 +40,8 @@ people: [  -- an array of objects
     [ name: 'Jane', age: 30 ]
 ]
 ```
+
+#### Tuples
 
 Tuples are a much simpler, but very useful, data structure for grouping related values.
 
