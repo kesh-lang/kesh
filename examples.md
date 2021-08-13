@@ -150,7 +150,7 @@ Because a 1-tuple is equivalent to its value, a function may be applied to a sin
 Function application is right associative.
 
 ```lua
-times: (a, b) -> { a * b }
+times: (a, b) -> a * b
 
 greet: (someone) -> {
     greeting: 'Hey' if someone.friend else 'Hello'
