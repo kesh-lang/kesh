@@ -160,7 +160,7 @@ greet person [ name: 'Joe', friend: true ]  -- right associativity, equivalent t
 hello: (() -> {}) []
 ```
 
-Note how an object is also a function (`person` in the example above) returning a new object of itself applied as prototype to the provided object.
+Note how an object is also a function (`person` in the example) returning a new object of itself applied as prototype to the provided object.
 
 #### Composition
 
