@@ -289,6 +289,10 @@ pattern: match age
 
 Arithmetic operators coerce their operands to `#number`.
 
+```lua
+4 + '2' = 6  --> true
+```
+
 Logical operators use words.
 
 ```lua
