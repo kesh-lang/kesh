@@ -160,7 +160,7 @@ greet person [ name: 'Joe', friend: true ]  -- equivalent to: greet(person([ …
 hello: (() -> {}) []
 ```
 
-Note how an object is also a function (`person` in the example), returning a new object with itself applied as prototype to the provided object.
+Note how an object is also a function (`person` in the example), returning the provided object with itself applied as the prototype.
 
 #### Composition
 
