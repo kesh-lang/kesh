@@ -130,9 +130,11 @@ a       --> 1
 b       --> b is not defined
 ```
 
-### String interpolation
+### Strings
 
-Double-quoted strings support interpolation, which is simply inline blocks evaluated within the string.
+Single-quoted strings are literal (raw) strings.
+
+Double-quoted strings support escape sequences, and interpolation, which is simply inline blocks evaluated within the string.
 
 ```lua
 answer: "The answer is { 3 * 14 }"  --> 'The answer is 42'
