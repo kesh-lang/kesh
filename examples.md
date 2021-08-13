@@ -137,6 +137,8 @@ greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
 
 ### Functions
 
+**kesh** is a functional language.
+
 Functions are first-class citizens with closure. The arity is always 1, the argument can of course be a tuple.
 
 Because a 1-tuple is equivalent to its value, a function may be applied to a single value without the use of parens.
@@ -154,9 +156,20 @@ times(3, 14)  -- conceptually: times (3, 14)
 
 greet person [ name: 'Joe', friend: true ]  -- right associativity, equivalent to: greet(person([ … ]))
 --> 'Hey, Joe!'
+
+hello: (() -> {}) []
 ```
 
-In **kesh**, a function is an object and an object is a function (producing a new object with itself applied as prototype to the provided object).
+Note how an object is also a function (`person` in the example above) returning a new object of itself applied as prototype to the provided object.
+
+#### Composition
+
+Functions may be combined using the composition operators `>>` and `<<`.
+
+```lua
+square >> negate >> print  -- forward function composition
+print << negate << square  -- backward function composition
+```
 
 ### Type system
 
