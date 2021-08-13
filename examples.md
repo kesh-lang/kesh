@@ -137,8 +137,6 @@ greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
 
 ### Functions
 
-**kesh** is a functional language.
-
 Functions are first-class citizens with closure. All functions have an arity of 1. The argument can of course be a tuple.
 
 Because a 1-tuple is equivalent to its value, a function may be applied to a single value without the use of parens.
