@@ -156,8 +156,6 @@ times(3, 14)  -- conceptually: times (3, 14)
 
 greet person [ name: 'Joe', friend: true ]  -- equivalent to: greet(person([ … ]))
 --> 'Hey, Joe!'
-
-hello: (() -> {}) []
 ```
 
 Note how an object is also a function (`person` in the example), returning the provided object with itself applied as the prototype.
