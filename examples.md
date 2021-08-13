@@ -30,7 +30,7 @@ answer ~≠ '42'  --> false (loose inequality)
 
 #### Collections
 
-Collections are similar to Lua's tables, able to represent both linear values (an array) and key-value fields (an object).
+Similar to Lua's tables, collections are able to represent both linear values (array) and key-value fields (object).
 
 Arrays are 0-indexed by default.
 
