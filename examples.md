@@ -196,7 +196,7 @@ There are no interfaces, only types.
 ```lua
 #point: (x: #number, y: #number)        -- tuple
 
-#strings: [#string]                     -- array
+#strings: #string[]                     -- array
 
 #result: #string | #strings             -- union
 
