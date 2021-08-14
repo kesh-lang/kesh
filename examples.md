@@ -36,7 +36,7 @@ There are five primitive types:
 - Symbols
 - Nothing
 
-Booleans and numbers are as described in [na](https://github.com/kesh-lang/na#primitive-values), except that numbers are [IEEE 754 double-precision 64-bit floating-point](https://en.wikipedia.org/wiki/Floating-point_arithmetic#IEEE_754:_floating_point_in_modern_computers) values due to the underlying JavaScript runtime.
+Booleans and numbers are as described in [na](https://github.com/kesh-lang/na#primitive-values), except that numbers are [IEEE 754 double-precision 64-bit floating-point](https://en.wikipedia.org/wiki/Floating-point_arithmetic#IEEE_754:_floating_point_in_modern_computers) values due to the underlying ECMAScript runtime.
 
 #### Strings
 
@@ -69,7 +69,7 @@ There must be a way to represent the absence of a value. Instead of `null` or `u
 
 ### Composite types
 
-Due to the underlying JavaScript runtime, composite types are reference types. Once JavaScript supports [immutable records and tuples](https://github.com/tc39/proposal-record-tuple) these will be value types by default, only becoming reference types if initialized as mutable.
+Due to the underlying ECMAScript runtime, composite types are reference types. Once ECMAScript supports [immutable records and tuples](https://github.com/tc39/proposal-record-tuple) these will be value types by default, only becoming reference types if initialized as mutable.
 
 #### Collections
 
@@ -103,7 +103,7 @@ A common use of tuples is to group multiple values as a [function](#functions)'s
 
 ### Objects
 
-Objects (collections of key-value fields) are an essential part of the language. As in JavaScript and TypeScript, functions are objects, arrays are in fact objects with auto-indexed numeric keys, and primitive values are automatically upgraded to objects as needed.
+Objects (collections of key-value fields) are an essential part of the language. As in ECMAScript, functions are objects, arrays are in fact objects with auto-indexed numeric keys, and primitive values are automatically upgraded to objects as needed.
 
 In **kesh**, even the unit type is an object.
 
