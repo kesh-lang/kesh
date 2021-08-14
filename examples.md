@@ -130,7 +130,7 @@ joe: human [
 --> [ name: 'Joe', hairy: false, walks: true, talks: true ]
 ```
 
-Conceptually, an object _is_ also a function, returning a copy of the provided object with itself applied as the prototype.
+Conceptually, an object is also a function that returns a copy of the provided object with itself applied as the prototype.
 
 The bottom prototype is the unit type [`#nothing`](#special-types), an object that only ever returns itself.
 
