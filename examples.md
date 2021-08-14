@@ -227,6 +227,8 @@ joe: [
 ]
 
 greet joe
+--> 'Applying greet to Joe'
+--> 'Result: Hey, magnificent Joe!'
 --> 'Hey, magnificent Joe!'
 ```
 
