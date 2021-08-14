@@ -36,7 +36,7 @@ There are five primitive types:
 - Symbols
 - Nothing
 
-Booleans and numbers are as described in [na](https://github.com/kesh-lang/na#primitive-values), except that numbers are [IEEE 754 double-precision 64-bit floating-point](https://en.m.wikipedia.org/wiki/Floating-point_arithmetic#IEEE_754:_floating_point_in_modern_computers) values due to the underlying JavaScript runtime.
+Booleans and numbers are as described in [na](https://github.com/kesh-lang/na#primitive-values), except that numbers are [IEEE 754 double-precision 64-bit floating-point](https://en.wikipedia.org/wiki/Floating-point_arithmetic#IEEE_754:_floating_point_in_modern_computers) values due to the underlying JavaScript runtime.
 
 #### Strings
 
@@ -51,7 +51,7 @@ greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
 
 #### Symbols
 
-[Symbols](https://en.m.wikipedia.org/wiki/Symbol_(programming)) are human-readable values that are guaranteed to be unique.
+[Symbols](https://en.wikipedia.org/wiki/Symbol_(programming)) are human-readable values that are guaranteed to be unique.
 
 Symbols may be either named (globally shared) or anonymous (secret). Named symbols can have an optional string description.
 
