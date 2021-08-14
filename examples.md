@@ -69,7 +69,7 @@ There must be a way to represent the absence of value. Instead of `null` or `und
 
 ### Composite types
 
-Due to the underlying ECMAScript runtime, composite types are reference types. Once ECMAScript supports [immutable records and tuples](https://github.com/tc39/proposal-record-tuple), composite types will be value types by default, only becoming reference types if initialized as mutable.
+Due to the underlying ECMAScript runtime, composite types are reference types. Once ECMAScript supports [immutable records and tuples](https://github.com/tc39/proposal-record-tuple), composite types will be value types by default, only becoming reference types if initialized as [mutable](#mutation).
 
 #### Collections
 
