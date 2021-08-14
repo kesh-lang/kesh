@@ -243,7 +243,7 @@ print << negate << square  -- backward function composition
 
 #### Pipeline
 
-Values may be piped into functions using the pipeline `|>` and placeholder `_` operators ([Hack pipes](https://github.com/js-choi/proposal-hack-pipes)).
+Values may be piped into functions using the pipeline `|>` and placeholder `_` operators.
 
 ```lua
 answer: 20
