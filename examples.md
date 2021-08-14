@@ -130,6 +130,8 @@ joe: human [
 --> [ name: 'Joe', hairy: false, walks: true, talks: true ]
 ```
 
+Conceptually, an object is also a function, returning a copy of the provided object with itself applied as the prototype.
+
 The bottom prototype is the unit type [`#nothing`](#special-types), an object that only ever returns itself.
 
 Accessing a missing field will therefore not produce an error, but always return `#nothing`.
@@ -196,7 +198,7 @@ greet human [ name: 'Joe', friend: true ]  -- equivalent to: greet(human([ … ]
 --> 'Hey, Joe!'
 ```
 
-Note how an object is also a function (`human` in the example), returning a copy of the provided object with itself applied as the prototype.
+In the example above, `human` is an object applying itself as the prototype of the object literal.
 
 #### Modifiers (decorators)
 
