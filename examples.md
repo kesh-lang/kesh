@@ -65,7 +65,7 @@ secret = @('foo')  --> false
 
 #### Nothing
 
-There must be a way to represent the absence of value. Instead of `null` or `undefined`, there's the unit type [`#nothing`](#special-types).
+There must be a way to represent the absence of value. Instead of `null` or `undefined`, an empty [tuple](#tuple) `()` represents the unit type [`#nothing`](#special-types).
 
 ### Composite types
 
