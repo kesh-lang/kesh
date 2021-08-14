@@ -26,7 +26,48 @@ answer ~= '42'  --> true (loose equality)
 answer ~≠ '42'  --> false (loose inequality)
 ```
 
+### Primitive types
+
+There are five primitive types:
+
+- Booleans
+- Numbers
+- Strings
+- Symbols
+- Nothing
+
+Booleans and numbers are as described in [na](https://github.com/kesh-lang/na#primitive-values), except that numbers are [IEEE 754 double-precision 64-bit floating-point](https://en.m.wikipedia.org/wiki/Floating-point_arithmetic#IEEE_754:_floating_point_in_modern_computers) values due to the underlying JavaScript runtime.
+
+#### Strings
+
+Single-quoted strings are literal (raw) strings.
+
+Double-quoted strings support escape sequences, and interpolation, which is simply inline blocks evaluated within the string.
+
+```lua
+answer: "The answer is { 3 * 14 }"  --> 'The answer is 42'
+greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
+```
+
+#### Symbols
+
+[Symbols](https://en.m.wikipedia.org/wiki/Symbol_(programming)) are human-readable values that are guaranteed to be unique. Symbols may be either named or anonymous.
+
+```lua
+named: @foo
+anon:  @()
+
+named = @foo  --> true
+anon  = @()   --> false
+```
+
+#### Nothing
+
+There must be a way to represent the absence of a value. Instead of `null` or `undefined`, there's the unit type [`#nothing`](#special-types).
+
 ### Composite types
+
+Due to the underlying JavaScript runtime, composite types are reference types. Once JavaScript supports [immutable records and tuples](https://github.com/tc39/proposal-record-tuple) these will be value types by default, only becoming reference types if initialized as mutable.
 
 #### Collections
 
@@ -130,17 +171,6 @@ a       --> 1
 b       --> b is not defined
 ```
 
-### Strings
-
-Single-quoted strings are literal (raw) strings.
-
-Double-quoted strings support escape sequences, and interpolation, which is simply inline blocks evaluated within the string.
-
-```lua
-answer: "The answer is { 3 * 14 }"  --> 'The answer is 42'
-greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
-```
-
 ### Functions
 
 Functions are first-class citizens with closure. All functions have an arity of 1. The argument can of course be a tuple.
@@ -150,21 +180,49 @@ Because a 1-tuple is equivalent to its value, a function may be applied to a sin
 Function application is right associative.
 
 ```lua
-times: (a, b) -> a * b
+sum: (a, b) -> a + b
 
-greet: (someone) -> {
-    greeting: 'Hey' if someone.friend else 'Hello'
-    "{ greeting }, { someone.name }!"
+greet: (person) -> {
+    greeting: 'Hey' if person.friend else 'Hello'
+    "{ greeting }, { person.name }!"
 }
 
-times(3, 14)  -- conceptually: times (3, 14)
+sum(35, 7)  -- conceptually: sum (35, 7)
 --> 42
 
-greet person [ name: 'Joe', friend: true ]  -- equivalent to: greet(person([ … ]))
+greet human [ name: 'Joe', friend: true ]  -- equivalent to: greet(human([ … ]))
 --> 'Hey, Joe!'
 ```
 
-Note how an object is also a function (`person` in the example), returning a copy of the provided object with itself applied as the prototype.
+Note how an object is also a function (`human` in the example), returning a copy of the provided object with itself applied as the prototype.
+
+#### Modifiers (decorators)
+
+Modifiers are simply functions applied to values upon assignment, more like [Python's decorators](https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators) than [TypeScript's](https://www.typescriptlang.org/docs/handbook/decorators.html).
+
+```lua
+formatted: (pattern) -> (string) -> pattern.replace('%s', string)
+
+logged: (function) -> (...arguments) -> {
+    print "Applying { function.name } to { arguments.join(', ') }"
+    result: function(...arguments)
+    print "Result: { result }"
+    result
+}
+```
+
+```lua
+greet: logged (name) -> {
+    -- …
+}
+
+joe: [
+    name: formatted('magnificent %s') 'Joe'
+]
+
+greet joe
+--> 'Hey, magnificent Joe!'
+```
 
 #### Composition
 
@@ -181,7 +239,7 @@ Values may be piped into functions using the pipeline `|>` and placeholder `_` o
 
 ```lua
 answer: 20
-    |> times(_, 2)
+    |> sum(_, 20)
     |> _ + 2
 ```
 
@@ -251,7 +309,7 @@ On the other hand, an object type could be just a type definition or [protocol](
 
 #### Special types
 
-The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68), an object that only ever returns itself. The top type is `#anything` and the bottom type is `#never`.
+The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68), a special object that only ever returns itself. The top type is `#anything` and the bottom type is `#never`.
 
 - `#anything`
 - `(something)`
