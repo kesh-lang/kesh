@@ -311,7 +311,7 @@ On the other hand, an object type could be just a type definition or [protocol](
 
 #### Special types
 
-The unit type is [`#nothing`](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68), a special object that only ever returns itself. The top type is `#anything` and the bottom type is `#never`.
+The unit type is `#nothing`, a [special object](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68) that only ever returns itself. The top type is `#anything` and the bottom type is `#never`.
 
 - `#anything`
 - `(something)`
