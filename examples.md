@@ -88,7 +88,7 @@ people: [  -- an array of objects
 
 Tuples are a much simpler, but very useful, data structure for grouping related values.
 
-A tuple of only one value is equivalent to that value. An empty tuple is equivalent to `#nothing`, the unit type.
+A tuple of only one value is equivalent to that value. An empty tuple is equivalent to [`#nothing`](#special-types).
 
 ```lua
 nothing: ()      --> #nothing
@@ -105,7 +105,7 @@ A common use of tuples is to group multiple values as a [function](#functions)'s
 
 Objects (collections of key-value fields) are an essential part of the language. As in ECMAScript, functions are objects, arrays are in fact objects with auto-indexed numeric keys, and primitive values are automatically upgraded to objects as needed.
 
-In **kesh**, even the unit type is an object.
+In **kesh**, even [the unit type](#special-types) is an object.
 
 #### Delegation
 
@@ -130,7 +130,7 @@ joe: human [
 --> [ name: 'Joe', hairy: false, walks: true, talks: true ]
 ```
 
-The bottom prototype is the unit type `#nothing`, an object that only ever returns itself.
+The bottom prototype is the unit type [`#nothing`](#special-types), an object that only ever returns itself.
 
 Accessing a missing field will therefore not produce an error, but always return `#nothing`.
 
