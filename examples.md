@@ -202,7 +202,7 @@ In the example above, `human` is an object applying itself as the prototype of t
 
 Although blocks return the value of the last expression, a `return` keyword is also provided for early termination.
 
-#### Modifiers (decorators)
+#### Modifiers
 
 Modifiers are simply functions applied to values upon assignment, more like [Python's decorators](https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators) than [TypeScript's](https://www.typescriptlang.org/docs/handbook/decorators.html).
 
