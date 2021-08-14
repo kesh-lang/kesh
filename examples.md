@@ -290,8 +290,8 @@ true or false
 Arithmetic operators coerce their operands to `#number`.
 
 ```lua
-4 + '2'      --> 6
 true + true  --> 2
+4 + '2'      --> 6
 ```
 
 ### Unpacking collections
