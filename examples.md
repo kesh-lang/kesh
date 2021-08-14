@@ -51,7 +51,7 @@ greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
 
 #### Symbols
 
-[Symbols](https://en.wikipedia.org/wiki/Symbol_(programming)) are human-readable values that are guaranteed to be unique.
+[Symbols](https://en.wikipedia.org/wiki/Symbol_(programming)) are human-readable immutable values that are guaranteed to be unique.
 
 Symbols may be either named (globally shared) or anonymous (secret). Named symbols can have an optional string description.
 
