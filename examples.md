@@ -189,26 +189,6 @@ answer: 20
 
 **kesh** inherits TypeScript's gradual and structural type system, with certain differences.
 
-#### Zero-values
-
-Similar to Go, **kesh** uses zero-values for its primitive types.
-
-```lua
-boolean: #boolean  --> false
-number:  #number   --> 0
-string:  #string   --> ''
-```
-
-#### Type conversion
-
-To cast to a primitive type, simply apply the type to the value as if it was a function.
-
-```lua
-boolean: #boolean 42   --> true
-number:  #number '42'  --> 42
-string:  #string 42    --> '42'
-```
-
 #### Type definitions
 
 There are no interfaces, only types.
@@ -225,9 +205,19 @@ There are no interfaces, only types.
 #colorful-circle: #colorful & #circle   -- intersection
 ```
 
+#### Type conversion
+
+To cast to a primitive type, simply apply the type to the value as if it was a function.
+
+```lua
+boolean: #boolean 42   --> true
+number:  #number '42'  --> 42
+string:  #string 42    --> '42'
+```
+
 #### Object types
 
-An object type may also be used as a prototype, being both a type definition and a plain object.
+An object type may also be used as a prototype, as it is both a type definition and a plain object.
 
 ```lua
 #primate: [
@@ -250,7 +240,7 @@ joe of #primate
 
 #### Protocols
 
-On the other hand, an object type can also simply be a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+On the other hand, an object type could be just a type definition or [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
 
 ```lua
 #walker-talker: [
@@ -289,18 +279,19 @@ pattern: match age
 
 ### Operators
 
-Arithmetic operators coerce their operands to `#number`.
-
-```lua
-4 + '2' = 6  --> true
-```
-
 Logical operators use words.
 
 ```lua
 not true
 true and false
 true or false
+```
+
+Arithmetic operators coerce their operands to `#number`.
+
+```lua
+4 + '2'      --> 6
+true + true  --> 2
 ```
 
 ### Unpacking collections
