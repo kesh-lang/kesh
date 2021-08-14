@@ -53,13 +53,13 @@ greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
 
 [Symbols](https://en.wikipedia.org/wiki/Symbol_(programming)) are human-readable immutable values that are guaranteed to be unique.
 
-Symbols may be either named (globally shared) or anonymous (secret). Named symbols can have an optional string description.
+Symbols may be either named (global) or anonymous (secret). Named symbols can have an optional string description.
 
 ```lua
-shared: @foo
+global: @foo
 secret: @('foo')
 
-shared = @foo      --> true
+global = @foo      --> true
 secret = @('foo')  --> false
 ```
 
