@@ -51,14 +51,16 @@ greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
 
 #### Symbols
 
-[Symbols](https://en.m.wikipedia.org/wiki/Symbol_(programming)) are human-readable values that are guaranteed to be unique. Symbols may be either named or anonymous.
+[Symbols](https://en.m.wikipedia.org/wiki/Symbol_(programming)) are human-readable values that are guaranteed to be unique.
+
+Symbols may be either named (globally shared) or anonymous (secret). Named symbols can have an optional string description.
 
 ```lua
-named: @foo
-anon:  @()
+shared: @foo
+secret: @('foo')
 
-named = @foo  --> true
-anon  = @()   --> false
+shared = @foo      --> true
+secret = @('foo')  --> false
 ```
 
 #### Nothing
