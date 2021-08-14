@@ -204,7 +204,7 @@ Although blocks return the value of the last expression, a `return` keyword is a
 
 #### Modifiers
 
-Modifiers are simply functions applied to values upon assignment, more like [Python's decorators](https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators) than [TypeScript's](https://www.typescriptlang.org/docs/handbook/decorators.html).
+Modifiers are simply factory functions applied to values, more like [Python's decorators](https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators) than [TypeScript's](https://www.typescriptlang.org/docs/handbook/decorators.html).
 
 ```lua
 formatted: (pattern) -> (string) -> pattern.replace('%s', string)
