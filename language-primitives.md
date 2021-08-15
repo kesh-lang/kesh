@@ -14,7 +14,7 @@
   - Keys are either identifiers, strings or whole numbers
 - A collection of values whose keys are whole numbers is an array
   - A collection of values defined without keys is implicitly keyed by whole numbers in ascending order starting from 0
-- A collection may be the prototype of another collection, through delegation
+- A collection may be the prototype of another collection through delegation
 
 ### Blocks
 
