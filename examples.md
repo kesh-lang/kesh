@@ -143,7 +143,7 @@ joe: [
 
 ### Tuples
 
-Tuples are a simpler, but very useful, data structure for grouping related values.
+Tuples are a much simpler, but very useful, data structure for grouping related values.
 
 A tuple of only one value is equivalent to that value. An empty tuple is equivalent to [`#nothing`](#special-types).
 
@@ -201,7 +201,7 @@ greet human [ name: 'Joe', friend: true ]  -- equivalent to: greet(human([ … ]
 --> 'Hey, Joe!'
 ```
 
-In the example above, `human` is an object applying itself as the prototype of the object literal.
+In the example above, `human` is a collection applying itself as the prototype of the collection literal.
 
 Although blocks return the value of the last expression, a `return` keyword is also provided for early termination.
 
@@ -261,9 +261,9 @@ number:  #number '42'  --> 42
 string:  #string 42    --> '42'
 ```
 
-#### Object types
+#### Collection types
 
-An object type may also be used as a prototype, as it is both a type definition and an actual object.
+A collectiom type may also be used as a prototype, as it is both a type definition and an actual collection.
 
 ```lua
 #primate: [
@@ -286,7 +286,7 @@ joe of #primate
 
 #### Protocols
 
-On the other hand, an object type could be just a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+On the other hand, a collection type could be just a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
 
 ```lua
 #walker-talker: [
@@ -297,7 +297,7 @@ On the other hand, an object type could be just a [protocol](https://en.wikipedi
 
 #### Special types
 
-The unit type is `#nothing`, a [special object](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68) that only ever returns itself. The top type is `#anything` and the bottom type is `#never`.
+The unit type is `#nothing`, a [special collection](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68) that only ever returns itself. The top type is `#anything` and the bottom type is `#never`.
 
 - `#anything`
 - `(something)`
@@ -376,7 +376,7 @@ set joe.name: 'Joseph'
 
 ### Unpacking
 
-Collection and tuple values may be unpacked on assignment. Objects keys must be referenced using dot notation.
+Collection and tuple values may be unpacked on assignment. Collection keys must be referenced using dot notation.
 
 ```lua
 [first, ...rest]: [1, 2, 3]  -- rest is an array
