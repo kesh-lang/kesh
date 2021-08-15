@@ -80,7 +80,9 @@ Due to the underlying ECMAScript runtime, composite types are reference types. O
 
 Similar to Lua's tables, collections are able to represent both linear values (array) and key-value fields (object).
 
-They are an essential part of the language. As in ECMAScript, arrays are collections with auto-indexed numeric keys, functions are collections, and primitive values are automatically upgraded to collections as needed (autoboxing). In **kesh**, even [the unit type](#special-types) is a collection.
+They are an essential part of the language. As in ECMAScript, arrays are collections with auto-indexed numeric keys, functions are collections, and primitive values are automatically upgraded to collections as needed (autoboxing).
+
+In **kesh**, even [the unit type](#special-types) is a collection.
 
 Array collections are 0-indexed by default.
 
