@@ -76,7 +76,7 @@ There are two composite types:
 
 Due to the underlying ECMAScript runtime, composite types are reference types. Once ECMAScript supports [immutable records and tuples](https://github.com/tc39/proposal-record-tuple), composite types will be value types by default, only becoming reference types if [marked as mutable](#mutation).
 
-### Collections
+#### Collections
 
 Similar to Lua's tables, collections are able to represent both linear values (array) and key-value fields (object).
 
@@ -93,7 +93,7 @@ people: [  -- an array of objects
 ]
 ```
 
-#### Delegation
+##### Delegation
 
 As a prototype-based language, there are no classes or inheritance, only collections and [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)).
 
@@ -127,7 +127,7 @@ joe.foo.bar.baz
 --> #nothing
 ```
 
-#### Concatenation
+##### Concatenation
 
 An alternative to delegation is [concatenation](https://en.wikipedia.org/wiki/Prototype-based_programming#Concatenation) of collections.
 
@@ -141,7 +141,7 @@ joe: [
 ]
 ```
 
-### Tuples
+#### Tuples
 
 Tuples are a much simpler, but very useful, data structure for grouping related values.
 
