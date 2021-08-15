@@ -11,9 +11,9 @@
 
 - A collection is the fundamental data structure
 - Values may be assigned to keys within a collection
-- Keys are either identifiers, strings or whole numbers
+  - Keys are either identifiers, strings or whole numbers
 - A collection of values whose keys are whole numbers is an array
-- A collection of values defined without keys is implicitly keyed by whole numbers in ascending order starting from 0
+  - A collection of values defined without keys is implicitly keyed by whole numbers in ascending order starting from 0
 - A collection may be the prototype of another collection, through delegation
 
 ### Blocks
