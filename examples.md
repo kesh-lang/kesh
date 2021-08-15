@@ -1,6 +1,6 @@
 # Examples
 
-### Assignment and values
+## Assignment and values
 
 Variables and values are immutable by default (single assignment, value semantics).
 
@@ -8,7 +8,7 @@ Variables and values are immutable by default (single assignment, value semantic
 answer: 42
 ```
 
-### Equality
+## Equality
 
 Using `:` as the assignment operator means `=` is free to be used as the equality operator, as it should be.
 
@@ -26,7 +26,7 @@ answer ~= '42'  --> true (loose equality)
 answer ~≠ '42'  --> false (loose inequality)
 ```
 
-### Primitive types
+## Primitive types
 
 There are five primitive types:
 
@@ -38,7 +38,7 @@ There are five primitive types:
 
 Booleans and numbers are as described in [na](https://github.com/kesh-lang/na#primitive-values), except that numbers are [IEEE 754 double-precision 64-bit floating-point](https://en.wikipedia.org/wiki/Floating-point_arithmetic#IEEE_754:_floating_point_in_modern_computers) values due to the underlying ECMAScript runtime.
 
-#### Strings
+### Strings
 
 Single-quoted strings are literal (raw) strings.
 
@@ -49,7 +49,7 @@ answer: "The answer is { 3 * 14 }"  --> 'The answer is 42'
 greeting: "Hey, { joe.name }!"      --> 'Hey, Joe!'
 ```
 
-#### Symbols
+### Symbols
 
 [Symbols](https://en.wikipedia.org/wiki/Symbol_(programming)) are human-readable immutable values that are guaranteed to be unique.
 
@@ -63,11 +63,11 @@ global = @foo      --> true
 secret = @('foo')  --> false
 ```
 
-#### Nothing
+### Nothing
 
 There must be a way to represent the absence of value. Instead of `null` or `undefined`, an empty tuple `()` represents [`#nothing`](#special-types).
 
-### Composite types
+## Composite types
 
 There are two composite types:
 
@@ -76,7 +76,7 @@ There are two composite types:
 
 Due to the underlying ECMAScript runtime, composite types are reference types. Once ECMAScript supports [immutable records and tuples](https://github.com/tc39/proposal-record-tuple), composite types will be value types by default, only becoming reference types if [marked as mutable](#mutation).
 
-#### Collections
+### Collections
 
 Similar to Lua's tables, collections are able to represent both linear values (array) and key-value fields (object).
 
@@ -93,7 +93,7 @@ people: [  -- an array of objects
 ]
 ```
 
-##### Delegation
+#### Delegation
 
 As a prototype-based language, there are no classes or inheritance, only collections and [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)).
 
@@ -127,7 +127,7 @@ joe.foo.bar.baz
 --> #nothing
 ```
 
-##### Concatenation
+#### Concatenation
 
 An alternative to delegation is [concatenation](https://en.wikipedia.org/wiki/Prototype-based_programming#Concatenation) of collections.
 
@@ -141,7 +141,7 @@ joe: [
 ]
 ```
 
-#### Tuples
+### Tuples
 
 Tuples are a much simpler, but very useful, data structure for grouping related values.
 
@@ -158,7 +158,7 @@ position.lon  --> -77
 
 A common use of tuples is to group multiple values in a function's parameter/argument.
 
-### Blocks
+## Blocks
 
 Blocks have lexical scope, allow variable shadowing and return the value of the last evaluated expression.
 
@@ -178,7 +178,7 @@ a       --> 10
 b       --> b is not defined
 ```
 
-### Functions
+## Functions
 
 Functions are first-class citizens with closure. All functions have an arity of 1. The argument can of course be a tuple.
 
@@ -205,7 +205,7 @@ In the example above, `human` is a collection applying itself as the prototype o
 
 Although blocks return the value of the last expression, a `return` keyword is also provided for early termination.
 
-#### Modifiers
+### Modifiers
 
 Modifiers are like [Python's decorators](https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators) only without special syntax. They're simply factory functions applied to values.
 
@@ -231,11 +231,11 @@ greet joe
 --> 'Hey, magnificent Joe!'
 ```
 
-### Type system
+## Type system
 
 **kesh** inherits TypeScript's gradual and structural type system, with certain differences.
 
-#### Type definitions
+### Type definitions
 
 There are no interfaces, only types denoted by a leading `#`.
 
@@ -251,7 +251,7 @@ There are no interfaces, only types denoted by a leading `#`.
 #colorful-circle: #colorful & #circle  -- intersection
 ```
 
-#### Type conversion
+### Type conversion
 
 To cast to a primitive type, simply apply the type to the value as if it was a function.
 
@@ -261,7 +261,7 @@ number:  #number '42'  --> 42
 string:  #string 42    --> '42'
 ```
 
-#### Collection types
+### Collection types
 
 A collectiom type may also be used as a prototype, as it is both a type definition and an actual collection.
 
@@ -284,7 +284,7 @@ joe of #primate
 --> true
 ```
 
-#### Protocols
+### Protocols
 
 On the other hand, a collection type could be just a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
 
@@ -295,7 +295,7 @@ On the other hand, a collection type could be just a [protocol](https://en.wikip
 ]
 ```
 
-#### Special types
+### Special types
 
 The unit type is `#nothing`, a [special collection](https://gist.github.com/joakim/dd598d9c6b783cd7641100bc70215e68) that only ever returns itself. The top type is `#anything` and the bottom type is `#never`.
 
@@ -304,7 +304,7 @@ The unit type is `#nothing`, a [special collection](https://gist.github.com/joak
 - `#nothing`
 - `#never`
 
-### Conditionals
+## Conditionals
 
 Everything is an expression.
 
@@ -324,7 +324,7 @@ else {
 ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
 ```
 
-### Operators
+## Operators
 
 Logical operators use words.
 
@@ -341,7 +341,7 @@ true + true  --> 2
 4 + '2'      --> 6
 ```
 
-#### Composition operators
+### Composition operators
 
 The `fp` directive enables function composition operators `>>` and `<<`.
 
@@ -350,7 +350,7 @@ square >> negate >> print  -- forward function composition
 print << negate << square  -- backward function composition
 ```
 
-#### Pipeline operator
+### Pipeline operator
 
 The `fp` directive also enables the pipeline `|>` operator, for piping values into functions with the blank `_` operator.
 
@@ -360,7 +360,7 @@ answer: 20
     |> _ + 2
 ```
 
-### Mutation
+## Mutation
 
 The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` unary operator to mark collections as mutable.
 
@@ -374,7 +374,7 @@ joe: *[ name: 'Joe' ]  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
-### Unpacking
+## Unpacking
 
 Collection and tuple values may be unpacked on assignment. Collection keys must be referenced using dot notation.
 
