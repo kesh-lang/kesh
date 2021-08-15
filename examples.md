@@ -69,13 +69,20 @@ There must be a way to represent the absence of value. Instead of `null` or `und
 
 ### Composite types
 
+There are two composite types:
+
+- Collections
+- Tuples
+
 Due to the underlying ECMAScript runtime, composite types are reference types. Once ECMAScript supports [immutable records and tuples](https://github.com/tc39/proposal-record-tuple), composite types will be value types by default, only becoming reference types if [marked as mutable](#mutation).
 
-#### Collections
+### Collections
 
 Similar to Lua's tables, collections are able to represent both linear values (array) and key-value fields (object).
 
-Arrays are 0-indexed by default.
+They are an essential part of the language. As in ECMAScript, arrays are collections with auto-indexed numeric keys, functions are collections, and primitive values are automatically upgraded to collections as needed (autoboxing). In **kesh**, even [the unit type](#special-types) is a collection.
+
+Array collections are 0-indexed by default.
 
 ```lua
 people: [  -- an array of objects
@@ -84,34 +91,11 @@ people: [  -- an array of objects
 ]
 ```
 
-#### Tuples
-
-Tuples are a much simpler, but very useful, data structure for grouping related values.
-
-A tuple of only one value is equivalent to that value. An empty tuple is equivalent to [`#nothing`](#special-types).
-
-```lua
-nothing: ()      --> #nothing
-something: (42)  --> 42
-
-position: (lat: 40, lon: -77)
-position.0    --> 40
-position.lon  --> -77
-```
-
-A common use of tuples is to group multiple values as a [function](#functions)'s parameter/argument.
-
-### Objects
-
-Objects (collections of key-value fields) are an essential part of the language. As in ECMAScript, arrays are in fact objects with auto-indexed numeric keys, functions are also objects, and primitive values are automatically upgraded to objects as needed (autoboxing).
-
-In **kesh**, even [the unit type](#special-types) is an object.
-
 #### Delegation
 
-As a prototype-based language, there are no classes or inheritance, only objects and [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)).
+As a prototype-based language, there are no classes or inheritance, only collections and [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)).
 
-Delegation is achieved by applying an object (the prototype) to an object literal, similar to how a function is applied to a value.
+Delegation is achieved by applying a collection (the prototype) to a collection literal, similar to how a function is applied to a value.
 
 ```lua
 primate: [
@@ -130,9 +114,9 @@ joe: human [
 --> [ name: 'Joe', hairy: false, walks: true, talks: true ]
 ```
 
-Conceptually, an object is also a function that returns a copy of the provided object with itself applied as the prototype.
+Conceptually, a collection is also a function that returns a copy of the provided collection with itself applied as the prototype.
 
-The bottom prototype is the unit type [`#nothing`](#special-types), an object that only ever returns itself.
+The bottom prototype is the unit type [`#nothing`](#special-types), a collection that only ever returns itself.
 
 Accessing a missing field will therefore not produce an error, but always return `#nothing`.
 
@@ -143,9 +127,9 @@ joe.foo.bar.baz
 
 #### Concatenation
 
-An alternative to delegation is [concatenation](https://en.wikipedia.org/wiki/Prototype-based_programming#Concatenation) of objects.
+An alternative to delegation is [concatenation](https://en.wikipedia.org/wiki/Prototype-based_programming#Concatenation) of collections.
 
-This is achieved by using the spread operator `...` to copy the fields of an existing object.
+This is achieved by using the spread operator `...` to copy the fields of an existing collection.
 
 ```lua
 joe: [
@@ -155,11 +139,28 @@ joe: [
 ]
 ```
 
+### Tuples
+
+Tuples are a simpler, but very useful, data structure for grouping related values.
+
+A tuple of only one value is equivalent to that value. An empty tuple is equivalent to [`#nothing`](#special-types).
+
+```lua
+nothing: ()      --> #nothing
+something: (42)  --> 42
+
+position: (lat: 40, lon: -77)
+position.0    --> 40
+position.lon  --> -77
+```
+
+A common use of tuples is to group multiple values in a function's parameter/argument.
+
 ### Blocks
 
 Blocks have lexical scope, allow variable shadowing and return the value of the last evaluated expression.
 
-This can be used to produce a value within a local scope.
+Blocks are primarily used in functions, but may also be used to produce a value within a local scope.
 
 ```lua
 a: 10
@@ -301,6 +302,26 @@ The unit type is `#nothing`, a [special object](https://gist.github.com/joakim/d
 - `#nothing`
 - `#never`
 
+### Conditionals
+
+Everything is an expression.
+
+Conditionals are either the traditional `if…then…else…` construct or the ternary `…if…else…`.
+
+```lua
+traditional: if age < 13 {
+    'kid'
+}
+else if age < 20 {
+    'teenager'
+}
+else {
+    'adult'
+}
+
+ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
+```
+
 ### Operators
 
 Logical operators use words.
@@ -335,23 +356,6 @@ The `fp` directive also enables the pipeline `|>` operator, for piping values in
 answer: 20
     |> sum(_, 20)
     |> _ + 2
-```
-
-### Conditionals
-
-Everything is an expression.
-
-Conditionals are either the traditional `if…then…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
-
-```lua
-traditional: if age < 13 { 'kid' } else if age < 20 { 'teenager' } else 'adult'
-
-ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
-
-pattern: match age
-    | 0..12   -> 'kid'       -- range is inclusive
-    | 13..<20 -> 'teenager'  -- range is exclusive
-    | 20..    -> 'adult'     -- to infinity (and beyond)
 ```
 
 ### Mutation
