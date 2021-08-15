@@ -162,16 +162,16 @@ Blocks have lexical scope, allow variable shadowing and return the value of the 
 This can be used to produce a value within a local scope.
 
 ```lua
-a: 1
+a: 10
 
 answer: {
-    a: 3
-    b: 14
-    a * b  --> 42
+    a: 35
+    b: 7
+    a + b  --> 42
 }
 
 answer  --> 42
-a       --> 1
+a       --> 10
 b       --> b is not defined
 ```
 
@@ -204,13 +204,13 @@ Although blocks return the value of the last expression, a `return` keyword is a
 
 #### Modifiers
 
-Modifiers are simply factory functions applied to values, more like [Python's decorators](https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators) than [TypeScript's](https://www.typescriptlang.org/docs/handbook/decorators.html).
+Modifiers are like [Python's decorators](https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators) only without special syntax. They're simply factory functions applied to values.
 
 ```lua
 formatted: (pattern) -> (string) -> pattern.replace('%s', string)
 
 logged: (function) -> (...arguments) -> {
-    print "Applying { function.name } to { arguments.join(', ') }"
+    print "Applying { function.name } to: { arguments.join(', ') }"
     result: function(...arguments)
     print "Result: { result }"
     result
@@ -218,37 +218,14 @@ logged: (function) -> (...arguments) -> {
 ```
 
 ```lua
-greet: logged (name) -> {
-    -- …
-}
+greet: logged (person) -> print "Hey, { person.name }!"
 
-joe: [
-    name: formatted('magnificent %s') 'Joe'
-]
+joe: [ name: formatted('magnificent %s') 'Joe' ]
 
 greet joe
---> 'Applying greet to Joe'
+--> 'Applying greet to: Joe'
 --> 'Result: Hey, magnificent Joe!'
 --> 'Hey, magnificent Joe!'
-```
-
-#### Composition
-
-Functions may be combined using the composition operators `>>` and `<<`.
-
-```lua
-square >> negate >> print  -- forward function composition
-print << negate << square  -- backward function composition
-```
-
-#### Pipeline
-
-Values may be piped into functions using the pipeline `|>` and placeholder `_` operators.
-
-```lua
-answer: 20
-    |> sum(_, 20)
-    |> _ + 2
 ```
 
 ### Type system
@@ -257,18 +234,18 @@ answer: 20
 
 #### Type definitions
 
-There are no interfaces, only types.
+There are no interfaces, only types denoted by a leading `#`.
 
 ```lua
-#point: (x: #number, y: #number)        -- tuple
+#point: (x: #number, y: #number)       -- tuple
 
-#strings: #string[]                     -- array
+#strings: #string[]                    -- array
 
-#result: #string | #strings             -- union
+#result: #string | #strings            -- union
 
-#colorful: [ color: #string ]           -- object
+#colorful: [ color: #string ]          -- object
 #circle: [ radius: #number ]
-#colorful-circle: #colorful & #circle   -- intersection
+#colorful-circle: #colorful & #circle  -- intersection
 ```
 
 #### Type conversion
@@ -283,7 +260,7 @@ string:  #string 42    --> '42'
 
 #### Object types
 
-An object type may also be used as a prototype, as it is both a type definition and a plain object.
+An object type may also be used as a prototype, as it is both a type definition and an actual object.
 
 ```lua
 #primate: [
@@ -306,7 +283,7 @@ joe of #primate
 
 #### Protocols
 
-On the other hand, an object type could be just a type definition or [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
+On the other hand, an object type could be just a [protocol](https://en.wikipedia.org/wiki/Protocol_(object-oriented_programming)).
 
 ```lua
 #walker-talker: [
@@ -324,25 +301,6 @@ The unit type is `#nothing`, a [special object](https://gist.github.com/joakim/d
 - `#nothing`
 - `#never`
 
-### Conditionals
-
-Everything is an expression.
-
-Conditionals are either the traditional `if…then…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
-
-```lua
-traditional: if age < 13 then 'kid' else if age < 20 then 'teenager' else 'adult'
-
-ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
-
-default: 'kid' if age < 13   -- results in #nothing if the condition is false
-
-pattern: match age
-    | 0..12   -> 'kid'       -- range is inclusive
-    | 13..<20 -> 'teenager'  -- range is exclusive
-    | 20..    -> 'adult'     -- to infinity (and beyond)
-```
-
 ### Operators
 
 Logical operators use words.
@@ -358,6 +316,56 @@ Arithmetic operators coerce their operands to `#number`.
 ```lua
 true + true  --> 2
 4 + '2'      --> 6
+```
+
+#### Composition operators
+
+The `fp` directive enables function composition operators `>>` and `<<`.
+
+```lua
+square >> negate >> print  -- forward function composition
+print << negate << square  -- backward function composition
+```
+
+#### Pipeline operator
+
+The `fp` directive also enables the pipeline `|>` operator, for piping values into functions with the blank `_` operator.
+
+```lua
+answer: 20
+    |> sum(_, 20)
+    |> _ + 2
+```
+
+### Conditionals
+
+Everything is an expression.
+
+Conditionals are either the traditional `if…then…else…` construct, the ternary `…if…else…` or the pattern-matching `match`.
+
+```lua
+traditional: if age < 13 { 'kid' } else if age < 20 { 'teenager' } else 'adult'
+
+ternary: 'kid' if age < 13 else 'teenager' if age < 20 else 'adult'
+
+pattern: match age
+    | 0..12   -> 'kid'       -- range is inclusive
+    | 13..<20 -> 'teenager'  -- range is exclusive
+    | 20..    -> 'adult'     -- to infinity (and beyond)
+```
+
+### Mutation
+
+The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` unary operator to mark collections as mutable.
+
+```lua
+#!kesh 2021 (mutation)
+
+let mutable  -- mutable variable
+set mutable: true
+
+joe: *[ name: 'Joe' ]  -- mutable collection
+set joe.name: 'Joseph'
 ```
 
 ### Unpacking collections
@@ -393,18 +401,4 @@ open: (
 }
 
 open(window: main, options: [ items: [intro, field1, field2] ])
-```
-
-### Mutation
-
-The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` unary operator to mark collections as mutable.
-
-```lua
-#!kesh 2021 (mutation)
-
-let mutable  -- mutable variable
-set mutable: true
-
-joe: *[ name: 'Joe' ]  -- mutable collection
-set joe.name: 'Joseph'
 ```
