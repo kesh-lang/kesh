@@ -210,14 +210,14 @@ Although blocks return the value of the last expression, a `return` keyword is a
 Modifiers are like [Python's decorators](https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators) only without special syntax. They're simply factory functions applied to values.
 
 ```lua
-formatted: (pattern) -> (string) -> pattern.replace('%s', string)
-
 logged: (function) -> (...arguments) -> {
     print "Applying { function.name } to: { arguments.join(', ') }"
     result: function(...arguments)
     print "Result: { result }"
     result
 }
+
+formatted: (pattern) -> (string) -> pattern.replace('%s', string)
 ```
 
 ```lua
