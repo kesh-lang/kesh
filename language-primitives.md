@@ -21,6 +21,7 @@
 - A block is the fundamental unit of computation
 - Values may be assigned to identifiers within a block, being lexically scoped at the block level
 - A block evaluates to the value of its last evaluated expression
+- A file is a module is a block
 
 ### Functions
 
