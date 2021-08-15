@@ -221,11 +221,11 @@ formatted: (pattern) -> (string) -> pattern.replace('%s', string)
 ```
 
 ```lua
-greet: logged (person) -> print "Hey, { person.name }!"
+greet: logged (name) -> print "Hey, { name }!"
 
-joe: [ name: formatted('magnificent %s') 'Joe' ]
+joe: formatted('magnificent %s') 'Joe'
 
-greet joe
+greet 'Joe'
 --> 'Applying greet to: Joe'
 --> 'Result: Hey, magnificent Joe!'
 --> 'Hey, magnificent Joe!'
