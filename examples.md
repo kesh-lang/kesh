@@ -368,7 +368,7 @@ joe: *[ name: 'Joe' ]  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
-### Unpacking collections
+### Unpacking
 
 Collection and tuple values may be unpacked on assignment. Objects keys must be referenced using dot notation.
 
