@@ -234,7 +234,7 @@ greet: logged (name) -> print "Hey, { name }!"
 
 joe: formatted('magnificent %s') 'Joe'
 
-greet 'Joe'
+greet joe
 --> 'Applying greet to: Joe'
 --> 'Result: Hey, magnificent Joe!'
 --> 'Hey, magnificent Joe!'
