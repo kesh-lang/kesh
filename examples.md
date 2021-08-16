@@ -356,7 +356,7 @@ true + true  --> 2
 
 The core of the language is small by design. Any extra features must be enabled using an [interpreter directive](https://en.m.wikipedia.org/wiki/Interpreter_directive).
 
-This takes the form of a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) at the top of the file, specifying both the language version and any additional features to be enabled. This serves two purposes, as any **kesh** file with a shebang can also be easily made executable on *nix operating systems.
+This takes the form of a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) at the top of the file, specifying both the language version and any additional language features to be enabled. This serves two purposes, as any **kesh** file with a shebang can also be easily made executable on *nix operating systems.
 
 ```lua
 #!kesh 2021 (foo, bar, baz)
