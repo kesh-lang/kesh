@@ -378,7 +378,7 @@ joe: *[ name: 'Joe' ]  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
-### Functional Programming
+### Functional programming
 
 The `fp` directive enables operators that facilitate functional programming.
 
