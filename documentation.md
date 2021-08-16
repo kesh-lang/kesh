@@ -1,4 +1,4 @@
-# Examples
+# Documentation
 
 ## Assignment and values
 
