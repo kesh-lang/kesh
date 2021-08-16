@@ -78,13 +78,11 @@ Due to the underlying ECMAScript runtime, composite types are reference types. O
 
 ### Collections
 
-Similar to Lua's tables, collections are able to represent both linear values (array) and key-value fields (object).
+Similar to Lua's tables, collections are able to represent both linear values ("array") and key-value fields ("object").
 
-They are an essential part of the language. As in ECMAScript, arrays are collections with auto-indexed numeric keys, functions are collections, and primitive values are automatically upgraded to collections as needed (autoboxing).
+They are an essential part of the language. As in ECMAScript, arrays are collections with auto-indexed numeric keys, functions are (also) collections, and primitive values are automatically upgraded to collections as needed (autoboxing).
 
 In **kesh**, even [the unit type](#special-types) is a collection.
-
-Array collections are 0-indexed by default.
 
 ```lua
 people: [  -- an array of objects
@@ -95,9 +93,9 @@ people: [  -- an array of objects
 
 #### Delegation
 
-As a prototype-based language, there are no classes or inheritance, only collections and [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)).
+As a prototype-based language, inheritance is achieved by [delegation](https://en.wikipedia.org/wiki/Delegation_(object-oriented_programming)) (single, [differential](https://en.wikipedia.org/wiki/Differential_inheritance) inheritance).
 
-Delegation is achieved by applying a collection (the prototype) to a collection literal, similar to how a function is applied to a value.
+Delegation is done by applying an existing collection (the prototype) to a collection literal, similar to how a function is applied to a value.
 
 ```lua
 primate: [
@@ -156,13 +154,13 @@ position.0    --> 40
 position.lon  --> -77
 ```
 
-A common use of tuples is to group multiple values in a function's parameter/argument.
+A common use of tuples is to group multiple values when specifying a function's parameter/argument.
 
 ## Blocks
 
 Blocks have lexical scope, allow variable shadowing and return the value of the last evaluated expression.
 
-Blocks are primarily used in functions, but may also be used to produce a value within a local scope.
+Blocks are primarily used in functions, but can also be used to produce a value using a local scope.
 
 ```lua
 a: 10
@@ -237,7 +235,9 @@ greet 'Joe'
 
 ### Type definitions
 
-There are no interfaces, only types denoted by a leading `#`.
+**kesh** only has types, denoted by a leading `#`.
+
+Unlike TypeScript's interfaces, types can not be extended or changed once defined.
 
 ```lua
 #point: (x: #number, y: #number)       -- tuple
@@ -253,7 +253,7 @@ There are no interfaces, only types denoted by a leading `#`.
 
 ### Type conversion
 
-To cast to a primitive type, simply apply the type to the value as if it was a function.
+To cast a value to a primitive type, simply apply the type to the value as if it was a function.
 
 ```lua
 boolean: #boolean 42   --> true
@@ -263,7 +263,7 @@ string:  #string 42    --> '42'
 
 ### Collection types
 
-A collectiom type may also be used as a prototype, as it is both a type definition and an actual collection.
+A collection type may be used as a prototype, as it is both a type definition and an actual collection.
 
 ```lua
 #primate: [
@@ -311,10 +311,10 @@ Everything is an expression.
 Conditionals are either the traditional `if…then…else…` construct or the ternary `…if…else…`.
 
 ```lua
-traditional: if age < 13 {
+traditional: if age < 13 then {
     'kid'
 }
-else if age < 20 {
+else if age < 20 then {
     'teenager'
 }
 else {
