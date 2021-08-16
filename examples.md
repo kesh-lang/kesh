@@ -156,6 +156,17 @@ position.lon  --> -77
 
 A common use of tuples is to group multiple values when specifying a function's parameter/argument.
 
+### Unpacking
+
+Collection and tuple values may be unpacked on assignment. Collection keys must be referenced using dot notation.
+
+```lua
+[first, ...rest]: [1, 2, 3]  -- rest is an array
+[.name, ...rest]: joe        -- rest is an object
+
+(b2, a2): (a1, b1)  -- value swapping with tuples
+```
+
 ## Blocks
 
 Blocks have lexical scope, allow variable shadowing and return the value of the last evaluated expression.
@@ -341,28 +352,21 @@ true + true  --> 2
 4 + '2'      --> 6
 ```
 
-### Composition operators
+## Directives
 
-The `fp` directive enables function composition operators `>>` and `<<`.
+The core of the language is small by design.
 
-```lua
-square >> negate >> print  -- forward function composition
-print << negate << square  -- backward function composition
-```
-
-### Pipeline operator
-
-The `fp` directive also enables the pipeline `|>` operator, for piping values into functions with the blank `_` operator.
+Any extra features must be explicitly enabled using directives. These take the form of a [shebang](https://en.m.wikipedia.org/wiki/Shebang_(Unix)) at the top of the file, specifying both the language version and any additional features to be enabled.
 
 ```lua
-answer: 20
-    |> sum(_, 20)
-    |> _ + 2
+#!kesh 2021 (foo, bar, baz)
 ```
 
-## Mutation
+This serves two purposes, as any **kesh** file with a shebang can be easily made executable on *nix operating systems.
 
-The `mutation` directive enables the `let` and `set` keywords to mutate variables and fields, and the `*` unary operator to mark collections as mutable.
+### Mutation
+
+The `mutation` directive enables mutatation of variables and fields using the `let` and `set` keywords, and collections to be marked as mutable using the `*` unary operator.
 
 ```lua
 #!kesh 2021 (mutation)
@@ -374,37 +378,28 @@ joe: *[ name: 'Joe' ]  -- mutable collection
 set joe.name: 'Joseph'
 ```
 
-## Unpacking
+### Functional Programming
 
-Collection and tuple values may be unpacked on assignment. Collection keys must be referenced using dot notation.
+The `fp` directive enables operators that facilitate functional programming.
+
+#### Composition operators
 
 ```lua
-[first, ...rest]: [1, 2, 3]  -- rest is an array
-[.name, ...rest]: joe        -- rest is an object
+#!kesh 2021 (fp)
 
-(b2, a2): (a1, b1)  -- value swapping with tuples
+square >> negate >> print  -- forward function composition
+print << negate << square  -- backward function composition
 ```
 
-This can also be done within the function's parameter as part of its definition (complex example).
+#### Pipe operator
+
+The pipe `|>` operator allows values to be piped into expressions using the blank `_` operator.
 
 ```lua
-open: (
-    window: #window                -- type annotation of value
-    options as [                   -- unpacking of collection (options is the external name)
-        .title ? 'Untitled'        -- picked field, with a default value if missing
-        size.width as w ? 100      -- aliasing from a path shortcut, with a default value
-        size.height as h ? 200
-        items: [intro, ...fields]  -- unpacking of array, with rest values
-    ]: #options                    -- type annotation of the options value
-) -> #nothing {
-    -- values available within the block:
-    -- window: main
-    -- title: 'Untitled'
-    -- w: 100
-    -- h: 200
-    -- intro: intro
-    -- fields: [field1, field2]
-}
+#!kesh 2021 (fp)
 
-open(window: main, options: [ items: [intro, field1, field2] ])
+answer: 20
+    |> sum(_, 20)
+    |> _ + 2
+--> 42
 ```
