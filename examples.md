@@ -354,7 +354,7 @@ true + true  --> 2
 
 ## Directives
 
-The core of the language is small by design. Any extra features must be explicitly enabled using directives.
+The core of the language is small by design. Any extra features must be enabled using directives.
 
 These take the form of a [shebang](https://en.m.wikipedia.org/wiki/Shebang_(Unix)) at the top of the file, specifying both the language version and any additional features to be enabled. This serves two purposes, as any **kesh** file with a shebang can be easily made executable on *nix operating systems.
 
