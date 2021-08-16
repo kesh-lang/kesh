@@ -354,19 +354,19 @@ true + true  --> 2
 
 ## Directives
 
-The core of the language is small by design.
+The core of the language is small by design. Any extra features must be explicitly enabled using directives.
 
-Any extra features must be explicitly enabled using directives. These take the form of a [shebang](https://en.m.wikipedia.org/wiki/Shebang_(Unix)) at the top of the file, specifying both the language version and any additional features to be enabled.
+These take the form of a [shebang](https://en.m.wikipedia.org/wiki/Shebang_(Unix)) at the top of the file, specifying both the language version and any additional features to be enabled. This serves two purposes, as any **kesh** file with a shebang can be easily made executable on *nix operating systems.
 
 ```lua
 #!kesh 2021 (foo, bar, baz)
 ```
 
-This serves two purposes, as any **kesh** file with a shebang can be easily made executable on *nix operating systems.
+Binding source code to a specific version enables the language to evolve without fear of breaking backward compatibility. Legacy source code is guaranteed to always run as expected, using the specified version of the language.
 
 ### Mutation
 
-The `mutation` directive enables mutatation of variables and fields using the `let` and `set` keywords, and collections to be marked as mutable using the `*` unary operator.
+The `mutation` directive enables mutatation of variables/fields using the `let` and `set` keywords, and collections to be marked as mutable using the `*` unary operator.
 
 ```lua
 #!kesh 2021 (mutation)
