@@ -30,7 +30,7 @@ joe: #person [                                       -- new object that delegate
 
 greet: (person: #person) -> {                        -- typed function
     name: person.name if person.age > 12 else 'kid'  -- code block with lexical scope
-    "Hey, { name }!"                                 -- the value of the last expression is returned
+    "Hey, { name }!"                                 -- the last expression's value is returned
 }                                                    -- and the return type inferred
 
 joe.speak()                                          --> 'Hi, I'm Joe.'
