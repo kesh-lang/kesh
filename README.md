@@ -28,7 +28,7 @@ joe: #person [                              -- new object that delegates to prot
     age: 27
 ]
 
-greet: ([ .name, .age ]: #person) -> {      -- typed function with unpacking of object
+greet: ([ :name, :age ]: #person) -> {      -- typed function with unpacking of object
     someone: name if age > 12 else 'kid'    -- code block with local scope
     "Hey, { someone }!"                     -- the last expression's value is returned
 }                                           -- and the return type inferred
