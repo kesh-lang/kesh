@@ -16,25 +16,25 @@ This language is a work in process. Contributions are always welcome!
 #!kesh 2021 (strict)
 
 -- prototype (an object that also defines a type)
-#person: [                                  -- type definition
-    name: #string                           -- type annotation
+#person: [                                    -- type definition
+    name: #string                             -- type annotation
     age: #number
-    speak: () -> "Hi, I'm { this.name }."   -- default function with type inference
+    speak: () -> "Hi, I'm { this.name }."     -- default function with type inference
 ]
 
 -- instance
-joe: #person [                              -- new object that delegates to prototype
+joe: #person [                                -- new object that delegates to prototype
     name: 'Joe'
     age: 27
 ]
 
-greet: ([ :name, :age ]: #person) -> {      -- typed function with unpacking of object
-    someone: name if age > 12 else 'kid'    -- code block with local scope
-    "Hey, { someone }!"                     -- the last expression's value is returned
-}                                           -- and the return type inferred
+greet: (person: #person) -> {                 -- typed function
+    name: person.name if person.age > 12 else 'kid'  -- code block with local scope
+    "Hey, { name }!"                          -- the last expression's value is returned
+}                                             -- and the return type inferred
 
-joe.speak()                                 --> 'Hi, I'm Joe.'
-greet joe                                   --> 'Hey, Joe!'
+joe.speak()                                   --> 'Hi, I'm Joe.'
+greet joe                                     --> 'Hey, Joe!'
 ```
 
 - [Documentation](https://github.com/kesh-lang/kesh/wiki/Documentation)
