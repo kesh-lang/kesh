@@ -34,7 +34,7 @@ greet: (person: #person) -> {                        -- typed function
 }                                                    -- and the return type inferred
 
 joe.speak()                                          --> 'Hi, I'm Joe.'
-greet joe                                            --> 'Hey, Joe!'
+greet(person: joe)                                   --> 'Hey, Joe!'
 ```
 
 - [Documentation](https://github.com/kesh-lang/kesh/wiki/Documentation)
