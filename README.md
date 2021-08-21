@@ -19,7 +19,7 @@ This language is a work in process. Contributions are always welcome!
 #person: [                                           -- type definition
     name: #string                                    -- type annotation
     age: #number
-    speak: () -> "Hi, I'm { this.name }."            -- default function with type inference
+    introduce: () -> "Hi, I'm { this.name }."        -- default function with type inference
 ]
 
 -- instance
@@ -33,7 +33,7 @@ greet: (person: #person) -> {                        -- typed function
     "Hey, { name }!"                                 -- the last expression's value is returned
 }                                                    -- and the return type inferred
 
-joe.speak()                                          --> 'Hi, I'm Joe.'
+joe.introduce()                                      --> 'Hi, I'm Joe.'
 greet(person: joe)                                   --> 'Hey, Joe!'
 ```
 
