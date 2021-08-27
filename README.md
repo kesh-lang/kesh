@@ -10,8 +10,6 @@
 
 Its syntax is a proper superset of [na](https://github.com/kesh-lang/na).
 
-This language is a work in process. Contributions are always welcome!
-
 ```lua
 #kesh 2021
 
@@ -36,6 +34,8 @@ greet: (person: #person) -> {                        -- typed function
 joe.speak()                                          --> 'Hi, I'm Joe.'
 greet(person: joe)                                   --> 'Hey, Joe!'
 ```
+
+This language is a work in process. Contributions are always welcome!
 
 - [Documentation](https://github.com/kesh-lang/kesh/wiki/Documentation)
 - [Language primitives](https://github.com/kesh-lang/kesh/wiki/Language-primitives)
