@@ -32,7 +32,7 @@ greet: (person: #person) -> {                        -- typed function
 }                                                    -- and the return type inferred
 
 joe.speak()                                          --> 'Hi, I'm Joe.'
-greet(person: joe)                                   --> 'Hey, Joe!'
+greet joe                                            --> 'Hey, Joe!'
 ```
 
 This language is a work in process. Contributions are always welcome!
