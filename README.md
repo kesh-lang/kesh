@@ -6,9 +6,7 @@
 
 > A long, long time from now, in the wake of what will no longer be called JavaScript, might be going to have existed a programming language called _kesh_.
 
-**kesh** is a simple little programming language on top of TypeScript.
-
-Its syntax is a proper superset of [na](https://github.com/kesh-lang/na).
+**kesh** is a simple little programming language. Its syntax is a proper superset of [na](https://github.com/kesh-lang/na).
 
 ```lua
 #kesh 2021
