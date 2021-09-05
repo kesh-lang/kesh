@@ -33,7 +33,7 @@ joe.speak()                                          --> 'Hi, I'm Joe.'
 greet joe                                            --> 'Hey, Joe!'
 ```
 
-This language is a work in process. Contributions are always welcome!
+Nothing is written in stone. Contributions are always welcome!
 
 - [Documentation](https://github.com/kesh-lang/kesh/wiki/Documentation)
 - [Language primitives](https://github.com/kesh-lang/kesh/wiki/Language-primitives)
