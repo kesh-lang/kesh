@@ -19,13 +19,13 @@
 ]
 
 -- instance
-joe: #person [                                       -- new object that delegates to prototype
+joe: #person [                                       -- new collection that delegates to #person
     name: 'Joe'
     age: 27
 ]
 
-greet: (person: #person) -> {                        -- typed function
-    name: person.name if person.age > 12 else 'kid'  -- code block with lexical scope
+greet: (person: #person) -> {                        -- typed function with a block of code
+    name: person.name if person.age > 12 else 'kid'  -- block scoped name definition
     "Hey, { name }!"                                 -- the last expression's value is returned
 }                                                    -- and the return type inferred
 
