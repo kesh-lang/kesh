@@ -25,7 +25,7 @@ joe: #person [                                       -- new collection that dele
 ]
 
 greet: (person: #person) ->                          -- typed function with a block of code
-    name: person.name if person.age > 12 else 'kid'  -- block scoped name definition
+    name: person.name if person.age > 12 else 'kid'  -- block scoped definition
     "Hey, { name }!"                                 -- the last expression's value is returned
 
 joe.speak()                                          --> 'Hi, I'm Joe.'
