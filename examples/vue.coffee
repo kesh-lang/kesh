@@ -45,16 +45,16 @@ TagsService: [
 
 ArticlesService: [
     query(type, params):
-        ApiService.query("articles{ '/feed' if type = 'feed' else '' }", [params])
+        ApiService.query("articles{ '/feed' if type = 'feed' else '' }", [ params ])
 
     get(slug):
         ApiService.get('articles', slug)
 
     create(params):
-        ApiService.post('articles', [article: params])
+        ApiService.post('articles', [ article: params ])
 
     update(slug, params):
-        ApiService.update('articles', slug, [article: params])
+        ApiService.update('articles', slug, [ article: params ])
 
     destroy(slug):
         ApiService.delete("articles/{ slug }")
@@ -68,10 +68,7 @@ CommentsService: [
         ApiService.get('articles', "{ slug }/comments")
 
     post(slug, payload):
-        ApiService.post("articles/{ slug }/comments", [
-            comment:
-                body: payload
-        ])
+        ApiService.post("articles/{ slug }/comments", [ comment.body: payload ])
 
     destroy(slug, comment-id):
         ApiService.delete("articles/{ slug }/comments/{ comment-id }"
