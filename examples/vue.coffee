@@ -10,11 +10,11 @@ ApiService: [
     init():
         Vue.use(VueAxios, axios)
         set Vue.axios.defaults.baseURL: API-URL
-        ()
+        return
 
     setHeader():
         set Vue.axios.defaults.headers.common.{'Authorization'}: "Token { JwtService.getToken() }"
-        ()
+        return
 
     query(resource, params):
         Vue.axios.get(resource, params)
