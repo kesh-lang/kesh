@@ -1,3 +1,5 @@
+-- https://github.com/gothinkster/vue-realworld-example-app/blob/master/src/common/api.service.js
+
 import [Vue]: 'vue'
 import [axios]: 'axios'
 import [VueAxios]: 'vue-axios'
