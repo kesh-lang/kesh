@@ -14,13 +14,11 @@ ApiService: [
 
     query: (resource, params) ->
         Vue.axios.get(resource, params)
-            .catch (error) *->
-                crash Error "[RWV] ApiService { error }"
+            .catch (error) *-> crash Error "[RWV] ApiService { error }"
 
     get: (resource, slug ? '') ->
         Vue.axios.get("{ resource }/{ slug }")
-            .catch (error) *->
-                crash Error "[RWV] ApiService { error }"
+            .catch (error) *-> crash Error "[RWV] ApiService { error }"
 
     post: (resource, params) ->
         Vue.axios.post("{ resource }", params)
@@ -33,8 +31,7 @@ ApiService: [
 
     delete: (resource) ->
         Vue.axios.delete(resource)
-            .catch (error) *->
-                crash Error "[RWV] ApiService { error }"
+            .catch (error) *-> crash Error "[RWV] ApiService { error }"
 ]
 
 TagsService: [
