@@ -29,8 +29,8 @@ greet: (person: #person) ->                          -- typed function definitio
     name: person.name if person.age > 12 else 'kid'  -- block scoped identifier definition
     "Hey, { name }!"                                 -- the last expression's value is returned
 
-joe.speak()                                          --> 'Hi, I'm Joe.'
-greet joe                                            --> 'Hey, Joe!'
+joe.speak()                                          --> "Hi, I'm Joe."
+greet joe                                            --> "Hey, Joe!"
 ```
 
 Nothing is written in stone. Contributions are always welcome!
