@@ -25,8 +25,8 @@ joe: #person [                                       -- new collection that dele
 ]
 
 -- function
-greet: (person: #person) ->                          -- typed function with a block of code
-    name: person.name if person.age > 12 else 'kid'  -- block scoped definition
+greet: (person: #person) ->                          -- typed function definition with a block body
+    name: person.name if person.age > 12 else 'kid'  -- block scoped identifier definition
     "Hey, { name }!"                                 -- the last expression's value is returned
 
 joe.speak()                                          --> 'Hi, I'm Joe.'
@@ -36,6 +36,7 @@ greet joe                                            --> 'Hey, Joe!'
 Nothing is written in stone. Contributions are always welcome!
 
 - [Documentation](https://github.com/kesh-lang/kesh/wiki/Documentation)
+- [Extensions](https://github.com/kesh-lang/kesh/wiki/Extensions)
 - [Language primitives](https://github.com/kesh-lang/kesh/wiki/Language-primitives)
 
 <sub>[heyiya-if symbol](https://commons.wikimedia.org/wiki/File:Double_spirale.svg) is [CC0](https://creativecommons.org/publicdomain/zero/1.0/). Original by [Margaret Chodos-Irvine](https://chodos-irvine.com/) for [Ursula Le Guin](https://www.ursulakleguin.com/)'s novel about the Kesh, [Always Coming Home](https://www.ursulakleguin.com/always-coming-home-book).</sub>
