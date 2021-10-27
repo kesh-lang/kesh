@@ -33,8 +33,9 @@ requests: [
 ]
 
 Promise.all requests
-    .then (account, permissions) ->
-        -- Process results
+    .then (results) ->
+        account: results.0
+        permissions: results.1
 
 
 -- GET request for remote image in node.js
