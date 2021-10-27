@@ -34,7 +34,7 @@ greet: (person: #person) ->                          -- typed function with a bl
 greet joe                                            --> "Hey, Joe!"
 ```
 
-Nothing is written in stone. Contributions are always welcome!
+Nothing is written in stone. Feedback and contributions are always welcome!
 
 - [Documentation](https://github.com/kesh-lang/kesh/wiki/Documentation)
 - [Extensions](https://github.com/kesh-lang/kesh/wiki/Extensions)
