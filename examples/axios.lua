@@ -27,9 +27,11 @@ axios.post('/user', [
 
 
 -- Performing multiple concurrent requests
-get-user-account: () -> axios.get '/user/12345'
-get-user-permissions: () -> axios.get '/user/12345/permissions'
-Promise.all [get-user-account(), get-user-permissions()]
+requests: [
+    () -> axios.get '/user/12345'
+    () -> axios.get '/user/12345/permissions'
+]
+Promise.all requests
     .then (results) ->
         account: results.0
         permissions: results.1
