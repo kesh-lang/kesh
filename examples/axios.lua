@@ -31,10 +31,10 @@ requests: [
     () -> axios.get '/user/12345'
     () -> axios.get '/user/12345/permissions'
 ]
+
 Promise.all requests
-    .then (results) ->
-        account: results.0
-        permissions: results.1
+    .then (account, permissions) ->
+        -- Process results
 
 
 -- GET request for remote image in node.js
