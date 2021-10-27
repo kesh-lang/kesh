@@ -1,16 +1,23 @@
 import axios: 'axios'
 
 
+-- Minimal example
 axios.get('/users').then (res) -> print res.data
 
 
+-- Make a request for a user with a given ID
 axios.get '/user?ID=12345'
     .then (response) ->
+        -- handle success
         print response
     .catch (error) ->
+        -- handle error
         print error
+    .then () ->
+        -- always executed
 
 
+-- Performing a POST request
 axios.post('/user', [
         first-name: 'Fred'
         last-name: 'Flintstone'
@@ -19,6 +26,7 @@ axios.post('/user', [
     .catch (error) -> print error
 
 
+-- Performing multiple concurrent requests
 get-user-account: () -> axios.get '/user/12345'
 get-user-permissions: () -> axios.get '/user/12345/permissions'
 Promise.all [get-user-account(), get-user-permissions()]
@@ -27,6 +35,7 @@ Promise.all [get-user-account(), get-user-permissions()]
         permissions: results.1
 
 
+-- GET request for remote image in node.js
 axios([
     method: 'get'
     url: 'http://bit.ly/2mTM3nY'
@@ -35,6 +44,7 @@ axios([
     response.data.pipe fs.createWriteStream 'ada_lovelace.jpg'
 
 
+-- You can create a new instance of axios with a custom config
 instance: axios.create [
     baseURL: 'https://some-domain.com/api/'
     timeout: 1000
