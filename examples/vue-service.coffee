@@ -2,10 +2,10 @@
 
 original: 'https://github.com/gothinkster/vue-realworld-example-app/blob/master/src/common/api.service.js'
 
-import [Vue]: 'vue'
-import [axios]: 'axios'
-import [VueAxios]: 'vue-axios'
-import [JwtService]: '@/common/jwt.service'
+import [default as Vue]: 'vue'
+import [default as axios]: 'axios'
+import [default as VueAxios]: 'vue-axios'
+import [default as JwtService]: '@/common/jwt.service'
 import [API-URL]: '@/common/config'
 
 ApiService: [
