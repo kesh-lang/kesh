@@ -2,7 +2,8 @@ import axios: 'axios'
 
 
 -- Minimal example
-axios.get('/users').then (res) -> print res.data
+axios.get '/users'
+    .then (res) -> print res.data
 
 
 -- Make a request for a user with a given ID
