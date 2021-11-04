@@ -21,10 +21,10 @@ default: defineComponent [
     components: [RouterLink]
     props:
         name:
-            type: String as PropType(#AppRouteNames)
+            type: String as #PropType(#AppRouteNames)
             required: true
         params:
-            type: Object as PropType(#RouteParams)
+            type: Object as #PropType(#RouteParams)
             default: () -> []
     setup: (props, [attrs]) -> [props, attrs]
 ]
