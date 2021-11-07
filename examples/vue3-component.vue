@@ -12,7 +12,7 @@
 
 <script lang="lua">
 import [#AppRouteNames]: 'src/router'
-import [defineComponent, PropType]: 'vue'
+import [defineComponent, #PropType]: 'vue'
 import [#RouteParams]: 'vue-router'
 import [RouterLink]: 'vue-router'
 
@@ -21,10 +21,10 @@ default: defineComponent [
     components: [RouterLink]
     props:
         name:
-            type: String as #PropType(#AppRouteNames)
+            type: String#PropType(#AppRouteNames)
             required: true
         params:
-            type: Object as #PropType(#RouteParams)
+            type: Object#PropType(#RouteParams)
             default: () -> []
     setup: (props, [attrs]) -> [props, attrs]
 ]
