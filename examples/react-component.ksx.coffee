@@ -46,7 +46,7 @@ Tab: [tab: #string, active: #boolean, onClick: () -> #none] ->
         <a
             className={ classObjectToClassName ['nav-link': true, active] }
             href='#'
-            onClick={ (ev) ->
+            onClick={ (ev) *->
                 ev.preventDefault()
                 onClick()
             }
@@ -80,7 +80,7 @@ ArticleList: [articles: #ArticleViewerState.articles] ->
     ]
 
 onFavoriteToggle: (index: #number, [slug, favorited]: #Article) ->
-    async () ->
+    async () *->
         if store.getState().app.user.isNone()
             set location.hash: '#/login'
             return
