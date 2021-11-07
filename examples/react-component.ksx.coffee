@@ -1,3 +1,5 @@
+<!-- original: https://github.com/angelguzmaning/ts-redux-react-realworld-example-app/blob/master/src/components/ArticlesViewer/ArticlesViewer.tsx -->
+
 #kesh 2021 + async + mutation + return
 
 import [Fragment]: 'react'
