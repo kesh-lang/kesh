@@ -1,7 +1,7 @@
 <!-- original: https://github.com/sveltejs/realworld/blob/master/src/lib/ArticleList/ArticlePreview.svelte -->
 
 <script lang="coffee">
-    # kesh 2021 + mutation + async + globals
+    #kesh 2021 + mutation + async + globals
     
     import api: '$lib/api.js'
     
@@ -9,7 +9,7 @@
     let user
     
     toggle-favorite: async () *->
-        if article.favorited?
+        if ~article.favorited
             set article.favoritesCount: _ - 1
             set article.favorited: false
         else
@@ -17,7 +17,7 @@
             set article.favorited: true
 
         set [article]: await {
-            if article.favorited?
+            if ~article.favorited
                 api.post("articles/{ article.slug }/favorite", null, user.token)
             else
                 api.del("articles/{ article.slug }/favorite", user.token)
