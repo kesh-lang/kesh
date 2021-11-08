@@ -16,7 +16,7 @@
         else
             set article.favorites-count: _ + 1
             set article.favorited: true
-            set [article]: await api.post(favorite-path, null, user.token)
+            set [article]: await api.post(favorite-path, (), user.token)
     
     [article, user]
 </script>
