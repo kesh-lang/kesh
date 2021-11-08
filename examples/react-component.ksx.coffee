@@ -1,14 +1,14 @@
 original: 'https://github.com/angelguzmaning/ts-redux-react-realworld-example-app/blob/master/src/components/ArticlesViewer/ArticlesViewer.tsx'
 
 import [Fragment]: 'react'
-import [favoriteArticle, unfavoriteArticle]: '../../services/conduit'
+import [favorite-article, unfavorite-article]: '../../services/conduit'
 import [store]: '../../state/store'
 import [useStore]: '../../state/storeHooks'
 import [#Article]: '../../types/article'
 import [classObjectToClassName]: '../../types/style'
 import [ArticlePreview]: '../ArticlePreview/ArticlePreview'
 import [Pagination]: '../Pagination/Pagination'
-import [endSubmittingFavorite, startSubmittingFavorite, #ArticleViewerState]: './ArticlesViewer.slice'
+import [end-submitting-favorite, start-submitting-favorite, #ArticleViewerState]: './ArticlesViewer.slice'
 
 ArticlesViewer: [
     toggleClassName: #string
@@ -48,10 +48,7 @@ Tab: [
         <a
             className={ classObjectToClassName ['nav-link': true, active] }
             href='#'
-            onClick={ (ev) *->
-                ev.preventDefault()
-                onClick()
-            }
+            onClick={ (ev) *-> { ev.preventDefault(), onClick() } }
         >
             { tab }
         </a>
@@ -88,13 +85,8 @@ onFavoriteToggle: (index: #number, [slug, favorited]: #Article) ->
         if store.getState().app.user.isNone()
             set location.hash: '#/login'
         else
-            store.dispatch startSubmittingFavorite index
-            article: await {
-                if favorited
-                    unfavoriteArticle slug
-                else
-                    favoriteArticle slug
-            }
-            store.dispatch endSubmittingFavorite [index, article]
+            store.dispatch start-submitting-favorite index
+            article: await unfavorite-article(slug) if favorited else favorite-article(slug)
+            store.dispatch end-submitting-favorite [index, article]
 
 [ArticlesViewer]
