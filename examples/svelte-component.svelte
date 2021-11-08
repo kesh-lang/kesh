@@ -29,7 +29,7 @@
 
         <div class="info">
             <a class="author" href="/profile/@{ article.author.username }"> { article.author.username } </a>
-            <span class="date"> { Date(article.created-at).toDateString() } </span>
+            <span class="date"> { Date(article.created-at).to-date-string() } </span>
         </div>
 
         { #if user }
