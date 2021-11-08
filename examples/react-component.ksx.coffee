@@ -5,7 +5,7 @@ import [favorite-article, unfavorite-article]: '../../services/conduit'
 import [store]: '../../state/store'
 import [useStore]: '../../state/storeHooks'
 import [#Article]: '../../types/article'
-import [classObjectToClassName]: '../../types/style'
+import [class-object-to-class-name]: '../../types/style'
 import [ArticlePreview]: '../ArticlePreview/ArticlePreview'
 import [Pagination]: '../Pagination/Pagination'
 import [end-submitting-favorite, start-submitting-favorite, #ArticleViewerState]: './ArticlesViewer.slice'
@@ -46,7 +46,7 @@ Tab: [
 ] ->
     <li className='nav-item'>
         <a
-            className={ classObjectToClassName ['nav-link': true, active] }
+            className={ class-object-to-class-name ['nav-link': true, active] }
             href='#'
             onClick={ (ev) *-> { ev.preventDefault(), onClick() } }
         >
@@ -69,18 +69,18 @@ ArticleList: [
                         No articles are here... yet.
                     </div>
                 }
-                { articles.map ([article, isSubmitting], index) ->
+                { articles.map ([article, is-submitting], index) ->
                     <ArticlePreview
                         key={ article.slug }
                         article={ article }
-                        isSubmitting={ isSubmitting }
-                        onFavoriteToggle={ onFavoriteToggle(index, article) if not isSubmitting }
+                        isSubmitting={ is-submitting }
+                        onFavoriteToggle={ on-favorite-toggle(index, article) if not is-submitting }
                     />
                 }
             </Fragment>
     ]
 
-onFavoriteToggle: (index: #number, [slug, favorited]: #Article) ->
+on-favorite-toggle: (index: #number, [slug, favorited]: #Article) ->
     async () *->
         if store.getState().app.user.isNone()
             set location.hash: '#/login'
