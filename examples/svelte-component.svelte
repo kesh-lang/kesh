@@ -6,21 +6,17 @@
     let article
     let user
     
+    favorite-path: "articles/{ article.slug }/favorite"
+    
     toggle-favorite: async () *->
         if ~article.favorited
             set article.favorites-count: _ - 1
             set article.favorited: false
+            set [article]: await api.del(favorite-path, user.token)
         else
             set article.favorites-count: _ + 1
             set article.favorited: true
-        
-        path: "articles/{ article.slug }/favorite"
-        
-        set [article]: await
-            if ~article.favorited
-                api.post(path, null, user.token)
-            else
-                api.del(path, user.token)
+            set [article]: await api.post(favorite-path, null, user.token)
     
     [article, user]
 </script>
