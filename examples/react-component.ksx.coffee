@@ -3,7 +3,7 @@ original: 'https://github.com/angelguzmaning/ts-redux-react-realworld-example-ap
 import [Fragment]: 'react'
 import [favorite-article, unfavorite-article]: '../../services/conduit'
 import [store]: '../../state/store'
-import [useStore]: '../../state/storeHooks'
+import [use-store]: '../../state/storeHooks'
 import [#Article]: '../../types/article'
 import [class-object-to-class-name]: '../../types/style'
 import [ArticlePreview]: '../ArticlePreview/ArticlePreview'
@@ -11,30 +11,30 @@ import [Pagination]: '../Pagination/Pagination'
 import [end-submitting-favorite, start-submitting-favorite, #ArticleViewerState]: './ArticlesViewer.slice'
 
 ArticlesViewer: [
-    toggleClassName: #string
+    toggle-class-name: #string
     tabs: #array(#string)
-    selectedTab: #string
-    onPageChange?: (index: #number) -> #none
-    onTabChange?: (tab: #string) -> #none
+    selected-tab: #string
+    on-page-change?: (index: #number) -> #none
+    on-tab-change?: (tab: #string) -> #none
 ] ->
-    [articles, articlesCount, currentPage]: useStore [articleViewer] -> articleViewer
+    [articles, articles-count, current-page]: use-store [article-viewer] -> article-viewer
 
     <Fragment>
-        <ArticlesTabSet { [tabs, selectedTab, toggleClassName, onTabChange]... } />
+        <ArticlesTabSet { [tabs, selected-tab, toggle-class-name, on-tab-change]... } />
         <ArticleList articles={ articles } />
-        <Pagination currentPage={ currentPage } count={ articlesCount } itemsPerPage={ 10 } onPageChange={ onPageChange } />
+        <Pagination currentPage={ current-page } count={ articles-count } itemsPerPage={ 10 } onPageChange={ on-page-change } />
     </Fragment>
 
 ArticlesTabSet: [
     tabs: #array(#string)
-    toggleClassName: #string
-    selectedTab: #string
-    onTabChange?: (tab: #string) -> #none
+    toggle-class-name: #string
+    selected-tab: #string
+    on-tab-change?: (tab: #string) -> #none
 ] ->
-    <div className={ toggleClassName }>
+    <div className={ toggle-class-name }>
         <ul className='nav nav-pills outline-active'>
             { tabs.map (tab) ->
-                <Tab key={ tab } tab={ tab } active={ tab = selectedTab } onClick={ () -> onTabChange? and onTabChange(tab) } />
+                <Tab key={ tab } tab={ tab } active={ tab = selected-tab } onClick={ () -> on-tab-change? and on-tab-change(tab) } />
             }
         </ul>
     </div>
@@ -42,13 +42,13 @@ ArticlesTabSet: [
 Tab: [
     tab: #string
     active: #boolean
-    onClick: () -> #none
+    on-click: () -> #none
 ] ->
     <li className='nav-item'>
         <a
             className={ class-object-to-class-name ['nav-link': true, active] }
             href='#'
-            onClick={ (ev) *-> { ev.preventDefault(), onClick() } }
+            onClick={ (ev) *-> { ev.prevent-default(), on-click() } }
         >
             { tab }
         </a>
@@ -82,7 +82,7 @@ ArticleList: [
 
 on-favorite-toggle: (index: #number, [slug, favorited]: #Article) ->
     async () *->
-        if store.getState().app.user.isNone()
+        if store.get-state().app.user.is-none()
             set location.hash: '#/login'
         else
             store.dispatch start-submitting-favorite index
