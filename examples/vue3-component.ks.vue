@@ -11,10 +11,10 @@
 </template>
 
 <script lang="lua">
-import [#AppRouteNames]: 'src/router'
 import [defineComponent, #PropType]: 'vue'
-import [#RouteParams]: 'vue-router'
 import [RouterLink]: 'vue-router'
+import [#RouteParams]: 'vue-router'
+import [#AppRouteNames]: 'src/router'
 
 default: defineComponent [
     name: 'AppLink'
