@@ -1,6 +1,6 @@
 <!-- original: https://github.com/sveltejs/realworld/blob/master/src/lib/ArticleList/ArticlePreview.svelte -->
 
-<script>
+<script lang="coffee">
     import api: '$lib/api.js'
     
     let article
