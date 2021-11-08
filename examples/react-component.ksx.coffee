@@ -87,11 +87,14 @@ onFavoriteToggle: (index: #number, [slug, favorited]: #Article) ->
     async () *->
         if store.getState().app.user.isNone()
             set location.hash: '#/login'
-            return
-        
-        store.dispatch startSubmittingFavorite index
-        
-        article: await (unfavoriteArticle(slug) if favorited else favoriteArticle(slug))
-        store.dispatch endSubmittingFavorite [index, article]
+        else
+            store.dispatch startSubmittingFavorite index
+            article: await {
+                if favorited
+                    unfavoriteArticle slug
+                else
+                    favoriteArticle slug
+            }
+            store.dispatch endSubmittingFavorite [index, article]
 
 [ArticlesViewer]
