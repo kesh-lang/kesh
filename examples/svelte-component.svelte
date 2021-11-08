@@ -8,17 +8,19 @@
     
     toggle-favorite: async () *->
         if ~article.favorited
-            set article.favoritesCount: _ - 1
+            set article.favorites-count: _ - 1
             set article.favorited: false
         else
-            set article.favoritesCount: _ + 1
+            set article.favorites-count: _ + 1
             set article.favorited: true
-
+        
+        path: "articles/{ article.slug }/favorite"
+        
         set [article]: await
             if ~article.favorited
-                api.post("articles/{ article.slug }/favorite", null, user.token)
+                api.post(path, null, user.token)
             else
-                api.del("articles/{ article.slug }/favorite", user.token)
+                api.del(path, user.token)
     
     [article, user]
 </script>
@@ -41,7 +43,7 @@
                     on:click={ toggle-favorite }
                 >
                     <i class="ion-heart" />
-                    { article.favoritesCount }
+                    { article.favorites-count }
                 </button>
             </div>
         { /if }
