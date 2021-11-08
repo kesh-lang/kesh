@@ -57,7 +57,9 @@ Tab: [
         </a>
     </li>
 
-ArticleList: [articles: #ArticleViewerState.articles] ->
+ArticleList: [
+    articles: #ArticleViewerState.articles
+] ->
     articles.match [
         none: () ->
             <div className='article-preview' key={ 1 }>
