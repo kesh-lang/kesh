@@ -1,6 +1,6 @@
 <!-- original: https://github.com/sveltejs/realworld/blob/master/src/lib/ArticleList/ArticlePreview.svelte -->
 
-<script lang="coffee">
+<script lang="lua">
     import api: '$lib/api.js'
     
     let article
@@ -9,6 +9,7 @@
     favorite-path: "articles/{ article.slug }/favorite"
     
     toggle-favorite: async () *->
+        -- optimistic UI
         if ~article.favorited
             set article.favorites-count: _ - 1
             set article.favorited: false
