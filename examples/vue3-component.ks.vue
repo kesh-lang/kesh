@@ -11,12 +11,12 @@
 </template>
 
 <script lang="lua">
-import [defineComponent, #PropType]: 'vue'
+import [define-component, #PropType]: 'vue'
 import [RouterLink]: 'vue-router'
 import [#RouteParams]: 'vue-router'
 import [#AppRouteNames]: 'src/router'
 
-default: defineComponent [
+default: define-component [
     name: 'AppLink'
     components: [RouterLink]
     props:
