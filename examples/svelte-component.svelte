@@ -29,7 +29,7 @@
 
         <div class="info">
             <a class="author" href="/profile/@{ article.author.username }"> { article.author.username } </a>
-            <span class="date"> { Date(article.createdAt).toDateString() } </span>
+            <span class="date"> { Date(article.created-at).toDateString() } </span>
         </div>
 
         { #if user }
@@ -50,7 +50,7 @@
         <p>{ article.description }</p>
         <span>Read more...</span>
         <ul class="tag-list">
-            { #each article.tagList as tag }
+            { #each article.tag-list as tag }
                 <li class="tag-default tag-pill tag-outline"><a href="/?tag={ tag }">{ tag }</a></li>
             { /each }
         </ul>
