@@ -39,7 +39,11 @@ ArticlesTabSet: [
         </ul>
     </div>
 
-Tab: [tab: #string, active: #boolean, onClick: () -> #none] ->
+Tab: [
+    tab: #string
+    active: #boolean
+    onClick: () -> #none
+] ->
     <li className='nav-item'>
         <a
             className={ classObjectToClassName ['nav-link': true, active] }
