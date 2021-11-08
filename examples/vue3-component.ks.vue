@@ -12,13 +12,13 @@
 
 <script lang="lua">
 import [define-component, #PropType]: 'vue'
-import [RouterLink]: 'vue-router'
+import [RouterLink as router-link]: 'vue-router'
 import [#RouteParams]: 'vue-router'
 import [#AppRouteNames]: 'src/router'
 
 default: define-component [
     name: 'AppLink'
-    components: [RouterLink]
+    components: [router-link]
     props:
         name:
             type: String#PropType(#AppRouteNames)
