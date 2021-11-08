@@ -43,9 +43,9 @@ Promise.all requests
 axios([
     method: 'get'
     url: 'http://bit.ly/2mTM3nY'
-    responseType: 'stream'
+    response-type: 'stream'
 ]).then (response) ->
-    response.data.pipe fs.createWriteStream 'ada_lovelace.jpg'
+    response.data.pipe fs.create-write-stream 'ada_lovelace.jpg'
 
 
 -- You can create a new instance of axios with a custom config
