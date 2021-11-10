@@ -1,4 +1,4 @@
--- silly example to demonstrate the generator and loop extensions
+-- silly example to demonstrate the generator and imperative loop extensions
 
 *fizzbuzz(n):
     loop 1 .. n as i
