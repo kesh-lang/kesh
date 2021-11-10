@@ -35,7 +35,7 @@
         { #if user }
             <div class="pull-xs-right">
                 <button
-                    class="btn btn-sm { 'btn-primary' if article.favorited else 'btn-outline-primary' }"
+                    class="btn btn-sm { 'btn-primary' if ~article.favorited else 'btn-outline-primary' }"
                     on:click={ toggle-favorite }
                 >
                     <i class="ion-heart" />
