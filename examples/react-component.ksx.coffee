@@ -34,7 +34,7 @@ ArticlesTabSet: [
     <div className={ toggle-class-name }>
         <ul className='nav nav-pills outline-active'>
             { tabs.map (tab) ->
-                <Tab key={ tab } tab={ tab } active={ tab = selected-tab } onClick={ () -> on-tab-change? and on-tab-change(tab) } />
+                <Tab key={ tab } tab={ tab } active={ tab = selected-tab } onClick={ () -> if on-tab-change? then on-tab-change tab } />
             }
         </ul>
     </div>
@@ -48,7 +48,10 @@ Tab: [
         <a
             className={ class-object-to-class-name ['nav-link': true, active] }
             href='#'
-            onClick={ (ev) *-> { ev.prevent-default(), on-click() } }
+            onClick={ (ev) *=>
+                ev.prevent-default()
+                on-click()
+            }
         >
             { tab }
         </a>
