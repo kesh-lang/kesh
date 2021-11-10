@@ -1,5 +1,7 @@
-*fizzbuzz(number):
-    loop 1 to number as i
+-- silly example to demonstrate the generator and loop extensions
+
+*fizzbuzz(n):
+    loop 1 .. n as i
         yield "FizzBuzz" if i mod 15 = 0
             else "Fizz" if i mod 3 = 0
             else "Buzz" if i mod 5 = 0
