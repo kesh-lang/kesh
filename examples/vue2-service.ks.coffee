@@ -9,11 +9,11 @@ import [API-URL]: '@/common/config'
 ApiService: [
     init():
         Vue.use(VueAxios, axios)
-        set Vue.axios.defaults.baseURL: API-URL
+        set Vue.axios.defaults.base-URL: API-URL
         return
 
     set-header():
-        set Vue.axios.defaults.headers.common.{'Authorization'}: "Token { JwtService.getToken() }"
+        set Vue.axios.defaults.headers.common.{'Authorization'}: "Token { JwtService.get-token() }"
         return
 
     query(resource, params):
