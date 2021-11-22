@@ -30,7 +30,7 @@ joe.speak()                                          --> "Hi, I'm Joe."
 greet: (person: #person) -> {                        -- typed function with a block body
     name: person.name if person.age > 12 else 'kid'  -- block scoped identifier definition
     "Hey, { name }!"                                 -- string interpolation
-}                                                    -- the last evaluated expression is returned
+}                                                    -- returning the last evaluated expression
 
 greet joe                                            --> "Hey, Joe!"
 ```
