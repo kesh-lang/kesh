@@ -63,7 +63,7 @@ ArticlesService: [
 CommentsService: [
     get(slug):
         if slug is not #string
-            crash Error('[RWV] CommentsService.get() article slug required to fetch comments')
+            crash Error '[RWV] CommentsService.get() article slug required to fetch comments'
 
         ApiService.get('articles', "{ slug }/comments")
 
