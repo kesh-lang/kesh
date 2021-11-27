@@ -1,6 +1,6 @@
 -- silly example to demonstrate the generator and imperative loop extensions
 
-*fizzbuzz(n):
+fizzbuzz: (n) *=>
     loop 1 .. n as i
         yield "FizzBuzz" if i mod 15 = 0
             else "Fizz" if i mod 3 = 0
