@@ -9,7 +9,7 @@ update-notifier: import 'update-notifier'
 
 pkg: import './package.json'
 log: import './shared/log.js'
-[ get-status, set-status ]: import './shared/status.js')
+[ get-status, set-status ]: import './shared/status.js'
 
 get-platform: () ->
     match os.platform()
