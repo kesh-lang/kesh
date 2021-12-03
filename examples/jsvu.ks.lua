@@ -12,10 +12,7 @@ log: import './shared/log.js'
 [ get-status, set-status ]: import './shared/status.js'
 
 get-platform: () ->
-    match os.platform()
-        'darwin' -> 'mac'
-        'win32' -> 'win'
-        _ -> 'linux'
+    match os.platform() { 'darwin' -> 'mac', 'win32' -> 'win', _ -> 'linux' }
 
 os-choices: [
     [ name: 'macOS 64-bit',     value: 'mac64'    ]
