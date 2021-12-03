@@ -135,8 +135,8 @@ loop args as arg
         if not wants-help then print.error "\nUnrecognized argument: { JSON.stringify(arg) }\n"
         
         print '[<engine>@<version>]'
-        print "[--os=\{{ os-choices.map((choice) -> choice.value).join(',') },default\}]"
-        print "[--engines=\{{ engine-choices.map((choice) -> choice.value).join(',') }\},…]"
+        print "[--os=\{{ os-choices.map(_.value).join(',') },default\}]"
+        print "[--engines=\{{ engine-choices.map(_.value).join(',') }\},…]"
 
         print "\nComplete documentation is online:"
         print 'https://github.com/GoogleChromeLabs/jsvu#readme'
@@ -146,12 +146,12 @@ if status.os is #none
     set status.os: (await prompt-os()).step
     set-status(status)
 else
-    log.success("Read OS from config: status.os }")
+    log.success("Read OS from config: { status.os }")
 
 -- The user provided a specific engine + version, e.g. `jsvu v8@7.2`.
 if status.engine? and status.version?
     [ engine, version ]: status
-    log.success("Read engine + version from CLI argument: engine } v{ version }")
+    log.success("Read engine + version from CLI argument: { engine } v{ version }")
     install-specific-engine-version: import './shared/install-specific-version.js'
     await install-specific-engine-version([ import("./engines/{ engine }/index.js")..., status ])
     return
