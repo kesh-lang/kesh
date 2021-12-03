@@ -24,13 +24,13 @@ joe: #person [                                       -- new object that delegate
     age: 27
 ]
 
-joe.speak()                                          --> "Hi, I'm Joe."
-
 -- function
 greet: ([name, age]: #person) -> {                   -- typed function unpacking the argument
     name: name if age > 12 else 'kid'                -- block scoped declaration (name masking)
     "Hey, { name }!"                                 -- returns the last evaluated expression
 }
+
+joe.speak()                                          --> "Hi, I'm Joe."
 
 greet joe                                            --> "Hey, Joe!"
 ```
