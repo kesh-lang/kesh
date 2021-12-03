@@ -120,9 +120,7 @@ loop args as arg
     else if arg.starts-with('--engines=')
         engines-arg: arg.split('=').1
         engines: if engines-arg = 'all'
-            then engine-choices
-                .filter((choice) -> choice.checked)
-                .map((choice) -> choice.value)
+            then engine-choices.filter((choice) -> choice.checked).map((choice) -> choice.value)
             else engines-arg.split(',')
         set status.engines: engines
     else if arg.includes('@')
