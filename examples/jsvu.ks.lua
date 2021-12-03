@@ -117,52 +117,55 @@ loop args as arg
     if arg.starts-with('--os=')
         os: arg.split('=').1
         set status.os: guess-os() if os = 'default' else os
+    
     else if arg.starts-with('--engines=')
         engines-arg: arg.split('=').1
         engines: if engines-arg = 'all'
-            then engine-choices.filter((choice) -> choice.checked).map((choice) -> choice.value)
+            then engine-choices.filter(_.checked).map(_.value)
             else engines-arg.split(',')
         set status.engines: engines
+    
     else if arg.includes('@')
         <engine, version>: arg.split('@')
         set status.engine: engine
         set status.version: version
+    
     else
         wants-help: arg = '--help' or arg = '-h'
-        if not wants-help then console.error "\nUnrecognized argument: JSON.stringify(arg) }\n"
+        if not wants-help then print.error "\nUnrecognized argument: { JSON.stringify(arg) }\n"
         
-        console.log '[<engine>@<version>]'
-        console.log "[--os=\{{ os-choices.map((choice) -> choice.value).join(',') },default\}]"
-        console.log "[--engines=\{{ engine-choices.map((choice) -> choice.value).join(',') }\},…]"
+        print '[<engine>@<version>]'
+        print "[--os=\{{ os-choices.map((choice) -> choice.value).join(',') },default\}]"
+        print "[--engines=\{{ engine-choices.map((choice) -> choice.value).join(',') }\},…]"
 
-        console.log "\nComplete documentation is online:"
-        console.log 'https://github.com/GoogleChromeLabs/jsvu#readme'
+        print "\nComplete documentation is online:"
+        print 'https://github.com/GoogleChromeLabs/jsvu#readme'
         return
 
 if status.os is #none
     set status.os: (await prompt-os()).step
     set-status(status)
 else
-    log.success "Read OS from config: status.os }"
+    log.success("Read OS from config: status.os }")
 
 -- The user provided a specific engine + version, e.g. `jsvu v8@7.2`.
 if status.engine? and status.version?
     [ engine, version ]: status
-    log.success "Read engine + version from CLI argument: engine } v{ version }"
+    log.success("Read engine + version from CLI argument: engine } v{ version }")
     install-specific-engine-version: import './shared/install-specific-version.js'
-    await install-specific-engine-version [ import("./engines/{ engine }/index.js")..., status ]
+    await install-specific-engine-version([ import("./engines/{ engine }/index.js")..., status ])
     return
 
 -- The user wants to install or update engines, but we don’t know
 -- which ones.
 if status.engines is #none or status.engines.length = 0
     set status.engines: (await prompt-engines()).step
-    if status.engines.length = 0 then log.failure 'No JavaScript engines selected. Nothing to do…'
+    if status.engines.length = 0 then log.failure('No JavaScript engines selected. Nothing to do…')
     set-status(status)
 else
-    log.success "Read engines from config: status.engines.join(', ') }"
+    log.success("Read engines from config: { status.engines.join(', ') }")
 
 -- Install the desired JavaScript engines.
 update-engine: import './shared/engine.js'
 loop status.engines as engine
-    await update-engine [ status, import("./engines/{ engine }/index.js")... ]
+    await update-engine([ status, import("./engines/{ engine }/index.js")... ])
