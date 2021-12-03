@@ -156,8 +156,7 @@ if status.engine? and status.version?
     await install-specific-engine-version([ import("./engines/{ engine }/index.js")..., status ])
     return
 
--- The user wants to install or update engines, but we don’t know
--- which ones.
+-- The user wants to install or update engines, but we don’t know which ones.
 if status.engines is #none or status.engines.length = 0
     set status.engines: (await prompt-engines()).step
     if status.engines.length = 0 then log.failure('No JavaScript engines selected. Nothing to do…')
