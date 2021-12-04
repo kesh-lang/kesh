@@ -11,11 +11,11 @@
     toggle-favorite: async () *->
         if ~article.favorited
             set article.favorited: false
-            set article.favorites-count: _ - 1
+            decr article.favorites-count
             set [article]: await api.del(favorite-path, user.token)
         else
             set article.favorited: true
-            set article.favorites-count: _ + 1
+            incr article.favorites-count
             set [article]: await api.post(favorite-path, (), user.token)
     
     [article, user]
