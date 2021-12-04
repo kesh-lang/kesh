@@ -2,14 +2,14 @@
 
 -- original: https://raw.githubusercontent.com/GoogleChromeLabs/jsvu/main/cli.js
 
-os: import 'os'
+os: require 'os'
 
-inquirer: import 'inquirer'
-update-notifier: import 'update-notifier'
+inquirer: require 'inquirer'
+update-notifier: require 'update-notifier'
 
-pkg: import './package.json'
-log: import './shared/log.js'
-[ get-status, set-status ]: import './shared/status.js'
+pkg: require './package.json'
+log: require './shared/log.js'
+[ get-status, set-status ]: require './shared/status.js'
 
 get-platform: () ->
     match os.platform() { 'darwin' -> 'mac', 'win32' -> 'win', _ -> 'linux' }
@@ -148,8 +148,8 @@ else
 if status.engine? and status.version?
     [ engine, version ]: status
     log.success("Read engine + version from CLI argument: { engine } v{ version }")
-    install-specific-engine-version: import './shared/install-specific-version.js'
-    await install-specific-engine-version [ import("./engines/{ engine }/index.js")..., status ]
+    install-specific-engine-version: require './shared/install-specific-version.js'
+    await install-specific-engine-version [ require("./engines/{ engine }/index.js")..., status ]
     return
 
 -- The user wants to install or update engines, but we don’t know which ones.
@@ -161,6 +161,6 @@ else
     log.success("Read engines from config: { status.engines.join(', ') }")
 
 -- Install the desired JavaScript engines.
-update-engine: import './shared/engine.js'
+update-engine: require './shared/engine.js'
 loop status.engines as engine
-    await update-engine [ status, import("./engines/{ engine }/index.js")... ]
+    await update-engine [ status, require("./engines/{ engine }/index.js")... ]
