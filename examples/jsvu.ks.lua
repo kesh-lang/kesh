@@ -1,4 +1,4 @@
-#!/usr/bin/env kesh node
+#!/usr/bin/env kesh-node
 
 -- original: https://raw.githubusercontent.com/GoogleChromeLabs/jsvu/main/cli.js
 
