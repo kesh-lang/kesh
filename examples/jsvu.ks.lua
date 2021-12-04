@@ -33,6 +33,7 @@ guess-os: () ->
     -- assume the underlying architecture is 64-bit as well.
     -- https://github.com/nodejs/node/issues/17036
     arch: '64' if os.arch().includes('64') else '32'
+    
     "{ platform }{ arch }"
 
 prompt-os: () ->
@@ -123,9 +124,7 @@ loop args as arg
         set status.engines: engines
     
     else if arg.includes('@')
-        <engine, version>: arg.split('@')
-        set status.engine: engine
-        set status.version: version
+        set status.<engine, version>: arg.split('@')
     
     else
         wants-help: arg = '--help' or arg = '-h'
@@ -150,7 +149,7 @@ if status.engine? and status.version?
     [ engine, version ]: status
     log.success("Read engine + version from CLI argument: { engine } v{ version }")
     install-specific-engine-version: import './shared/install-specific-version.js'
-    await install-specific-engine-version([ import("./engines/{ engine }/index.js")..., status ])
+    await install-specific-engine-version [ import("./engines/{ engine }/index.js")..., status ]
     return
 
 -- The user wants to install or update engines, but we don’t know which ones.
@@ -164,4 +163,4 @@ else
 -- Install the desired JavaScript engines.
 update-engine: import './shared/engine.js'
 loop status.engines as engine
-    await update-engine([ status, import("./engines/{ engine }/index.js")... ])
+    await update-engine [ status, import("./engines/{ engine }/index.js")... ]
