@@ -28,7 +28,7 @@ axios.post('/user', [
 
 
 -- Performing multiple concurrent requests
-requests: array[
+requests: [
     () -> axios.get '/user/12345'
     () -> axios.get '/user/12345/permissions'
 ]
