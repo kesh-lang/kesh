@@ -101,66 +101,70 @@ prompt-engines: () ->
         choices: engine-choices
     ]
 
-log.banner(pkg.version)
+(async () ->
 
--- Warn if an update is available.
-update-notifier([ pkg ]).notify()
+    log.banner(pkg.version)
 
--- Read the user configuration + CLI arguments, and prompt for any missing info.
-status: get-status()
+    -- Warn if an update is available.
+    update-notifier([ pkg ]).notify()
 
-args: process.argv.slice(2)
+    -- Read the user configuration + CLI arguments, and prompt for any missing info.
+    status: get-status()
 
-loop args as arg
-    if arg.starts-with('--os=')
-        os: arg.split('=').1
-        set status.os: guess-os() if os = 'default' else os
-    
-    else if arg.starts-with('--engines=')
-        engines-arg: arg.split('=').1
-        engines: if engines-arg = 'all'
-            then engine-choices.filter(_.checked).map(_.value)
-            else engines-arg.split(',')
-        set status.engines: engines
-    
-    else if arg.includes('@')
-        set status.<engine, version>: arg.split('@')
-    
+    args: process.argv.slice(2)
+
+    loop args as arg
+        if arg.starts-with('--os=')
+            os: arg.split('=').1
+            set status.os: guess-os() if os = 'default' else os
+
+        else if arg.starts-with('--engines=')
+            engines-arg: arg.split('=').1
+            engines: if engines-arg = 'all'
+                then engine-choices.filter(_.checked).map(_.value)
+                else engines-arg.split(',')
+            set status.engines: engines
+
+        else if arg.includes('@')
+            set status.<engine, version>: arg.split('@')
+
+        else
+            wants-help: arg = '--help' or arg = '-h'
+            if not wants-help then print.error "\nUnrecognized argument: { JSON.stringify(arg) }\n"
+
+            print '[<engine>@<version>]'
+            print "[--os=\{{ os-choices.map(_.value).join(',') },default\}]"
+            print "[--engines=\{{ engine-choices.map(_.value).join(',') }\},…]"
+
+            print "\nComplete documentation is online:"
+            print 'https://github.com/GoogleChromeLabs/jsvu#readme'
+            return
+
+    if status.os is #none
+        set status.os: (await prompt-os()).step
+        set-status(status)
     else
-        wants-help: arg = '--help' or arg = '-h'
-        if not wants-help then print.error "\nUnrecognized argument: { JSON.stringify(arg) }\n"
-        
-        print '[<engine>@<version>]'
-        print "[--os=\{{ os-choices.map(_.value).join(',') },default\}]"
-        print "[--engines=\{{ engine-choices.map(_.value).join(',') }\},…]"
+        log.success("Read OS from config: { status.os }")
 
-        print "\nComplete documentation is online:"
-        print 'https://github.com/GoogleChromeLabs/jsvu#readme'
+    -- The user provided a specific engine + version, e.g. `jsvu v8@7.2`.
+    if status.engine? and status.version?
+        [ engine, version ]: status
+        log.success("Read engine + version from CLI argument: { engine } v{ version }")
+        install-specific-engine-version: require './shared/install-specific-version.js'
+        await install-specific-engine-version [ require("./engines/{ engine }/index.js")..., status ]
         return
 
-if status.os is #none
-    set status.os: (await prompt-os()).step
-    set-status(status)
-else
-    log.success("Read OS from config: { status.os }")
+    -- The user wants to install or update engines, but we don’t know which ones.
+    if status.engines is #none or status.engines.length = 0
+        set status.engines: (await prompt-engines()).step
+        if status.engines.length = 0 then log.failure('No JavaScript engines selected. Nothing to do…')
+        set-status(status)
+    else
+        log.success("Read engines from config: { status.engines.join(', ') }")
 
--- The user provided a specific engine + version, e.g. `jsvu v8@7.2`.
-if status.engine? and status.version?
-    [ engine, version ]: status
-    log.success("Read engine + version from CLI argument: { engine } v{ version }")
-    install-specific-engine-version: require './shared/install-specific-version.js'
-    await install-specific-engine-version [ require("./engines/{ engine }/index.js")..., status ]
-    return
+    -- Install the desired JavaScript engines.
+    update-engine: require './shared/engine.js'
+    loop status.engines as engine
+        await update-engine [ status, require("./engines/{ engine }/index.js")... ]
 
--- The user wants to install or update engines, but we don’t know which ones.
-if status.engines is #none or status.engines.length = 0
-    set status.engines: (await prompt-engines()).step
-    if status.engines.length = 0 then log.failure('No JavaScript engines selected. Nothing to do…')
-    set-status(status)
-else
-    log.success("Read engines from config: { status.engines.join(', ') }")
-
--- Install the desired JavaScript engines.
-update-engine: require './shared/engine.js'
-loop status.engines as engine
-    await update-engine [ status, require("./engines/{ engine }/index.js")... ]
+)()
