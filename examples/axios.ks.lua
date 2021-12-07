@@ -52,7 +52,7 @@ axios([
 
 -- You can create a new instance of axios with a custom config
 instance: axios.create [
-    baseURL: 'https://some-domain.com/api/'
+    base-URL: 'https://some-domain.com/api/'
     timeout: 1000
     headers:
         'X-Custom-Header': 'foobar'
