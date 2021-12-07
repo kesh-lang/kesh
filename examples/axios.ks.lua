@@ -37,6 +37,8 @@ Promise.all requests
     .then (results) ->
         account: results.0
         permissions: results.1
+        
+        -- @todo stuff
 
 
 -- GET request for remote image in node.js
