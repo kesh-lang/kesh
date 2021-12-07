@@ -12,27 +12,27 @@
 #kesh 2021
 
 -- prototype
-#person: [                                           -- type definition
-    name: #string                                    -- type annotation
+#person: [                                          -- type definition
+    name: #string                                   -- type annotation
     age: #number
-    speak(): "Hi, I'm { this.name }."                -- literal method with type inference
+    speak(): "Hi, I'm { this.name }."               -- literal method with type inference
 ]
 
 -- instance
-joe: #person [                                       -- new object that delegates to #person
+joe: #person [                                      -- new object that delegates to #person
     name: 'Joe'
     age: 27
 ]
 
 -- function
-greet: ([name, age]: #person) -> {                   -- typed function unpacking the argument
-    name: name if age > 12 else 'kid'                -- block scoped declaration (name masking)
-    "Hey, { name }!"                                 -- returns the last evaluated expression
+greet: ([name, age]: #person) -> {                  -- typed function unpacking the argument
+    name: name if age > 12 else 'kid'               -- block scoped declaration (name masking)
+    "Hey, { name }!"                                -- block returns the last evaluated expression
 }
 
-joe.speak()                                          --> "Hi, I'm Joe."
+joe.speak()                                         --> "Hi, I'm Joe."
 
-greet joe                                            --> "Hey, Joe!"
+greet joe                                           --> "Hey, Joe!"
 ```
 
 Nothing is written in stone. Feedback and contributions are always welcome!
