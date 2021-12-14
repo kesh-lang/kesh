@@ -1,3 +1,5 @@
+// https://github.com/kesh-lang/kesh/wiki/Documentation#delegation
+
 const primate = {
   tail: true,
 }
@@ -15,4 +17,4 @@ const joe = Object.create(human, {  // delegation
 // these objects are immutable:
 joe.name = 'Joey'
 joe.name
-// 'Joe'
+// "Joe"
