@@ -11,8 +11,8 @@ for (const $ of [1, 2, 3]) {
 }
 
 // loop over an iterable's elements
-for (const number of range(1, 10)) {
-  if (mod(number, 3) === 0) continue
+for (const number of $range(1, 10)) {
+  if ($mod(number, 3) === 0) continue
   console.log(number)
 }
 
