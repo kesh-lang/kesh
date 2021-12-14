@@ -1,7 +1,7 @@
 // https://github.com/kesh-lang/kesh/wiki/Extensions#imperative-loops
 
 // infinite loop
-while (!true) {
+while (true) {
   await client.listen()
 }
 
