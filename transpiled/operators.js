@@ -60,14 +60,14 @@ typeof answer !== 'string'
 has(people, joe)  // not really an operator, but a function
 
 // rudimentary implementation of has function
-function has(coll, val) {
-  if (Array.isArray(coll)) {
-    return coll.includes(val)
+function has(col, val) {
+  if (Array.isArray(col)) {
+    return col.includes(val)
   }
-  else if (coll instanceof Set || coll instanceof Map) {
-    return coll.has(val)
+  else if (col instanceof Set || col instanceof Map) {
+    return col.has(val)
   }
   else {
-    return Reflect.has(coll, val)
+    return Reflect.has(col, val)
   }
 }
