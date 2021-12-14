@@ -101,7 +101,7 @@ prompt-engines: () ->
         choices: engine-choices
     ]
 
-(async () ->
+(async () *->
 
     log.banner(pkg.version)
 
