@@ -1,3 +1,5 @@
+// https://github.com/kesh-lang/kesh/wiki/Extensions#with
+
 const open = async function*(path) {
   const file = await fs.open(path)
   console.log("file opened")
