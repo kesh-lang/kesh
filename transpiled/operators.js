@@ -4,13 +4,13 @@
 answer === 42
 
 // answer /= '42'
-answer !== '42
+answer !== '42'
 
 // answer ~= '42'
-answer == '42
+answer == '42'
 
 // answer ~≠ '42'
-answer != '42
+answer != '42'
 
 // not true
 !true
