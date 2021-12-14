@@ -5,7 +5,7 @@ const open = async function*(path) {
   yield file
 
   file.close()
-  console.log("file closed")
+  return console.log("file closed")
 }
 
 for await (const file of open("./hello.txt")) {
