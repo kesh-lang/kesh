@@ -30,8 +30,8 @@ axios.post('/user', [
 
 -- Performing multiple concurrent requests
 requests: [
-    () -> axios.get '/user/12345'
-    () -> axios.get '/user/12345/permissions'
+    () -> axios.get "/user/{ id }"
+    () -> axios.get "/user/{ id }/permissions"
 ]
 
 Promise.all requests
