@@ -35,11 +35,9 @@ requests: [
 ]
 
 Promise.all requests
-    .then (results) ->
-        account: results.0
-        permissions: results.1
-        
-        -- @todo stuff
+    .then <account, permissions> ->  -- unpacking the result array
+        print account
+        print permissions
 
 
 -- GET request for remote image in node.js
@@ -47,8 +45,8 @@ axios([
     method: 'get'
     url: 'http://bit.ly/2mTM3nY'
     response-type: 'stream'
-]).then (response) ->
-    response.data.pipe fs.create-write-stream 'ada_lovelace.jpg'
+]).then [data] ->
+    data.pipe fs.create-write-stream 'ada_lovelace.jpg'
 
 
 -- You can create a new instance of axios with a custom config
