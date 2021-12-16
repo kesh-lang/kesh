@@ -3,7 +3,7 @@ import axios: 'axios'
 
 -- Minimal example
 axios.get '/users'
-    .then _.data  -- using placeholder to pluck a field
+    .then _.data  -- using placeholder to pick a field
     .then print
 
 
