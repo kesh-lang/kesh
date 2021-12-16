@@ -3,11 +3,12 @@ import axios: 'axios'
 
 -- Minimal example
 axios.get '/users'
-    .then (res) -> print res.data
+    .then _.data
+    .then print
 
 
 -- Make a request for a user with a given ID
-axios.get '/user?ID=12345'
+axios.get "/user?ID={ id }"
     .then (response) ->
         -- handle success
         print response
@@ -23,8 +24,8 @@ axios.post('/user', [
         first-name: 'Fred'
         last-name: 'Flintstone'
     ])
-    .then (response) -> print response
-    .catch (error) -> print error
+    .then print
+    .catch print
 
 
 -- Performing multiple concurrent requests
