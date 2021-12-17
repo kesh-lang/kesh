@@ -3,7 +3,7 @@ fib: (n) ->
     n if n < 2 else fib(n - 1) + fib(n - 2)
 
 -- memoized
-fib-mem: (n, memo ? *[]) ->
-    memo.{n} if memo.{n}?
-        else n if n < 2
-        else set memo.{n}: fib-mem(n - 1, memo) + fib-mem(n - 2, memo)
+fib-memoized: (n, memo ? *[]) ->
+    if memo.{n}? then memo.{n}
+    else if n < 2 then n
+    else set memo.{n}: fib-memoized(n - 1, memo) + fib-memoized(n - 2, memo)
