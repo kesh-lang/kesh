@@ -1,10 +1,10 @@
 -- 1. imports
 import module: 'module'
 
--- 2. types
+-- 2. type declarations
 #foobar: [ foo: #truth, bar: #number, baz: #text ]
 
--- 3. declarations
+-- 3. value declarations
 foo: true
 bar: 42
 baz: 'hi'
