@@ -8,7 +8,7 @@ const newPerson = (spec) => {
     aHuman.speak(`${ name } says: ${ words }`)  // no this
   }
   
-  return {name, say}  // public fields returned from function
+  return Object.freeze({ name, say })  // public fields returned from function
 }
 
 const joe = newPerson({
