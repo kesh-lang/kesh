@@ -5,7 +5,7 @@
 const answer = 42
 const query = () => answer
 
-export { answer, query }
+export Object.freeze({ answer, query })
 
 
 // https://github.com/kesh-lang/kesh/wiki/Documentation#imports
