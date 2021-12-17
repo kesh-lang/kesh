@@ -33,13 +33,13 @@ if (page.title !== undefined && page.author !== undefined) {}
 const title = page.title ?? 'Default title'
 
 // spread: [items..., item]
-const spread = {...items, item}
+const spread = { ...items, item }
 
 // rest: (...arguments) -> print arguments
 const rest = (...arguments) => console.log(arguments)
 
 // [age as years-old]: ada
-const {age: yearsOld} = ada
+const { age: yearsOld } = ada
 
 // 4 + #number '2'
 4 + Number('2')
