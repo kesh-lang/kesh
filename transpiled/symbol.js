@@ -6,11 +6,11 @@
 const secret = Symbol('hidden talent')  // secret symbol
 
 // person: [ name: 'Joe', @cool: true, { secret }: 'I can moonwalk!' ]
-const person = {
+const person = Object.freeze({
   name: 'Joe',
   [Symbol.for('cool')]: true,
   [secret]: "I can moonwalk!",
-}
+})
 
 // keys person
 Object.getOwnPropertyNames(person)
