@@ -4,7 +4,7 @@ import module: 'module'
 -- 2. types
 #foobar: [ foo: #truth, bar: #number, baz: #text ]
 
--- 3. initial declarations
+-- 3. declarations
 foo: true
 bar: 42
 baz: 'hi'
