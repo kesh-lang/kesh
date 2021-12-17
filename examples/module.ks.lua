@@ -14,4 +14,4 @@ qux: #foobar [foo, bar, baz]
 print foo if bar = 42 else baz
 
 -- 5. exports
-(qux)
+[qux]
