@@ -1,5 +1,6 @@
 -- tail recursion
-fib: (n) -> n if n < 2 else fib(n - 1) + fib(n - 2)
+fib: (n) ->
+    n if n < 2 else fib(n - 1) + fib(n - 2)
 
 -- memoized
 fib-mem: (n, memo ? *[]) ->
