@@ -6,9 +6,9 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
     taState: array[]
     clauseSign: array[]
     
-    clauseCount: #array.from([ length: numClasses ]).fill(0)
-    clauseOutput: #array.from([ length: numClauses ]).fill(0)
-    classSum: #array.from([ length: numClasses ]).fill(0)
+    clauseCount:       #array.from([ length: numClasses ]).fill(0)
+    clauseOutput:      #array.from([ length: numClauses ]).fill(0)
+    classSum:          #array.from([ length: numClasses ]).fill(0)
     feedBackToClauses: #array.from([ length: numClauses ]).fill(0)
     
     initTaState: () *->
