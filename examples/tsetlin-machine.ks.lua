@@ -30,11 +30,11 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
     initClauseCount: () *->
         loop 0 ..< numClasses as i
             loop 0 ..< floor(numClauses / numClasses) as j
-                set clauseSign.(i).{ clauseCount.(i) }.0: i * (numClauses / numClasses) + j
+                set clauseSign.(i).( clauseCount.(i) ).0: i * (numClauses / numClasses) + j
                 if j rem 2 = 0
-                    set clauseSign.(i).(clauseCount.(i)).1: 1
+                    set clauseSign.(i).( clauseCount.(i) ).1: 1
                 else
-                    set clauseSign.(i).(clauseCount.(i)).1: -1
+                    set clauseSign.(i).( clauseCount.(i) ).1: -1
                 set clauseCount.(i): _ + 1
     
     action: (state) -> if state <= numStates then 0 else 1
@@ -60,7 +60,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
         loop 0 ..< numClasses as targetClass
             set classSum.(targetClass): 0
             loop 0 ..< clauseCount.(targetClass) as j
-                set classSum.(targetClass): _ + clauseOutput.{ clauseSign.(targetClass).(j).0 } * clauseSign.(targetClass).(j).1
+                set classSum.(targetClass): _ + clauseOutput.( clauseSign.(targetClass).(j).0 ) * clauseSign.(targetClass).(j).1
                 if classSum.(targetClass) > threshold
                     set classSum.(targetClass): threshold
                 else if classSum.(targetClass) < -threshold
@@ -96,18 +96,18 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
                 continue
     
             if clauseSign.(targetClass).(j).1 > 0
-                increment feedBackToClauses.{ clauseSign.(targetClass).(j).0 }
+                increment feedBackToClauses.( clauseSign.(targetClass).(j).0 )
             else if clauseSign.(targetClass).(j).1 < 0
-                decrement feedBackToClauses.{ clauseSign.(targetClass).(j).0 }
+                decrement feedBackToClauses.( clauseSign.(targetClass).(j).0 )
     
         loop 0 ..< clauseCount.(negativeTargetClass) as j
             if random() > (1.0 / threshold * 2) * (threshold + classSum.(negativeTargetClass))
                 continue
     
             if clauseSign.(negativeTargetClass).(j).1 > 0
-                decrement feedBackToClauses.{ clauseSign.(negativeTargetClass).(j).0 }
+                decrement feedBackToClauses.( clauseSign.(negativeTargetClass).(j).0 )
             else if clauseSign.(negativeTargetClass).(j).1 < 0)
-                increment feedBackToClauses.{ clauseSign.(negativeTargetClass).(j).0 }
+                increment feedBackToClauses.( clauseSign.(negativeTargetClass).(j).0 )
     
         -- Train individual Automata
         loop 0 ..< numClauses as j
