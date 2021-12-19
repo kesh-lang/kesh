@@ -35,7 +35,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
                     set clauseSign.(i).( clauseCount.(i) ).1: 1
                 else
                     set clauseSign.(i).( clauseCount.(i) ).1: -1
-                set clauseCount.(i): _ + 1
+                increment clauseCount.(i)
     
     action: (state) -> if state <= numStates then 0 else 1
     
