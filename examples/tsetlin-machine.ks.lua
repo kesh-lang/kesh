@@ -137,7 +137,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
                             if random() <= 1.0 / s
                                 if taState.(j).(k).0 > 1
                                     decrement taState.(j).(k).0
-            else if feedBackToClauses.(j) < 0) 
+            else if feedBackToClauses.(j) < 0
                 --  Type II Feedback (Combats False Positives)
                 if clauseOutput.(j) = 1
                     loop 0 ..< numFeatures as k
