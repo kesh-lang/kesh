@@ -1,5 +1,7 @@
 -- original: https://raw.githubusercontent.com/anon767/TsetlinMachine/master/tsetlin.js
 
+import [ floor, random ]: Math
+
 new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
     taState: array[]
     clauseSign: array[]
@@ -14,8 +16,8 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
             set taState.(i): array[]
             loop 0 ..< numFeatures as j
                 set taState.(i).(j): array[]
-                set taState.(i).(j).0: if Math.floor(Math.random()) then numStates else numStates + 1
-                set taState.(i).(j).1: if Math.floor(Math.random()) then numStates else numStates + 1
+                set taState.(i).(j).0: if floor(random()) then numStates else numStates + 1
+                set taState.(i).(j).1: if floor(random()) then numStates else numStates + 1
     
     initClauseSigns: () *->
         loop 0 ..< numClasses as i
@@ -27,7 +29,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
     
     initClauseCount: () *->
         loop 0 ..< numClasses as i
-            loop 0 ..< Math.floor(numClauses / numClasses) as j
+            loop 0 ..< floor(numClauses / numClasses) as j
                 set clauseSign.(i).{ clauseCount.(i) }.0: i * (numClauses / numClasses) + j
                 if j rem 2 = 0
                     set clauseSign.(i).(clauseCount.(i)).1: 1
@@ -77,9 +79,9 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
     
     update: (X, targetClass) *->
         -- Randomly pick one of the other classes, for pairwise learning of class output
-        let negativeTargetClass: Math.floor(numClasses * (1.0 - 1e-15) * Math.random())
+        let negativeTargetClass: floor(numClasses * (1.0 - 1e-15) * random())
         while negativeTargetClass = targetClass
-            set negativeTargetClass: Math.floor(numClasses * (1.0 - 1e-15) * Math.random())
+            set negativeTargetClass: floor(numClasses * (1.0 - 1e-15) * random())
         -- Calculate Clause Output
         calcClauseOutput(X)
         -- sum up clause votes
@@ -90,7 +92,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
             set feedBackToClauses.(j): 0
     
         loop 0 ..< clauseCount.(targetClass) as j
-            if Math.random() > (1.0 / threshold * 2) * (threshold - classSum.(targetClass))
+            if random() > (1.0 / threshold * 2) * (threshold - classSum.(targetClass))
                 continue
     
             if clauseSign.(targetClass).(j).1 > 0
@@ -99,7 +101,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
                 decrement feedBackToClauses.{ clauseSign.(targetClass).(j).0 }
     
         loop 0 ..< clauseCount.(negativeTargetClass) as j
-            if Math.random() > (1.0 / threshold * 2) * (threshold + classSum.(negativeTargetClass))
+            if random() > (1.0 / threshold * 2) * (threshold + classSum.(negativeTargetClass))
                 continue
     
             if clauseSign.(negativeTargetClass).(j).1 > 0
@@ -113,26 +115,26 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
                 -- Type I Feedback (Combats False Negatives)
                 if clauseOutput.(j) = 0
                     loop 0 ..< numFeatures as k
-                        if Math.random() <= 1.0 / s
+                        if random() <= 1.0 / s
                             if taState.(j).(k).0 > 1
                                 decrement taState.(j).(k).0
-                        if Math.random() <= 1.0 / s
+                        if random() <= 1.0 / s
                             if taState.(j).(k).1 > 1
                                 decrement taState.(j).(k).1
                 else if clauseOutput.(j) = 1
                     loop 0 ..< numFeatures as k
                         if X.(k) = 1
-                            if Math.random() <= (s - 1) / s
+                            if random() <= (s - 1) / s
                                 if taState.(j).(k).0 < numStates * 2
                                     increment taState.(j).(k).0
-                            if Math.random() <= 1.0 / s
+                            if random() <= 1.0 / s
                                 if taState.(j).(k).1 > 1
                                     decrement taState.(j).(k).1
                         else if X.(k) = 0
-                            if Math.random() <= (s - 1) / s
+                            if random() <= (s - 1) / s
                                 if taState.(j).(k).1 < numStates * 2
                                     increment taState.(j).(k).1
-                            if Math.random() <= 1.0 / s
+                            if random() <= 1.0 / s
                                 if taState.(j).(k).0 > 1
                                     decrement taState.(j).(k).0
             else if feedBackToClauses.(j) < 0) 
@@ -150,7 +152,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
     
     evaluate: (X, y) ->
         let errors: 0
-        for { let l: 0, l < X.length, increment l }
+        loop 0 ..< X.length as l
             if predict X[l] /= y[l] then increment errors
         1.0 - errors / X.length
     
@@ -158,6 +160,6 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
     initClauseSigns()
     initClauseCount()
     
-    [predict, update, evaluate]
+    [ predict, update, evaluate ]
     
-[new-machine]
+[ new-machine ]
