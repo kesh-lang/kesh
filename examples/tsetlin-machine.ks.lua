@@ -151,7 +151,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
     evaluate: (X, y) ->
         let errors: 0
         loop 0 ..< X.length as l
-            if predict X[l] /= y[l] then increment errors
+            if predict X[l] ≠ y[l] then increment errors
         1.0 - errors / X.length
     
     initTaState()
