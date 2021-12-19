@@ -3,13 +3,13 @@
 import [ floor, random ]: Math
 
 new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
-    taState: array[]
-    clauseSign: array[]
+    let taState: array[]
+    let clauseSign: array[]
     
-    clauseCount:       array.from([ length: numClasses ]).fill(0)
-    clauseOutput:      array.from([ length: numClauses ]).fill(0)
-    classSum:          array.from([ length: numClasses ]).fill(0)
-    feedBackToClauses: array.from([ length: numClauses ]).fill(0)
+    let clauseCount:       array.from([ length: numClasses ]).fill(0)
+    let clauseOutput:      array.from([ length: numClauses ]).fill(0)
+    let classSum:          array.from([ length: numClasses ]).fill(0)
+    let feedBackToClauses: array.from([ length: numClauses ]).fill(0)
     
     initTaState: () *->
         loop 0 ..< numClauses as i
@@ -39,9 +39,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
     
     action: (state) -> if state <= numStates then 0 else 1
     
-    calcClauseOutput: (X, predict) *->
-        if not predict or predict is #none then set predict: 0
-    
+    calcClauseOutput: (X, predict ? 0) *->
         loop 0 ..< numClauses as j
             set clauseOutput.(j): 1
             let allExclude: 1
