@@ -60,7 +60,7 @@ new-machine: [ numClasses, numClauses, numFeatures, numStates, s, threshold ] ->
         loop 0 ..< numClasses as targetClass
             set classSum.(targetClass): 0
             loop 0 ..< clauseCount.(targetClass) as j
-                set classSum.(targetClass): _ + clauseOutput.( clauseSign.(targetClass).(j).0 ) * clauseSign.(targetClass).(j).1
+                set classSum.(targetClass): _ + (clauseOutput.( clauseSign.(targetClass).(j).0 ) * clauseSign.(targetClass).(j).1)
                 if classSum.(targetClass) > threshold
                     set classSum.(targetClass): threshold
                 else if classSum.(targetClass) < -threshold
