@@ -13,7 +13,7 @@
 
 -- prototype
 #person: [                                        -- type definition
-    name: #string                                 -- type annotation
+    name: #text                                   -- type annotation
     age: #number
     speak(): "Hi, I'm { this.name }."             -- literal method with type inference
 ]
