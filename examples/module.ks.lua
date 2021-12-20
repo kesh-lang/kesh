@@ -2,7 +2,7 @@
 import module: 'module'
 
 -- 2. type declarations
-#foobar: [ foo: #truth, bar: #number, baz: #text ]
+#foobar: [ foo: #logic, bar: #number, baz: #text ]
 
 -- 3. value declarations
 foo: true
