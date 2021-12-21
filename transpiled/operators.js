@@ -57,10 +57,10 @@ typeof answer === 'number'
 typeof answer !== 'string'
 
 // people has joe
-has(people, joe)  // not really an operator, but a function
+has(joe, people)  // not really an operator, but a function
 
 // rudimentary implementation of has function
-function has(col, val) {
+function has(val, col) {
   if (Array.isArray(col)) {
     return col.includes(val)
   }
