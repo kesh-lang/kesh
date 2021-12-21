@@ -46,18 +46,23 @@ const { age: yearsOld } = ada
 
 // joe inherits primate
 primate.isPrototypeOf(joe)
+inherits(primate, joe)  // function version
 
 // joe is-a human
 Reflect.getPrototypeOf(joe) === human
+isA(human, joe)  // function version
 
 // answer is #number
 typeof answer === 'number'
+is('number', answer)  // function version
 
 // answer isnt #text
 typeof answer !== 'string'
+isnt('string', answer)  // function version
 
 // people has joe
-has(joe, people)  // not really an operator, but a function
+has(joe, people)  // only as a function
+
 
 // rudimentary implementation of has function
 function has(val, col) {
