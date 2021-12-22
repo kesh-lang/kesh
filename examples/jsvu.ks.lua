@@ -121,7 +121,9 @@ prompt-engines: () ->
         else if arg.starts-with('--engines=')
             engines-arg: arg.split('=').1
             engines: if engines-arg = 'all'
-                then engine-choices.filter(_.checked).map(_.value)
+                then engine-choices
+                    .filter((engine) -> engine.checked)
+                    .map((engine) -> engine.value)
                 else engines-arg.split(',')
             set status.engines: engines
 
@@ -133,8 +135,8 @@ prompt-engines: () ->
             if not wants-help then print.error "\nUnrecognized argument: { JSON.stringify(arg) }\n"
 
             print '[<engine>@<version>]'
-            print "[--os=\{{ os-choices.map(_.value).join(',') },default\}]"
-            print "[--engines=\{{ engine-choices.map(_.value).join(',') }\},…]"
+            print "[--os=\{{ os-choices.map((os) -> os.value).join(',') },default\}]"
+            print "[--engines=\{{ engine-choices.map((os) -> os.value).join(',') }\},…]"
 
             print "\nComplete documentation is online:"
             print 'https://github.com/GoogleChromeLabs/jsvu#readme'
