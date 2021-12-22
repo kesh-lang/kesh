@@ -35,7 +35,7 @@ requests: [
 ]
 
 Promise.all requests
-    .then <account, permissions> ->  -- unpacking the result array
+    .then array[account, permissions] ->  -- unpacking the result array
         print account
         print permissions
 
