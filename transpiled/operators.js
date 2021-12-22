@@ -45,7 +45,7 @@ const { age: yearsOld } = ada
 4 + Number('2')
 
 // joe inherits primate
-primate.isPrototypeOf(joe)
+Object.prototype.isPrototypeOf.call(primate, joe)
 inherits(primate, joe)  // function version
 
 // joe is-a human
