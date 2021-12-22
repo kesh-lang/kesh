@@ -128,7 +128,7 @@ prompt-engines: () ->
             set status.engines: engines
 
         else if arg.includes('@')
-            set status.<engine, version>: arg.split('@')
+            set status.(engine, version): arg.split('@')
 
         else
             wants-help: arg = '--help' or arg = '-h'
