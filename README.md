@@ -19,7 +19,7 @@
 ]
 
 -- instance
-joe: #person [                                    -- new object that delegates to #person
+joe: #person [                                    -- new collection that delegates to #person
     name: 'Joe'
     age: 27
 ]
