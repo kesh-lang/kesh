@@ -5,7 +5,7 @@
 // secret: @('hidden talent')
 const secret = Symbol('hidden talent')  // secret symbol
 
-// person: [ name: 'Joe', @cool: true, { secret }: 'I can moonwalk!' ]
+// person: object[ name: 'Joe', @cool: true, { secret }: 'I can moonwalk!' ]
 const person = Object.freeze({
   name: 'Joe',
   [Symbol.for('cool')]: true,
@@ -13,7 +13,7 @@ const person = Object.freeze({
 })
 
 // keys person
-Object.getOwnPropertyNames(person)
+keys(person)
 // Array [ "name" ]
 
 // person.@cool
@@ -23,3 +23,12 @@ person[Symbol.for('cool')]
 // person.{ secret }
 person[secret]
 // "I can moonwalk!"
+
+
+keys = (collection) => {
+  const keys = []
+  for (const key in collection) {
+    keys.push(key)
+  }
+  return keys
+}
