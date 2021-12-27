@@ -45,7 +45,7 @@ axios([
     method: 'get'
     url: 'http://bit.ly/2mTM3nY'
     response-type: 'stream'
-]).then [data] ->
+]).then [data] ->  -- unpacking the result object's data field by key
     data.pipe fs.create-write-stream 'ada_lovelace.jpg'
 
 
