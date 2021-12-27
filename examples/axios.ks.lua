@@ -14,7 +14,7 @@ axios.get "/user?ID={ id }"
         print response
     .catch (error) ->
         -- handle error
-        consol.error error
+        console.error error
     .then () ->
         -- always executed
 
