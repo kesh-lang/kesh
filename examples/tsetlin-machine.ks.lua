@@ -6,10 +6,10 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
     let ta-state: array[]
     let clause-sign: array[]
     
-    let clause-count:        array(num-classes).fill(0)
-    let clause-output:       array(num-clauses).fill(0)
-    let class-sum:           array(num-classes).fill(0)
-    let feedback-to-clauses: array(num-clauses).fill(0)
+    let clause-count:        Array(num-classes).fill(0)
+    let clause-output:       Array(num-clauses).fill(0)
+    let class-sum:           Array(num-classes).fill(0)
+    let feedback-to-clauses: Array(num-clauses).fill(0)
     
     init-ta-state: () *->
         loop 0 ..< num-clauses as i
