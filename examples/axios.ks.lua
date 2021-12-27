@@ -14,7 +14,7 @@ axios.get "/user?ID={ id }"
         print response
     .catch (error) ->
         -- handle error
-        print error
+        consol.error error
     .then () ->
         -- always executed
 
@@ -25,7 +25,7 @@ axios.post('/user', [
         last-name: 'Flintstone'
     ])
     .then print
-    .catch print
+    .catch console.error
 
 
 -- Performing multiple concurrent requests
