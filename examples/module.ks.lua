@@ -15,7 +15,7 @@ baz: 'hi'
 qux: #foobar [foo, bar, baz]
 
 -- 4. expressions
-print foo if bar = 42 else baz
+print (foo if bar = 42 else baz)
 
 -- 5. exports
 [#foobar, qux]
