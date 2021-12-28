@@ -5,8 +5,8 @@ while (true) {
   await client.listen()
 }
 
-// repeat a block x times using a range (iterable)
-for (const $ of [1, 2, 3]) {
+// repeat a block x times
+for (let i = 0; i < 3; ++i) {
   console.log("hey")
 }
 
@@ -17,8 +17,8 @@ for (const number of $range(1, 10)) {
 }
 
 // loop over a collection's own enumerable fields
-for ([key, value] of Object.entries(person)) {
-  console.log(key, value)
+for ([player, points] of score) {
+  console.log(`${player.name}: ${points} points`)
 }
 
 // traditional while loop
