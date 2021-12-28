@@ -80,7 +80,7 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
     update: (x, target-class) *->
         -- Randomly pick one of the other classes, for pairwise learning of class output
         let negative-target-class: floor(num-classes * (1.0 - 1e-15) * random())
-        while negative-target-class = target-class
+        loop while negative-target-class = target-class
             set negative-target-class: floor(num-classes * (1.0 - 1e-15) * random())
         -- Calculate Clause Output
         calc-clause-output(x)
