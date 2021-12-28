@@ -12,24 +12,24 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
     let feedback-to-clauses: Array(num-clauses).fill(0)
     
     init-ta-state: () *->
-        loop 0 ..< num-clauses as i
+        loop each 0 ..< num-clauses as i
             set ta-state.(i): array[]
-            loop 0 ..< num-features as j
+            loop each 0 ..< num-features as j
                 set ta-state.(i).(j): array[]
                 set ta-state.(i).(j).0: if floor(random()) then num-states else num-states + 1
                 set ta-state.(i).(j).1: if floor(random()) then num-states else num-states + 1
     
     init-clause-signs: () *->
-        loop 0 ..< num-classes as i
+        loop each 0 ..< num-classes as i
             set clause-sign.(i): array[]
-            loop 0 ..< (num-clauses / num-classes) as j
+            loop each 0 ..< (num-clauses / num-classes) as j
                 set clause-sign.(i).(j): array[]
                 set clause-sign.(i).(j).0: 0
                 set clause-sign.(i).(j).1: 0
     
     init-clause-count: () *->
-        loop 0 ..< num-classes as i
-            loop 0 ..< floor(num-clauses / num-classes) as j
+        loop each 0 ..< num-classes as i
+            loop each 0 ..< floor(num-clauses / num-classes) as j
                 set clause-sign.(i).( clause-count.(i) ).0: i * (num-clauses / num-classes) + j
                 if j rem 2 = 0
                     set clause-sign.(i).( clause-count.(i) ).1: 1
@@ -40,10 +40,10 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
     action: (state) -> if state <= num-states then 0 else 1
     
     calc-clause-output: (x, predict ? 0) *->
-        loop 0 ..< num-clauses as j
+        loop each 0 ..< num-clauses as j
             set clause-output.(j): 1
             let all-exclude: 1
-            loop 0 ..< num-features as k
+            loop each 0 ..< num-features as k
                 action-include: action ta-state.(j).(k).0
                 action-include-neg: action ta-state.(j).(k).1
                 if action-include = 1 or action-include-neg = 1
@@ -55,9 +55,9 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
                 set clause-output.(j): 0
     
     sum-up-class-votes: () *->
-        loop 0 ..< num-classes as target-class
+        loop each 0 ..< num-classes as target-class
             set class-sum.(target-class): 0
-            loop 0 ..< clause-count.(target-class) as j
+            loop each 0 ..< clause-count.(target-class) as j
                 set class-sum.(target-class): _
                     + (clause-output.( clause-sign.(target-class).(j).0 )
                     * clause-sign.(target-class).(j).1)
@@ -71,7 +71,7 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
         sum-up-class-votes()
         let max-class-sum: class-sum.0
         let max-class: 0
-        loop 1 ..< num-classes as target-class
+        loop each 1 ..< num-classes as target-class
             if max-class-sum < class-sum.(target-class)
                 set max-class-sum: class-sum.(target-class)
                 set max-class: target-class
@@ -88,10 +88,10 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
         sum-up-class-votes()
         -- calculate Feedback to Clauses
         
-        loop 0 ..< num-clauses as j  --  init feedback to clauses
+        loop each 0 ..< num-clauses as j  --  init feedback to clauses
             set feedback-to-clauses.(j): 0
     
-        loop 0 ..< clause-count.(target-class) as j
+        loop each 0 ..< clause-count.(target-class) as j
             if random() > (1.0 / threshold * 2) * (threshold - class-sum.(target-class))
                 continue
     
@@ -100,7 +100,7 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
             else if clause-sign.(target-class).(j).1 < 0
                 decrement feedback-to-clauses.( clause-sign.(target-class).(j).0 )
     
-        loop 0 ..< clause-count.(negative-target-class) as j
+        loop each 0 ..< clause-count.(negative-target-class) as j
             if random() > (1.0 / threshold * 2) * (threshold + class-sum.(negative-target-class))
                 continue
     
@@ -110,11 +110,11 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
                 increment feedback-to-clauses.( clause-sign.(negative-target-class).(j).0 )
     
         -- Train individual Automata
-        loop 0 ..< num-clauses as j
+        loop each 0 ..< num-clauses as j
             if feedback-to-clauses.(j) > 0
                 -- Type I Feedback (Combats False Negatives)
                 if clause-output.(j) = 0
-                    loop 0 ..< num-features as k
+                    loop each 0 ..< num-features as k
                         if random() <= 1.0 / s
                             if ta-state.(j).(k).0 > 1
                                 decrement ta-state.(j).(k).0
@@ -122,7 +122,7 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
                             if ta-state.(j).(k).1 > 1
                                 decrement ta-state.(j).(k).1
                 else if clause-output.(j) = 1
-                    loop 0 ..< num-features as k
+                    loop each 0 ..< num-features as k
                         if x.(k) = 1
                             if random() <= (s - 1) / s
                                 if ta-state.(j).(k).0 < num-states * 2
@@ -140,7 +140,7 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
             else if feedback-to-clauses.(j) < 0
                 --  Type II Feedback (Combats False Positives)
                 if clause-output.(j) = 1
-                    loop 0 ..< num-features as k
+                    loop each 0 ..< num-features as k
                         let action-include: action ta-state.(j).(k).0
                         let action-include-negated: action ta-state.(j).(k).1
                         if x.(k) = 0
@@ -152,7 +152,7 @@ new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold 
     
     evaluate: (x, y) ->
         let errors: 0
-        loop 0 ..< x.length as l
+        loop each 0 ..< x.length as l
             if predict x.(l) ≠ y.(l) then increment errors
         1.0 - errors / x.length
     
