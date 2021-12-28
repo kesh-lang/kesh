@@ -113,7 +113,7 @@ prompt-engines: () ->
 
     args: process.argv.slice(2)
 
-    loop args as arg
+    loop each args as arg
         if arg.starts-with('--os=')
             os: arg.split('=').1
             set status.os: guess-os() if os = 'default' else os
@@ -166,7 +166,7 @@ prompt-engines: () ->
 
     -- Install the desired JavaScript engines.
     update-engine: require './shared/engine.js'
-    loop status.engines as engine
+    loop each status.engines as engine
         await update-engine [ status, require("./engines/{ engine }/index.js")... ]
 
 )()
