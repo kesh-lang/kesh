@@ -26,7 +26,7 @@ while (everything === 'ok') {
   console.log("It's all good")
 }
 
-// nontraditional until loop
+// untraditional until loop
 while (!done) {
   // todo: process something
   if (nothingToDo) done = true
