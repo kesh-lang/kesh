@@ -9,7 +9,7 @@
 **kesh** is a simple little programming language. Its syntax is a superset of [na](https://github.com/kesh-lang/na).
 
 ```lua
-#kesh 2021
+kesh 2021
 
 -- prototype
 #person: [                                        -- type definition
