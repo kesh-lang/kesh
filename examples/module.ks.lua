@@ -3,7 +3,7 @@ import module: 'module'
 
 -- 2. type declarations
 #foobar: [
-    foo: #logic
+    foo: #truth
     bar: #number
     baz: #text
 ]
