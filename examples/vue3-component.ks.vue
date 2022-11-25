@@ -4,30 +4,22 @@
   <router-link
     :aria-label="props.name"
     :to="props"
-    v-bind="attrs"
   >
     <slot />
   </router-link>
 </template>
 
 <script lang="lua">
-import [define-component, #PropType]: 'vue'
-import [RouterLink]: 'vue-router'
-import [#RouteParams]: 'vue-router'
 import [#AppRouteNames]: 'src/router'
+import [#RouteParams]: 'vue-router'
 
-default: define-component [
-    name: 'AppLink'
-    components: [RouterLink]
-    props:
-        name:
-            type: String#PropType(#AppRouteNames)
-            required: true
-        params:
-            type: Object#PropType(#RouteParams)
-            default: () -> []
-    setup: (props, [attrs]) -> [props, attrs]
-]
+#AppLinkProps:
+    name: #AppRouteNames
+    params?: #Partial(#RouteParams)
 
-[default]
+props: with-defaults(define-props(#AppLinkProps)(), [
+    params: () -> []
+])
+
+[#AppLinkProps]
 </script>

@@ -26,14 +26,14 @@ os-choices: [
 guess-os: () ->
     platform: get-platform()
     if platform = 'mac' then return 'mac64arm' if os.arch() = 'arm64' else 'mac64'
-    
+
     -- Note: `os.arch()` returns the architecture of the Node.js process
     -- which does not necessarily correspond to the system architecture.
     -- Still, if the user runs a 64-bit version of Node.js, it’s safe to
     -- assume the underlying architecture is 64-bit as well.
     -- https://github.com/nodejs/node/issues/17036
     arch: '64' if os.arch().includes('64') else '32'
-    
+
     "{ platform }{ arch }"
 
 prompt-os: () ->
@@ -101,7 +101,7 @@ prompt-engines: () ->
         choices: engine-choices
     ]
 
-(async () *->
+(async () \->
 
     log.banner(pkg.version)
 
