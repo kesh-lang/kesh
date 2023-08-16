@@ -1,6 +1,6 @@
 -- original: https://raw.githubusercontent.com/anon767/TsetlinMachine/master/tsetlin.js
 
-import [ floor, random ]: Math
+[ floor, random ]: import Math
 
 new-machine: [ num-classes, num-clauses, num-features, num-states, s, threshold ] ->
     let ta-state: array[]
