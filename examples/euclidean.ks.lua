@@ -1,4 +1,4 @@
-import [abs]: Math
+[abs]: import Math
 
 gcd: (a, b) ->
     a: abs(a)
