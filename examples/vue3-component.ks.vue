@@ -10,8 +10,8 @@
 </template>
 
 <script lang="lua">
-import [#AppRouteNames]: 'src/router'
-import [#RouteParams]: 'vue-router'
+[#AppRouteNames]: import 'src/router'
+[#RouteParams]: import 'vue-router'
 
 #AppLinkProps:
     name: #AppRouteNames
