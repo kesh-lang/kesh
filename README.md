@@ -15,7 +15,7 @@ kesh 2021
 #person: [                                        -- type definition
     name: #text                                   -- type annotation
     age: #number
-    speak(): "Hi, I'm { this.name }."             -- literal method with type inference
+    speak(): "Hi, I'm { this.name }."             -- literal method (type inference)
 ]
 
 -- instance
