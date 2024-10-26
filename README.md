@@ -26,7 +26,7 @@ joe: #person [                                    -- new collection that delegat
 
 -- function
 greet: ([name, age]: #person) -> {                -- typed function (argument unpacking)
-    name: name if age > 12 else 'kid'             -- block-scoped declaration (parameter masking)
+    name: name if age > 12 else 'kid'             -- block-scoped declaration (param masking)
     "Hey, { name }!"                              -- the last evaluated expression is returned
 }
 
