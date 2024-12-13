@@ -10,7 +10,7 @@
 **kesh** is a simple high-level programming language that hasn't been made. Its syntax is a superset of [na](https://github.com/kesh-lang/na).
 
 ```lua
-kesh 2021
+kesh 2024
 
 -- prototype
 #person: [                                        -- type definition
