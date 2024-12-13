@@ -13,15 +13,17 @@
 kesh 2024
 
 -- prototype
-#person:                                          -- type definition
+#person: [                                        -- type definition
     name: #text                                   -- type annotation
     age: #number
     speak(): "Hi, I'm { @name }."                 -- literal method (type inference)
+]
 
 -- instance
-joe: #person                                      -- new collection that delegates to #person
+joe: #person [                                    -- new collection that delegates to #person
     name: 'Joe'
     age: 27
+]
 
 -- function
 greet: ([name, age]: #person) -> {                -- typed function (argument unpacking)
