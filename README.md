@@ -10,30 +10,30 @@
 **kesh** is a simple high-level programming language that hasn't been made. Its syntax is a superset of [na](https://github.com/kesh-lang/na).
 
 ```lua
-kesh 2024
+kesh 2025
 
 -- prototype
-#person: [                                        -- type definition
-    name: #text                                   -- type annotation
+#person: [                               -- type definition
+    name: #text                          -- type annotation
     age: #number
-    speak(): "Hi, I'm { @name }."                 -- literal method (type inference)
+    speak(): "Hi, I'm { @name }."        -- literal method (type inference)
 ]
 
 -- instance
-joe: #person [                                    -- new collection that delegates to #person
+joe: #person [                           -- new collection that delegates to #person
     name: 'Joe'
     age: 27
 ]
 
 -- function
-greet: ([name, age]: #person) -> {                -- typed function (argument unpacking)
-    name: name if age > 12 else 'kid'             -- block-scoped declaration (param masking)
-    "Hey, { name }!"                              -- the last evaluated expression is returned
+greet: ([name, age]: #person) -> {       -- typed function (argument unpacking)
+    name: name if age > 12 else 'kid'    -- block-scoped declaration (param masking)
+    "Hey, { name }!"                     -- the last evaluated expression is returned
 }
 
-joe.speak()                                       --> "Hi, I'm Joe."
+joe.speak()                              --> "Hi, I'm Joe."
 
-greet joe                                         --> "Hey, Joe!"
+greet joe                                --> "Hey, Joe!"
 ```
 
 See the [Documentation](https://github.com/kesh-lang/kesh/wiki/Documentation) for more.
